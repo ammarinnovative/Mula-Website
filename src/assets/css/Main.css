@@ -1,0 +1,9 @@
+.bgText {
+  background: url(../images/bg.jpg) no-repeat;
+  background-position: center center;
+  background-color: #464646;
+  background-size: cover;
+  background-clip: text;
+  color: transparent;
+}
+
