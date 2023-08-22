@@ -8,10 +8,11 @@ import Play from '../../assets/images/play.png';
 import mobile from '../../assets/images/mobile.png';
 import Banner from '../../components/Banner/Banner';
 import Footer from '../../components/Footer/Footer';
-import Slider from "../../components/Courser/Courser";
+import Slider from '../../components/Courser/Courser';
 import Tophead from '../../components/Tophead/Tophead';
 
 const Home = () => {
+  
   return (
     <>
       <Box
@@ -64,8 +65,8 @@ const Home = () => {
             </Box>
           </Box>
         </Box>
-        <Box padding={"50px 0"}>
-        <Invest />
+        <Box padding={'50px 0'}>
+          <Invest />
         </Box>
         <Slider />
         <Banner />

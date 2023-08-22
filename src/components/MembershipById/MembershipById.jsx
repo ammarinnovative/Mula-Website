@@ -33,7 +33,6 @@ const MembershipById = () => {
     setCourseDetails({ ...courrseDetails, data: res?.data[0]});
     setData(res?.data[0].playlist);
   };
-  console.log("data",data);
   const selector = useSelector(state => state);
   const id = params.id;
   const dispatch = useDispatch();
@@ -42,9 +41,8 @@ const MembershipById = () => {
     dispatch(add(courrseDetails));
   };
 
-
   useEffect(() => {
-    const find = selector?.cart.find(datas => {
+    const find = selector?.cart?.find(datas => {
       let check = datas.data._id == params.id;
       setPaymentType(datas?.items?.paymentType);
       if (check) {
@@ -55,6 +53,7 @@ const MembershipById = () => {
       return;
     });
   }, [selector]);
+
 
   useEffect(() => {
     getData();
@@ -141,7 +140,7 @@ const MembershipById = () => {
                   color={'white'}
                   display={
                     bool ||
-                    paymentType == 'membership1' ||
+                    paymentType == 'course' ||
                     paymentType == 'videos' ||
                     courrseDetails?.data == undefined ||
                     courrseDetails.data == null
@@ -159,7 +158,7 @@ const MembershipById = () => {
       </Box>
       <Box padding={"50px 10px"} backgroundColor={'#00000f'}>
         {data.length > 0 ? (
-          <MembershipAccordion data={data} />
+          <MembershipAccordion paymentType={paymentType}   bool={bool} data={data} />
         ) : (
           <Text
             color={'white'}

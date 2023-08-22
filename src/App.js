@@ -56,10 +56,10 @@ function App() {
         let user = JSON.parse(Cookies.get('user') ?? '{}')
         dispatch(loadUser(user))
       }
-      if (localStorage.getItem('product') !== null) {
-        let product = JSON.parse(localStorage.getItem('product') ?? '{}')
-        dispatch(add(product))
-      }
+      // if (localStorage.getItem('product') !== null) {
+      //   let product = JSON.parse(localStorage.getItem('product') ?? '{}')
+      //   dispatch(add(product))
+      // }
     })()
   }, [])
 

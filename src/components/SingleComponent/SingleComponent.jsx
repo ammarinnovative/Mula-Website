@@ -43,7 +43,7 @@ const SingleComponent = () => {
   };
 
   useEffect(() => {
-    const find = selector?.cart.find(datas => {
+    const find = selector?.cart?.find(datas => {
       let check = datas.data._id == params.id;
       setPaymentType(datas?.items?.paymentType);
       if (check) {
@@ -54,6 +54,8 @@ const SingleComponent = () => {
       return;
     });
   }, [selector]);
+
+
 
   useEffect(() => {
     getData();
@@ -140,7 +142,7 @@ const SingleComponent = () => {
                   color={'white'}
                   display={
                     bool ||
-                    paymentType == 'membership1' ||
+                    paymentType == 'membership' ||
                     paymentType == 'videos' ||
                     courrseDetails?.data == undefined ||
                     courrseDetails.data == null

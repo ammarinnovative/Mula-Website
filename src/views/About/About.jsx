@@ -15,8 +15,11 @@ import SimpleAccordion from "../../components/Accordion/Accordion";
 import image from '../../assets/images/image.png';
 import Banner from '../../components/Banner/Banner';
 import Tophead from '../../components/Tophead/Tophead';
+import { useSelector } from 'react-redux';
 
 const About = () => {
+  const selector = useSelector(state => state);
+  console.log('selector', selector);
   const data = [
     {
       text: 'Interactive Learning',
