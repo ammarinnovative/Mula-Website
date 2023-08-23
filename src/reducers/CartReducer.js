@@ -10,7 +10,7 @@ const cartSlice = createSlice({
     reducers:{
         add(state,action){
             state.push(action.payload);
-            // localStorage.setItem('product',JSON.stringify(action.payload));
+            localStorage.setItem('product',JSON.stringify(state));
         },
         clear(state,action){
             localStorage.removeItem('product');

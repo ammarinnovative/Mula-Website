@@ -9,9 +9,9 @@ import Circular from '../../assets/images/Circular.png';
 import Layer16 from '../../assets/images/Layer16.png';
 import back from '../../assets/images/back.png';
 import kit from '../../assets/images/kit.png';
-import Layer9 from "../../assets/images/Layer9.png";
+import Layer9 from '../../assets/images/Layer9.png';
 import Layer20 from '../../assets/images/Layer 20.png';
-import SimpleAccordion from "../../components/Accordion/Accordion";
+import SimpleAccordion from '../../components/Accordion/Accordion';
 import image from '../../assets/images/image.png';
 import Banner from '../../components/Banner/Banner';
 import Tophead from '../../components/Tophead/Tophead';
@@ -31,7 +31,7 @@ const About = () => {
       text: 'Exclusive support Learning',
       Image: Layer6,
       details:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus sed et ipsum explicabo vero quae exercitationem mollitia provident quaerat debitis ad quod quis, vitae fuga rerum. Dolores, vero voluptates! Illo.sed et ipsum explicabo vero quae exercitationem mollitia provident quaerat debitis ad quod quis, vitae fuga rerum. Dolores, vero voluptates! Illo',
+        'Lorem ipsum dolor sit amet consectetur.sit amet consectetur. sit amet consectetur.   ',
     },
   ];
 
@@ -79,10 +79,10 @@ const About = () => {
         >
           <Text
             color={'white'}
-            fontWeight={'bold'}
-            letterSpacing={'5px'}
+            fontWeight={'800'}
+            fontFamily={'Poppins900'}
             textAlign={'center'}
-            fontSize={'30px'}
+            fontSize={'35px'}
             m={'80px 0'}
           >
             About
@@ -90,12 +90,13 @@ const About = () => {
           <Box
             display={'flex'}
             gap={'30px'}
+            width={'100%'}
             justifyContent={'center'}
             alignItems={'center'}
           >
-            <Box mt={'50px'} width={'23%'}>
-              <Box color={'white'} fontSize={'25px'}>
-                The Best Financial Courses Crafted By Professional
+            <Box mt={'50px'} width={'30%'}>
+              <Box fontWeight={'800'} color={'white'} fontSize={'25px'}>
+                The Best Financial Courses <br /> Crafted By Professional
               </Box>
               <Box
                 width={'100px'}
@@ -104,27 +105,27 @@ const About = () => {
                 backgroundColor={'#041689'}
                 height={'5px'}
               ></Box>
-              <Text color={'white'} mt={'30px'}>
+              <Text color={'#a9a9a9'} mt={'30px'}>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
                 incidunt ex sint, velit voluptatum impedit commodi praesentium
                 quaerat ipsum facere! Repellat culpa dicta assumenda est nobis
-                iusto. Repudiandae ipsa expedita blanditiis aspernatur delectus,
-                dolorum eligendi earum ipsum vero porro sint alias eius libero
-                asperiores culpa, corporis qui! Inventore cumque dignissimos
-                laboriosam corporis minus.
+                iusto. Repudiandae ipsa expedita
               </Text>
             </Box>
 
             {data.map(item => {
               return (
                 <Box
-                  width={'20%'}
+                  width={'22%'}
                   backgroundColor={'black'}
+                  boxShadow="8px 8px 29px -10px rgba(62, 10, 255, 0.63)"
+                  _webkitBoxShadow="8px 8px 29px -10px rgba(62, 10, 255, 0.63)"
+                  _mozBoxShadow="8px 8px 29px -10px rgba(62, 10, 255, 0.63)"
                   height={'auto'}
                   alignSelf={'normal'}
                   zIndex={'10'}
                 >
-                  <Image src={item.Image} alt="image" />
+                  <Image width={'100%'} src={item.Image} alt="image" />
                   <Box
                     padding={'20px'}
                     backgroundColor={'black'}
@@ -132,15 +133,18 @@ const About = () => {
                     alignSelf={'normal'}
                   >
                     <Text
-                      fontSize={'20px'}
+                      fontSize={'17px'}
                       m={'5px 0'}
+                      fontFamily={'Poppins800'}
                       margin={'10px 0'}
                       fontWeight={'bold'}
                       color={'white'}
                     >
                       {item.text}
                     </Text>
-                    <Text width={'100%'}>{item.details}</Text>
+                    <Text color={'#ababab'} width={'100%'}>
+                      {item.details}
+                    </Text>
                   </Box>
                 </Box>
               );
@@ -149,43 +153,69 @@ const About = () => {
         </Box>
       </Box>
       <Box
-        height={'40vh'}
+        height={'auto'}
         padding={'30px'}
         backgroundImage={shadow}
         display={'flex'}
-        justifyContent={'center'}
+        justifyContent={'space-between'}
         gap={'30px'}
         alignItems={'center'}
         backgroundSize={'cover'}
         backgroundPosition={'center'}
+        margin={'auto'}
         width={'100%'}
       >
-        <Box width={'26rem'}>
-          <Text color={'white'} width={'10rem'} mb={'10px'} fontSize={'22px'}>
-            We Offer Finance Forums
-          </Text>
-          <Box
-            width={'100px'}
-            borderRadius={'8px'}
-            margin={'10px 0'}
-            backgroundColor={'#12158a'}
-            height={'5px'}
-          ></Box>
-          <Text mt={'30px'} color={'white'}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos dolorum
-            magnam, qui dignissimos soluta explicabo distinctio. Soluta ipsa
-            earum iusto! Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Cum, ut!.
-          </Text>
-          <Button color={'white'} mt={'20px'} backgroundColor={'blue'}>
-            Download App
-          </Button>
-        </Box>
-        <Box mt={'20px'}>
-          <Image overflow={'hidden'} width={'70%'} src={Layer16} alt="image" />
+        <Box
+          display={'flex'}
+          width={'70%'}
+          gap={'30px'}
+          margin={'auto'}
+          justifyContent={'space-between'}
+        >
+          <Box width={'30rem'}>
+            <Text
+              color={'white'}
+              fontWeight={'700'}
+              mb={'10px'}
+              fontSize={'23px'}
+            >
+              We Offer <br /> Finance Forums
+            </Text>
+            <Box
+              width={'100px'}
+              borderRadius={'8px'}
+              margin={'10px 0'}
+              backgroundColor={'#12158a'}
+              height={'5px'}
+            ></Box>
+            <Text mt={'30px'} color={'white'}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+              dolorum magnam, qui dignissimos soluta explicabo distinctio.
+              Soluta ipsa earum iusto! Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Cum, ut!.
+            </Text>
+            <Button color={'white'} mt={'20px'} backgroundColor={'blue'}>
+              Download App
+            </Button>
+          </Box>
+          <Box mt={'20px'}>
+            <Image
+              overflow={'hidden'}
+              width={'100%'}
+              src={Layer16}
+              alt="image"
+            />
+          </Box>
         </Box>
       </Box>
-      <Box padding={'20px'} width={'70%'} margin={'auto'} textAlign={'center'}>
+      <Box
+        padding={'20px'}
+        paddingBottom={'100px'}
+        paddingTop={'100px'}
+        width={'70%'}
+        margin={'auto'}
+        textAlign={'center'}
+      >
         <Text fontSize={'25px'} color={'white'}>
           Our Team
         </Text>
@@ -196,7 +226,7 @@ const About = () => {
           height={'4px'}
           backgroundColor={'blue'}
         ></Box>
-        <Text color={'white'} mt={'20px'}>
+        <Text color={'white'} m={'auto'} width={'70%'} mt={'20px'}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
           quibusdam ratione mollitia animi exercitationem modi tenetur tempora
           recusandae nam sequi! Lorem ipsum dolor sit amet.
@@ -206,12 +236,13 @@ const About = () => {
           gap={'20px'}
           justifyContent={'space-between'}
           alignItems={'center'}
+          flexWrap={'wrap'}
           mt={'5rem'}
         >
           {ImageData.map(data => {
             return (
               <Box
-                width={'280px'}
+                width={{ base: '100%', md: '46%', lg: '30%', xl: '24%' }}
                 borderRadius={'10px'}
                 position={'relative'}
                 bgRepeat={'no-repeat'}
@@ -244,17 +275,18 @@ const About = () => {
       <Box
         width={'100%'}
         display={'flex'}
-        justifyContent={'space-evenly'}
+        justifyContent={'center'}
+        gap={'60px'}
         alignItems={'center'}
         minHeight={'17rem'}
         backgroundImage={back}
       >
         <Box width={'30rem'}>
-          <Image src={kit} alt="image" />
+          <Image mt={'-50px'} src={kit} alt="image" />
         </Box>
-        <Box width={'16rem'}>
-          <Text fontSize={'30px'} fontWeight={'semibold'} color={'white'}>
-            Get Amazing 20% off on Membership
+        <Box width={'20rem'}>
+          <Text fontSize={'24px'} fontWeight={'700'} color={'white'}>
+            Get Amazing <br /> 20% off on Membership
           </Text>
           <Box
             width={'30%'}
@@ -274,7 +306,14 @@ const About = () => {
         </Box>
       </Box>
       <Box>
-        <Box width={'100%'} padding={"7rem"} flexWrap={"wrap"} display={"flex"} justifyContent={"center"} alignItems={"center"}>
+        <Box
+          width={'100%'}
+          padding={'7rem'}
+          flexWrap={'wrap'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'center'}
+        >
           <Box>
             <Text
               fontSize={'24px'}
@@ -291,7 +330,7 @@ const About = () => {
               backgroundColor={'blue'}
               height={'3px'}
             ></Box>
-            <Text color={'white'} width={"30rem"}>
+            <Text color={'#bfbfbf'} width={'30rem'}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
               officiis nostrum voluptates consequatur earum dicta, beatae, nam
               quas ipsa libero aut distinctio, veritatis necessitatibus
@@ -299,10 +338,11 @@ const About = () => {
             </Text>
           </Box>
           <Box>
-            <Image width={"30rem"} src={Layer20} alt="image" />
+            <Image width={'30rem'} src={Layer20} alt="image" />
           </Box>
         </Box>
       </Box>
+      <Box></Box>
       <SimpleAccordion />
       <Banner />
       <Footer />

@@ -5,7 +5,7 @@ import { imageUrl } from '../../utilities/Config';
 
 const Course = ({data}) => {
   return (
-    <Box key={data._id} width={{base:"100%",md:"100%",lg:"100%"}}>
+    <Box key={data._id} width={{base:"80%",md:"80%",lg:"80%"}}>
         <Image src={imageUrl+data?.coursePic} width={"100%"} alt='image' />
         <Text width={"100%"} fontSize={"18px"} fontWeight={"semibold"} color={"white"}>{data?.name}</Text>
         <Text width={"100%"} color={"white"}>{data.description}</Text>

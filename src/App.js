@@ -57,8 +57,11 @@ function App() {
         dispatch(loadUser(user))
       }
       // if (localStorage.getItem('product') !== null) {
-      //   let product = JSON.parse(localStorage.getItem('product') ?? '{}')
-      //   dispatch(add(product))
+      //   let product = JSON.parse(localStorage.getItem('product') ?? '{}');
+      //   for(let i=0;i<product.length;i++){
+      //     dispatch(add(product[i]));
+      //   }
+        
       // }
     })()
   }, [])

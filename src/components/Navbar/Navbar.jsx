@@ -68,7 +68,7 @@ const Navbar = ({zIndex}) => {
         })}
       </Box>
       <Link to={'/cart'}>
-      <Box width={'300px'} display={"flex"} cursor={"pointer"} alignItems={"center"} gap={"4px"}>
+      <Box  display={"flex"} cursor={"pointer"} alignItems={"center"} gap={"4px"}>
         <Text fontWeight={"semibold"} color={"white"}  fontSize={"20px"}>Cart</Text>
         <FaShoppingCart color='white' fontSize={"22px"} />
       <Text fontSize={"20px"} color={"white"}>{`(${selector?.cart?.length})`}</Text>

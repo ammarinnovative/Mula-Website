@@ -11,15 +11,15 @@ import { GET } from '../../utilities/ApiProvider';
 import { useEffect } from 'react';
 
 const Membership = () => {
-  const [data,setData] = useState([]);
-  const getMembership = async ()=>{
+  const [data, setData] = useState([]);
+  const getMembership = async () => {
     const res = await GET('web/membership');
     setData(res?.data);
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getMembership();
-  },[])
+  }, []);
   return (
     <Box
       position={'relative'}
@@ -37,22 +37,24 @@ const Membership = () => {
       >
         <Text
           textAlign={'center'}
-          fontSize={'32px'}
-          fontWeight={'semibold'}
+          fontSize={'45px'}
+          fontWeight={'800'}
+          marginTop={'42px'}
+          mb={'50px'}
           color={'white'}
         >
           Courses
         </Text>
         <Text
           textAlign={'center'}
-          fontSize={'35px'}
+          fontSize={'40px'}
           mt={'30px 0'}
           color={'white'}
-          fontWeight={'semibold'}
+          fontWeight={'650'}
         >
           Select Your Plan
         </Text>
-        <Text textAlign={'center'} fontSize={'13px'} color={'gray.200'}>
+        <Text textAlign={'center'} fontSize={'17px'} color={'gray.200'}>
           SWITCH PLAN OR CANCEL ANY TIME
         </Text>
         <Box
@@ -60,18 +62,14 @@ const Membership = () => {
           padding={'20px'}
           m={'50px 0'}
           gap={'40px'}
+          width={"100%"}
           justifyContent={{ base: 'center' }}
           alignItems={'center'}
-          flexWrap={'wrap'}
+        flexWrap={'wrap'}
         >
-          {
-            data?.map((item)=>{
-              return(
-                <SingleMembership data={item} />
-              )
-            })
-          }
-    
+          {data?.map(item => {
+            return <SingleMembership data={item} />;
+          })}
         </Box>
         <Box display={'flex'} flexDirection={'column'} gap={'30px'}>
           <Banner />

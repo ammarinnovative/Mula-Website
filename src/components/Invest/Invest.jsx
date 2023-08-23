@@ -18,46 +18,46 @@ const Invest = () => {
 
   console.log(data);
   return (
-    <Box>
+    <Box padding={'20px'}>
       <Text
         textAlign={'center'}
         width={'100%'}
         color={'white'}
-        fontSize={'28px'}
-        letterSpacing={'3px'}
-        fontWeight={'bold'}
+        fontSize={'35px'}
+        fontWeight={'700'}
       >
-        Investment We Offer
+        Investments We Offer
       </Text>
-      <Text color={'gray'} textAlign={'center'} mt={'7px'}>
+      <Text color={'gray'} fontSize={'14px'} textAlign={'center'}>
         LEARNING VIA APP NEVER GETS EASIER
       </Text>
       <Box
         display={'flex'}
         justifyContent={'center'}
         mt={'40px'}
-        gap={"10px"}
+        gap={'10px'}
         alignItems={'center'}
         flexWrap={'wrap'}
+        alignSelf={'normal'}
       >
         {data.length > 0 ? (
-          data.map((item)=>{
-            return(
-                <Box
+          data.map(item => {
+            return (
+              <Box
                 backgroundPosition={'center'}
                 position={'relative'}
                 maxH={'auto'}
-                minH={'400px'}
+                minH={'350px'}
                 backgroundSize={'cover'}
-                width={'30%'}
-                backgroundImage={imageUrl+item?.coursePic}
+                width={'17%'}
+                backgroundImage={imageUrl + item?.coursePic}
               >
                 <Text
-                  bottom={'120px'}
-                  left={'60px'}
+                  bottom={'71px'}
+                  left={'17px'}
                   position={'absolute'}
-                  fontWeight={'bold'}
-                  fontSize={'18px'}
+                  fontWeight={'800'}
+                  fontSize={'17px'}
                   color={'black'}
                 >
                   {item?.name}
@@ -65,15 +65,15 @@ const Invest = () => {
                 <Text
                   bottom={'40px'}
                   width={'300px'}
-                  fontWeight={"bold"}
-                  left={'60px'}
+                  fontWeight={'bold'}
+                  left={'17px'}
                   position={'absolute'}
                   color={'black'}
                 >
                   {item?.description}
                 </Text>
               </Box>
-            )
+            );
           })
         ) : (
           <Text>No data Found</Text>

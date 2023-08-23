@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 import Navbar from '../../components/Navbar/Navbar';
@@ -32,10 +33,11 @@ const Courses = () => {
       <Box
         position={'absolute'}
         backgroundColor={'#00000f'}
-        paddingTop={'50px'}
+        paddingTop={'70px'}
         width={'100%'}
-        mt={'80px'}
+        mt={'70px'}
       >
+        <Text textAlign={"center"} mb={"25px"} mt={"-15px"} fontWeight={"700"} fontSize={"37px"} color={"white"}>Courses</Text>
         <Invest />
         {data.length > 0 &&
           data.map(item => {
@@ -44,7 +46,7 @@ const Courses = () => {
                 <Text
                   color={'white'}
                   fontSize={'25px'}
-                  margin={'20px 0 20px 40px'}
+                  margin={'40px 0 20px 40px'}
                 >
                   {item?.course_category_name}
                 </Text>
@@ -65,7 +67,7 @@ const Courses = () => {
                     })
                     
                   ) : (
-                    <Text>No Course Found</Text>
+                    <Text fontSize={"25px"} fontWeight={"700"} color={"white"}>No Course Found</Text>
                   )}
 
                   

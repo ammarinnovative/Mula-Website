@@ -65,9 +65,6 @@ const Home = () => {
             </Box>
           </Box>
         </Box>
-        <Box padding={'50px 0'}>
-          <Invest />
-        </Box>
         <Slider />
         <Banner />
         <Footer />

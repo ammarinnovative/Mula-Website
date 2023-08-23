@@ -23,7 +23,7 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { GET } from '../../../utilities/ApiProvider';
+import { DELETE, GET, POST } from '../../../utilities/ApiProvider';
 
 const MyCard = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -84,12 +84,13 @@ const MyCard = () => {
     }
   }, [selector]);
 
-  const paymentVerify = async () => {
-    const res = await axios.post(
-      'https://api.stripe.com/v1/payment_methods',
-      fields
-    );
-    return res;
+
+  const stripeApiKey = 'sk_test_51K1vF0EbJpfXXnkzehoR5KTVCjwSAXy42umTT12mKNNGnfbEOCymor9toS3aOxBTigNPKe7iATnmjqiLFDkbc9Lc00QvTjZKOL';
+  const apiUrl = 'https://api.stripe.com/v1/payment_methods';
+
+  const headers = {
+    'Authorization': `Bearer ${stripeApiKey}`,
+    'Content-Type': 'multipart/form-data', 
   };
 
   const sendData = async () => {
@@ -97,8 +98,7 @@ const MyCard = () => {
       !fields.cardnumber ||
       !fields.cardholdername ||
       !fields.exp_month ||
-      !fields.exp_year ||
-      !fields.cvc
+      !fields.exp_year 
     ) {
       toast({
         position: 'bottom-left',
@@ -107,10 +107,20 @@ const MyCard = () => {
         description: 'Please fill all the fields',
         duration: 5000,
       });
-      return;
     }
 
-    const response = await paymentVerify();
+    const data = document.getElementById('form');
+
+      const formdata = new FormData(data);
+      try {
+        const res = await axios.post(apiUrl, formdata, { headers })
+        console.log(res);
+      } catch (error) {
+        console.error('Error:', error.response.data.error.message);
+
+      }
+
+    // const response = await paymentVerify();
     // setFields({...fields,expiry:(selectedMonth+"/"+selectedYear).toString()});
   };
 
@@ -120,13 +130,80 @@ const MyCard = () => {
     });
     setData(res?.data[0]?.cards);
   };
-  console.log(data);
 
   useEffect(() => {
     if (user) {
       getData();
     }
   }, [user]);
+
+  const deleteCard = async ()=>{
+    try {
+      const res = await DELETE(`users/63ab302317f915bd2aa727df/card/63ab6f2e202acf23d01afbf5`);
+    if(res.status == 200){
+      toast({
+        position:"bottom-left",
+        isClosable:true,
+        status:"success",
+        description:"Deleted successfully",
+        duration:5000
+      });
+      getData();
+    }else{
+      toast({
+        position:"bottom-left",
+        isClosable:true,
+        status:"error",
+        description:"Something went wrong",
+        duration:5000
+      });
+    }
+    } catch (error) {
+      toast({
+        position:"bottom-left",
+        isClosable:true,
+        status:"error",
+        description:error,
+        duration:5000
+      });
+    }
+    
+  }
+
+  const deletCard = async (id)=>{
+    try {
+      const res = await DELETE(`users/${user?.JWT_TOKEN}/card/${id}`);
+      if(res.status ==200){
+        toast({
+          position:"bottom-left",
+          duration:5000,
+          isClosable:true,
+          status:"success",
+          description:"Deleted successfully", 
+        });
+        getData();
+      }else{
+        toast({
+          position:"bottom-left",
+          duration:5000,
+          isClosable:true,
+          status:"error",
+          description:"Something went wrong", 
+        });
+      }
+    } catch (error) {
+      toast({
+        position:"bottom-left",
+        duration:5000,
+        isClosable:true,
+        status:"error",
+        description:error, 
+      });
+    }
+  }
+ 
+
+
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -139,66 +216,78 @@ const MyCard = () => {
           <ModalHeader>New Card</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Input
-              color={'white'}
-              boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)" // Set the blue box shadow
-              onChange={e => {
-                setFields({ ...fields, cardholdername: e.target.value });
-              }}
-              m={'5px'}
-              borderColor={'white'}
-              placeholder="Account Title"
-              type="text"
-            />
-            <Input
-              m={'5px'}
-              color={'white'}
-              boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)" // Set the blue box shadow
-              onChange={e => {
-                setFields({ ...fields, cardnumber: e.target.value });
-              }}
-              borderColor={'white'}
-              placeholder="Account Number"
-              type="text"
-            />
-            <Box>
-              <Text color={'white'} fontSize={'20px'}>
-                Date of Expiry :
-              </Text>
-              <Box display={'flex'} flexWrap={'wrap'} m={'10px 0'} gap={'10px'}>
-                <Select
-                  boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)" // Set the blue box shadow
-                  onChange={handleMonthChange}
-                  width={'48%'}
+            <form id='form'>
+              <Input
+                color={'white'}
+                boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)"
+                onChange={e => {
+                  setFields({ ...fields, cardholdername: e.target.value });
+                }}
+                m={'5px'}
+                name='type'
+                borderColor={'white'}
+                placeholder="Account Title"
+                type="text"
+              />
+              <Input
+                m={'5px'}
+                color={'white'}
+                boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)"
+                onChange={e => {
+                  setFields({ ...fields, cardnumber: e.target.value });
+                }}
+                borderColor={'white'}
+                name='card[number]'
+                placeholder="Account Number"
+                type="text"
+              />
+              <Box>
+                <Text color={'white'} fontSize={'20px'}>
+                  Date of Expiry :
+                </Text>
+                <Box
+                  display={'flex'}
+                  flexWrap={'wrap'}
+                  m={'10px 0'}
+                  gap={'10px'}
                 >
-                  {months.map(item => {
-                    return (
-                      <option value={item.value} style={{ color: 'black' }}>
-                        {item.name}
-                      </option>
-                    );
-                  })}
-                </Select>
-                <Select
-                  boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)" // Set the blue box shadow
-                  width={'48%'}
-                  onChange={handleYearChange}
-                >
-                  {years.map(item => {
-                    return <option style={{ color: 'black' }}>{item}</option>;
-                  })}
-                </Select>
-                <Input
-                  boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)" // Set the blue box shadow
-                  onChange={e => {
-                    setFields({ ...fields, cvc: e.target.value });
-                  }}
-                  placeholder="cvc"
-                  width={'48%'}
-                  type="text"
-                />
+                  <Select
+                    boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)"
+                    onChange={handleMonthChange}
+                    name='card[exp_month]'
+                    width={'48%'}
+                  >
+                    {months.map(item => {
+                      return (
+                        <option value={item.value} style={{ color: 'black' }}>
+                          {item.name}
+                        </option>
+                      );
+                    })}
+                  </Select>
+                  <Select
+                    boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)"
+                    width={'48%'}
+                    name='card[exp_year]'
+                    onChange={handleYearChange}
+                  >
+                    {years.map(item => {
+                      return <option style={{ color: 'black' }}>{item}</option>;
+                    })}
+                  </Select>
+                  {/* <Input
+                    boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)"
+                    onChange={e => {
+                      setFields({ ...fields, cvc: e.target.value });
+                    }}
+                    placeholder="cvc"
+                    name='cvc'
+                    width={'48%'}
+                    type="text"
+                  /> */}
+                </Box>
               </Box>
-            </Box>
+            </form>
             <Button
               onClick={sendData}
               _hover={'none'}
@@ -278,6 +367,7 @@ const MyCard = () => {
                         p={'10px 30px'}
                         _hover={'none'}
                         color={'white'}
+                        onClick={deleteCard}
                       >
                         Delete
                       </Button>
