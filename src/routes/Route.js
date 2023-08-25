@@ -17,12 +17,18 @@ import MembershipById from "../components/MembershipById/MembershipById";
 import MyProduct from "../views/Dashboard/MyProduct/MyProduct";
 import MyVideo from '../views/Dashboard/MyVideos/MyVideos';
 import MyCard from '../views/Dashboard/MyCard/MyCard';
+import Tophead from '../components/Tophead/Tophead';
+import { Stack } from '@chakra-ui/react';
 export const UserContext = createContext();
 
 export default function AppRoute() {
   return (
     <div>
       <Router>
+      <Stack position={'absolute'} zIndex={'1'} w={'full'}>
+        <Tophead />
+        <Navbar />
+      </Stack>
         <RouteSwitch>
           <Route exact path="/about" element={<About />}></Route>
           <Route exact path="/contact" element={<Contact />}></Route>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Container, Text, useDisclosure } from '@chakra-ui/react';
 import { FaFacebook } from 'react-icons/fa';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { AiOutlineTwitter } from 'react-icons/ai';
@@ -163,7 +163,7 @@ const Tophead = () => {
   };
 
   return (
-    <Box backgroundColor={'#00000f'} padding={'5px 0'}>
+    <Box>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent backgroundColor={'#00000f'}>
@@ -252,18 +252,24 @@ const Tophead = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
+      <Container
+          maxW={'8xl'}
+       
+        >
       <Box
         display={'flex'}
         paddingBottom={'10px'}
         alignItems={'center'}
-        width={'70%'}
+        padding={'15px 0'}
+      
         margin={'auto'}
         justifyContent={'space-between'}
+        borderBottom={'1px solid #656565'}
       >
         <Box display={'flex'} gap={'10px'}>
-          <FaFacebook color="white" fontSize={'25px'} />
-          <AiOutlineInstagram color="white" fontSize={'25px'} />
-          <AiOutlineTwitter color="white" fontSize={'25px'} />
+          <FaFacebook color="white" fontSize={'20px'} />
+          <AiOutlineInstagram color="white" fontSize={'20px'} />
+          <AiOutlineTwitter color="white" fontSize={'20px'} />
         </Box>
         <Box display={'flex'} gap={'10px'}>
           <Text
@@ -271,7 +277,7 @@ const Tophead = () => {
             display={user ? 'none' : ''}
             cursor={'pointer'}
             onClick={onOpen}
-            fontWeight={'bold'}
+            fontWeight={'500'}
           >
             Register
           </Text>
@@ -280,7 +286,7 @@ const Tophead = () => {
             display={user ? 'none' : ''}
             onClick={onLoginOpen}
             color={'white'}
-            fontWeight={'bold'}
+            fontWeight={'500'}
           >
             Login
           </Text>
@@ -312,13 +318,7 @@ const Tophead = () => {
           </Box>
         </Box>
       </Box>
-      <Box
-        width={'70%'}
-        mt={'20px'}
-        margin={'auto'}
-        height={'2px'}
-        backgroundColor={'gray.500'}
-      ></Box>
+ </Container>
     </Box>
   );
 };

@@ -1,6 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Box } from '@chakra-ui/react';
+import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react';
 import MembershipCard from '../Membershipcard/Membershipcard';
 
 // Import Swiper styles
@@ -8,8 +8,13 @@ import 'swiper/css';
 
 const Slider = () => {
   return (
-    <Box padding={"70px"}>
-      <Swiper
+    <Stack pb={'24'}>
+       <Container maxW={'8xl'}>
+        <Stack pb={16} textAlign={'center'}>
+          <Heading color={'#fff'}>Select Your Plan</Heading>
+          <Text color={'#b2b2b2'}>Switch Plans Or Cancel Anytime</Text>
+        </Stack>
+       <Swiper
         spaceBetween={50}
         slidesPerView={3}
         onSlideChange={() => console.log('slide change')}
@@ -39,7 +44,9 @@ const Slider = () => {
           ...
         </Box>
       </Swiper>
-    </Box>
+       </Container>
+    </Stack>
+   
   );
 };
 

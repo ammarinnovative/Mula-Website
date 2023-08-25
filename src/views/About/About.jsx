@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Image, Button } from '@chakra-ui/react';
+import { Box, Text, Image, Button, Link } from '@chakra-ui/react';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import Layer6 from '../../assets/images/Layer 6.png';
@@ -59,8 +59,7 @@ const About = () => {
       position={'relative'}
       backgroundColor={'#00000f'}
     >
-      <Tophead />
-      <Navbar />
+     
       <Box right={'0'} top={'100px'} position={'absolute'}>
         <Image src={Circular} width={'400px'} alt="img" />
       </Box>
@@ -80,7 +79,6 @@ const About = () => {
           <Text
             color={'white'}
             fontWeight={'800'}
-            fontFamily={'Poppins900'}
             textAlign={'center'}
             fontSize={'35px'}
             m={'80px 0'}
@@ -95,7 +93,7 @@ const About = () => {
             alignItems={'center'}
           >
             <Box mt={'50px'} width={'30%'}>
-              <Box fontWeight={'800'} color={'white'} fontSize={'25px'}>
+              <Box fontWeight={'800'} color={'white'} fontSize={'30px'}>
                 The Best Financial Courses <br /> Crafted By Professional
               </Box>
               <Box
@@ -135,14 +133,13 @@ const About = () => {
                     <Text
                       fontSize={'17px'}
                       m={'5px 0'}
-                      fontFamily={'Poppins800'}
                       margin={'10px 0'}
                       fontWeight={'bold'}
                       color={'white'}
                     >
                       {item.text}
                     </Text>
-                    <Text color={'#ababab'} width={'100%'}>
+                    <Text color={'#ababab'} fontSize={'15px'} width={'100%'}>
                       {item.details}
                     </Text>
                   </Box>
@@ -170,6 +167,7 @@ const About = () => {
           width={'70%'}
           gap={'30px'}
           margin={'auto'}
+          alignItems={'center'}
           justifyContent={'space-between'}
         >
           <Box width={'30rem'}>
@@ -177,7 +175,7 @@ const About = () => {
               color={'white'}
               fontWeight={'700'}
               mb={'10px'}
-              fontSize={'23px'}
+              fontSize={'30px'}
             >
               We Offer <br /> Finance Forums
             </Text>
@@ -188,15 +186,13 @@ const About = () => {
               backgroundColor={'#12158a'}
               height={'5px'}
             ></Box>
-            <Text mt={'30px'} color={'white'}>
+            <Text mb={4} mt={'30px'} color={'white'}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
               dolorum magnam, qui dignissimos soluta explicabo distinctio.
               Soluta ipsa earum iusto! Lorem ipsum dolor sit amet consectetur
               adipisicing elit. Cum, ut!.
             </Text>
-            <Button color={'white'} mt={'20px'} backgroundColor={'blue'}>
-              Download App
-            </Button>
+          <Link className='btn-a'>Download App</Link>
           </Box>
           <Box mt={'20px'}>
             <Image
@@ -216,7 +212,7 @@ const About = () => {
         margin={'auto'}
         textAlign={'center'}
       >
-        <Text fontSize={'25px'} color={'white'}>
+        <Text fontSize={'25px'} fontWeight={'600'} color={'white'}>
           Our Team
         </Text>
         <Box
@@ -342,7 +338,7 @@ const About = () => {
           </Box>
         </Box>
       </Box>
-      <Box></Box>
+     
       <SimpleAccordion />
       <Banner />
       <Footer />
