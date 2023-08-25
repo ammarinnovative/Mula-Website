@@ -9,24 +9,39 @@ import { useEffect, useState } from 'react';
 import { GET } from '../../../utilities/ApiProvider';
 
 const MyVideo = () => {
-  const [data, setData] = useState({ topic: [] });
+  const [data, setData] = useState([]);
+  const [user, setUser] = useState({});
   const [datas, setDatas] = useState({ topic: [] });
   const [playingVideo, setPlayingVideo] = useState(
     'https://www.example.com/video1.mp4'
   );
 
+  const selector = useSelector(state => state);
+
   const handlePlay = videoId => {
-    const findData = datas?.find(val => {
+    const findData = data?.find(val => {
       return val._id == videoId;
     });
-    console.log(findData.video.video);
-    setPlayingVideo(
-      'https://mula.thewebtestlink.xyz/' + findData?.video?.video
-    );
+    setPlayingVideo('https://mula.thewebtestlink.xyz/' + findData?.video);
   };
 
+  console.log(playingVideo);
+  const getVideos = async () => {
+    const res = await GET('users/membership/videos', {
+      authorization: `bearer ${user?.JWT_TOKEN}`,
+    });
+    setData(res?.data);
+  };
 
-  
+  useEffect(() => {
+    getVideos();
+  }, [user]);
+
+  useEffect(() => {
+    if (selector) {
+      setUser(selector?.user?.value?.data);
+    }
+  }, [selector]);
 
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
@@ -65,12 +80,13 @@ const MyVideo = () => {
               >
                 Videos:
               </Text>
-              {datas?.length > 0? datas?.length > 0 &&
-                datas?.map(item => {
+              {data?.length > 0 ? (
+                data?.length > 0 &&
+                data?.map((item, index) => {
                   return (
                     <Text
                       cursor={'pointer'}
-                      key={item._id}
+                      key={index}
                       m={'50px 0'}
                       onClick={() => {
                         handlePlay(item._id);
@@ -80,10 +96,16 @@ const MyVideo = () => {
                       borderBottom={'1px'}
                       color={'white'}
                     >
-                      {item?.video?.title}
+                      {item?.title}
                     </Text>
                   );
-                }):<Text color={"white"} mt={"10px"} fontSize={"20px"}>No Video Found</Text>}:
+                })
+              ) : (
+                <Text color={'white'} mt={'10px'} fontSize={'20px'}>
+                  No Video Found
+                </Text>
+              )}
+              :
             </Box>
           </Box>
         </Sidebar>

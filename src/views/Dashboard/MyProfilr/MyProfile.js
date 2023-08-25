@@ -15,7 +15,7 @@ export const MyProfile = () => {
   const [fields, setFields] = useState({
     full_name: '',
     email:"",
-    phone_number:'',
+    phone_number:null,
     profilePicture: '',
     password: '',
   });
@@ -32,17 +32,42 @@ export const MyProfile = () => {
       setFields({...fields,email:user?.email, full_name:user?.full_name,phone_number:user?.phone_number});
     }
   }, [user]);
+console.log(fields);
 
-  console.log(user);
 
   
 const updateProfile = async ()=>{
+
+if(!fields.full_name && !fields.phone_number && !fields.password){
+  toast({
+    position:"bottom-left",
+    isClosable:true,
+    description:"You cannot update emplty profile"
+  });
+  return;
+}
+let data = new Object(fields);
+if(fields.full_name.length == 0){
+  delete data.full_name;
+}
+if(fields.phone_number.length == 0){
+  delete data.phone_number;
+}
+if(fields.password.length ==0){
+  delete data.password
+}
+if(fields.profilePicture){
+  delete data.profilePicture
+}
+console.log(data);
   const formdata = new FormData();
   for(const key in fields){
     if(key !== 'email'){
       formdata.append(key,fields[key]);
     }
   }
+
+
   try {
     const res = await PUT(`users/update/${user._id}`,formdata,{
       authorization:`bearer ${user?.JWT_TOKEN}`

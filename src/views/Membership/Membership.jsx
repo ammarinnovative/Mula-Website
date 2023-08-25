@@ -17,6 +17,8 @@ const Membership = () => {
     setData(res?.data);
   };
 
+  console.log(data);
+
   useEffect(() => {
     getMembership();
   }, []);

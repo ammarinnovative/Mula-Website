@@ -10,6 +10,8 @@ import {
 } from '@chakra-ui/react';
 import Tophead from '../../components/Tophead/Tophead';
 import Navbar from '../../components/Navbar/Navbar';
+import axios from 'axios';
+import qs from 'qs';
 import Banner from '../../components/Banner/Banner';
 import Footer from '../../components/Footer/Footer';
 import { useLocation } from 'react-router-dom';
@@ -29,6 +31,7 @@ import course from '../../assets/images/course.png';
 import { remove } from '../../reducers/CartReducer';
 import { clear } from '../../reducers/CartReducer';
 import { useParams } from 'react-router-dom';
+import { add } from '../../reducers/CartReducer';
 import { useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -41,6 +44,7 @@ const AddToCart = () => {
   const [user, setUser] = useState('');
   const [mycard, setMycard] = useState([]);
   const [cardDataId, setCardDataId] = useState([]);
+  const [bool, setBool] = useState(false);
   const [selectedYear, setSelectedYear] = useState('');
   const {
     isOpen: isCardOpen,
@@ -48,7 +52,7 @@ const AddToCart = () => {
     onClose: onCardClose,
   } = useDisclosure();
   const [selectedMonth, setSelectedMonth] = useState('');
-  const [paymentType,setPaymentType] = useState({items:{}});
+  const [paymentType, setPaymentType] = useState({ items: {} });
   const [cardId, setCardId] = useState('');
   const selector = useSelector(state => state);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -58,19 +62,19 @@ const AddToCart = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const [paymentdata,setPaymentData] = useState({
-    type:"card",
-    number:["4242 4242 4242 4242"],
-    exp_month:["12"],
-    exp_year:["2034"]
+  const [paymentdata, setPaymentData] = useState({
+    type: 'card',
+    number: ['4242 4242 4242 4242'],
+    exp_month: ['12'],
+    exp_year: ['2034'],
   });
 
-  
-
-
-  const stripePayment =async()=>{
-    const res = await POST("https://api.stripe.com/v1/payment_methods",paymentdata);
-  }
+  // const stripePayment = async () => {
+  //   const res = await POST(
+  //     'https://api.stripe.com/v1/payment_methods',
+  //     paymentdata
+  //   );
+  // };
 
   const params = useParams();
   const toast = useToast();
@@ -97,7 +101,6 @@ const AddToCart = () => {
     }
   }, [selector]);
 
-
   const getCardData = async () => {
     const res = await GET(`users/${user?._id}/card`, {
       authorization: `bearer ${user?.JWT_TOKEN}`,
@@ -110,14 +113,11 @@ const AddToCart = () => {
       getCardData();
       setData(selector?.cart);
     }
-  }, [user,selector]);
+  }, [user, selector]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setPaymentType(data[0]?.items?.paymentType);
-
-  },[data]);
-
-
+  }, [data]);
 
   const [fields, setFields] = useState({
     cardnumber: '',
@@ -170,39 +170,37 @@ const AddToCart = () => {
     card: '',
     items: '',
   });
-  
 
   const myData = item => {
     setCardId(item._id);
-    if(paymentType == 'videos'){
-      const arrayItem = data?.length>0 && data?.map((value)=>{
-        // console.log(value?.items?.membership)
-        return{
-          item:value?.data?.video,
-          price:5,
-          paymentType:'videos',
-          membership:value?.items?.membership
-        }
-      });
-      console.log(arrayItem);
-      setCardDetails({ ...cardDetails, card: item._id, items: arrayItem });
-
-    }else{
+    setBool(true);
+    if (paymentType == 'videos') {
       const arrayItem =
-      data.length > 0 &&
-      data.map(value => {
-        return {
-          item: value.data._id,
-          paymentType: value.items.paymentType,
-          price: value.data.price,
-        };
-      });
-    setCardDetails({ ...cardDetails, card: item._id, items: arrayItem });
+        data?.length > 0 &&
+        data?.map(value => {
+          return {
+            item: value?.data?.video,
+            price: 5,
+            paymentType: 'videos',
+            membership: value?.items?.membership,
+          };
+        });
+      setCardDetails({ ...cardDetails, card: item._id, items: arrayItem });
+    } else {
+      const arrayItem =
+        data.length > 0 &&
+        data.map(value => {
+          return {
+            item: value.data._id,
+            paymentType: value.items.paymentType,
+            price: value.data.price,
+          };
+        });
+      setCardDetails({ ...cardDetails, card: item._id, items: arrayItem });
     }
-   
   };
 
-  const sendData = async () => {
+  const Payment = async () => {
     if (
       cardDetails.card == null ||
       (undefined && cardDetails.items == null) ||
@@ -230,6 +228,7 @@ const AddToCart = () => {
           description: 'Course Purchased successfully',
           duration: 5000,
         });
+        dispatch(add(res?.data?.data?.user));
         dispatch(clear());
         onClose();
         navigate('/myprofile');
@@ -239,6 +238,114 @@ const AddToCart = () => {
           isClosable: true,
           status: 'errorx',
           description: res.data.message,
+          duration: 5000,
+        });
+      }
+    } catch (error) {
+      toast({
+        position: 'bottom-left',
+        isClosable: true,
+        status: 'error',
+        description: error,
+        duration: 5000,
+      });
+    }
+  };
+
+  const verifyData = async data => {
+    const objdata = {
+      cardnumber: fields.cardnumber,
+      cvc: fields.cvc,
+      cardholdername: fields.cardholdername,
+      expiry: fields.exp_month + '/' + fields.exp_year,
+      cardtype: data?.card?.brand,
+      stripe_customer_id: data?.id,
+    };
+    try {
+      const res = await POST(`users/${user?._id}/card`, objdata, {
+        authorization: `bearer ${user?.JWT_TOKEN}`,
+      });
+      console.log(res);
+      if (res.status == 200) {
+        toast({
+          position: 'bottom-left',
+          isClosable: true,
+          status: 'success',
+          duration: 5000,
+          description: res.data.message,
+        });
+        onClose();
+        getCardData();
+      } else {
+        toast({
+          position: 'bottom-left',
+          isClosable: true,
+          status: 'error',
+          duration: 5000,
+          description: res.data.message,
+        });
+      }
+    } catch (error) {
+      toast({
+        position: 'bottom-left',
+        isClosable: true,
+        status: 'error',
+        duration: 5000,
+        description: error,
+      });
+    }
+  };
+
+  ///// / SenmData
+
+  const sendData = async () => {
+    if (
+      !fields.cardnumber ||
+      !fields.cardholdername ||
+      !fields.exp_month ||
+      !fields.exp_year ||
+      !fields.cvc
+    ) {
+      toast({
+        position: 'bottom-left',
+        isClosable: true,
+        status: 'error',
+        description: 'Please fill all the fields',
+        duration: 5000,
+      });
+      return;
+    }
+
+    const getdata = {
+      type: `card`,
+      'card[number]': `${fields.cardnumber}`,
+      'card[exp_month]': `${fields.exp_month}`,
+      'card[exp_year]': `${fields.exp_year}`,
+    };
+
+    let newData = qs.stringify(getdata);
+
+    let configData = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'https://api.stripe.com/v1/payment_methods',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization:
+          'Bearer sk_test_51K1vF0EbJpfXXnkzehoR5KTVCjwSAXy42umTT12mKNNGnfbEOCymor9toS3aOxBTigNPKe7iATnmjqiLFDkbc9Lc00QvTjZKOL',
+      },
+      data: newData,
+    };
+    try {
+      const response = await axios.request(configData);
+      if (response?.data?.id) {
+        const res = await verifyData(response?.data);
+      } else {
+        toast({
+          position: 'bottom-left',
+          isClosable: true,
+          status: 'error',
+          description: 'Something is wrong in your data',
           duration: 5000,
         });
       }
@@ -341,7 +448,7 @@ const AddToCart = () => {
                   margin={'auto'}
                   onClick={checkFun}
                   width={'fit-content'}
-                  display={mycard.length == 2 ? 'none' : 'block'}
+                  display={mycard.length > 0 ? 'none' : 'block'}
                   letterSpacing={'1px'}
                 >
                   Add new Card?
@@ -352,7 +459,7 @@ const AddToCart = () => {
                 _hover={'none'}
                 display={mycard.length > 0 ? 'block' : 'none'}
                 backgroundColor={'blue'}
-                onClick={sendData}
+                onClick={Payment}
                 color={'white'}
               >
                 Payment
@@ -427,7 +534,7 @@ const AddToCart = () => {
               <Button
                 _hover={'none'}
                 width={'100%'}
-                onClick={stripePayment}
+                onClick={sendData}
                 color={'white'}
                 backgroundColor={'blue'}
               >

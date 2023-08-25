@@ -23,11 +23,13 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { DELETE, GET, POST } from '../../../utilities/ApiProvider';
+import { DELETE, GET, POST, PUT } from '../../../utilities/ApiProvider';
+import qs from 'qs';
 
 const MyCard = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedMonth, setSelectedMonth] = useState('');
+  const [bool, setBool] = useState(false);
   const toast = useToast();
   const [selectedYear, setSelectedYear] = useState('');
   const months = [
@@ -69,8 +71,6 @@ const MyCard = () => {
     exp_month: '',
     exp_year: '',
     expiry: '',
-    cardtype: '',
-    stripe_customer_id: '',
   });
 
   const [user, setUser] = useState('');
@@ -84,21 +84,74 @@ const MyCard = () => {
     }
   }, [selector]);
 
-
-  const stripeApiKey = 'sk_test_51K1vF0EbJpfXXnkzehoR5KTVCjwSAXy42umTT12mKNNGnfbEOCymor9toS3aOxBTigNPKe7iATnmjqiLFDkbc9Lc00QvTjZKOL';
+  const stripeApiKey =
+    'sk_test_51K1vF0EbJpfXXnkzehoR5KTVCjwSAXy42umTT12mKNNGnfbEOCymor9toS3aOxBTigNPKe7iATnmjqiLFDkbc9Lc00QvTjZKOL';
   const apiUrl = 'https://api.stripe.com/v1/payment_methods';
 
   const headers = {
-    'Authorization': `Bearer ${stripeApiKey}`,
-    'Content-Type': 'multipart/form-data', 
+    Authorization: `Bearer ${stripeApiKey}`,
+    'Content-Type':
+      'multipart/form-data; boundary=----WebKitFormBoundary0ef7ZgAHWPzz5GUb',
   };
 
+  useEffect(() => {
+    if (fields.exp_month && fields.exp_year) {
+      setFields({
+        ...fields,
+        expiry: fields.exp_month + '/' + fields.exp_year,
+      });
+    }
+  }, [bool]);
+
+  const verifyData = async data => {
+    const objdata = {
+      cardnumber: fields.cardnumber,
+      cvc: fields.cvc,
+      cardholdername: fields.cardholdername,
+      expiry: fields.exp_month + '/' + fields.exp_year,
+      cardtype: data?.card?.brand,
+      stripe_customer_id: data?.id,
+    };
+    try {
+      const res = await POST(`users/${user?._id}/card`, objdata, {
+        authorization: `bearer ${user?.JWT_TOKEN}`,
+      });
+      if (res.status == 200) {
+        toast({
+          position: 'bottom-left',
+          isClosable: true,
+          status: 'success',
+          duration: 5000,
+          description: res.data.message,
+        });
+        onClose();
+        getData();
+      } else {
+        toast({
+          position: 'bottom-left',
+          isClosable: true,
+          status: 'error',
+          duration: 5000,
+          description: res.data.message,
+        });
+      }
+    } catch (error) {
+      toast({
+        position: 'bottom-left',
+        isClosable: true,
+        status: 'error',
+        duration: 5000,
+        description: error,
+      });
+    }
+  };
   const sendData = async () => {
     if (
       !fields.cardnumber ||
       !fields.cardholdername ||
       !fields.exp_month ||
-      !fields.exp_year 
+      !fields.exp_year ||
+      !fields.cvc
     ) {
       toast({
         position: 'bottom-left',
@@ -107,21 +160,52 @@ const MyCard = () => {
         description: 'Please fill all the fields',
         duration: 5000,
       });
+      return;
     }
+    setBool(true);
 
-    const data = document.getElementById('form');
+    const getdata = {
+      type: `card`,
+      'card[number]': `${fields.cardnumber}`,
+      'card[exp_month]': `${fields.exp_month}`,
+      'card[exp_year]': `${fields.exp_year}`,
+    };
 
-      const formdata = new FormData(data);
-      try {
-        const res = await axios.post(apiUrl, formdata, { headers })
-        console.log(res);
-      } catch (error) {
-        console.error('Error:', error.response.data.error.message);
+    let newData = qs.stringify(getdata);
 
+    let configData = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'https://api.stripe.com/v1/payment_methods',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization:
+          'Bearer sk_test_51K1vF0EbJpfXXnkzehoR5KTVCjwSAXy42umTT12mKNNGnfbEOCymor9toS3aOxBTigNPKe7iATnmjqiLFDkbc9Lc00QvTjZKOL',
+      },
+      data: newData,
+    };
+    try {
+      const response = await axios.request(configData);
+      if (response?.data?.id) {
+        const res = await verifyData(response?.data);
+      } else {
+        toast({
+          position: 'bottom-left',
+          isClosable: true,
+          status: 'error',
+          description: 'Something is wrong in your data',
+          duration: 5000,
+        });
       }
-
-    // const response = await paymentVerify();
-    // setFields({...fields,expiry:(selectedMonth+"/"+selectedYear).toString()});
+    } catch (error) {
+      toast({
+        position: 'bottom-left',
+        isClosable: true,
+        status: 'error',
+        description: error,
+        duration: 5000,
+      });
+    }
   };
 
   const getData = async () => {
@@ -137,72 +221,47 @@ const MyCard = () => {
     }
   }, [user]);
 
-  const deleteCard = async ()=>{
-    try {
-      const res = await DELETE(`users/63ab302317f915bd2aa727df/card/63ab6f2e202acf23d01afbf5`);
-    if(res.status == 200){
-      toast({
-        position:"bottom-left",
-        isClosable:true,
-        status:"success",
-        description:"Deleted successfully",
-        duration:5000
-      });
-      getData();
-    }else{
-      toast({
-        position:"bottom-left",
-        isClosable:true,
-        status:"error",
-        description:"Something went wrong",
-        duration:5000
-      });
-    }
-    } catch (error) {
-      toast({
-        position:"bottom-left",
-        isClosable:true,
-        status:"error",
-        description:error,
-        duration:5000
-      });
-    }
-    
-  }
+  console.log(selector.cart[0]);
 
-  const deletCard = async (id)=>{
+  const deleteCard = async id => {
     try {
-      const res = await DELETE(`users/${user?.JWT_TOKEN}/card/${id}`);
-      if(res.status ==200){
+      const res = await PUT(
+        `users/${user?._id}/card/${id}`,
+        {},
+        {
+          authorization: `bearer ${user?.JWT_TOKEN}`,
+        }
+      );
+      console.log('res', res);
+
+      if (res.status == 200) {
         toast({
-          position:"bottom-left",
-          duration:5000,
-          isClosable:true,
-          status:"success",
-          description:"Deleted successfully", 
+          position: 'bottom-left',
+          duration: 5000,
+          isClosable: true,
+          status: 'success',
+          description: 'Deleted successfully',
         });
         getData();
-      }else{
+      } else {
         toast({
-          position:"bottom-left",
-          duration:5000,
-          isClosable:true,
-          status:"error",
-          description:"Something went wrong", 
+          position: 'bottom-left',
+          duration: 5000,
+          isClosable: true,
+          status: 'error',
+          description: res?.data?.message,
         });
       }
     } catch (error) {
       toast({
-        position:"bottom-left",
-        duration:5000,
-        isClosable:true,
-        status:"error",
-        description:error, 
+        position: 'bottom-left',
+        duration: 5000,
+        isClosable: true,
+        status: 'error',
+        description: error,
       });
     }
-  }
- 
-
+  };
 
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
@@ -216,7 +275,7 @@ const MyCard = () => {
           <ModalHeader>New Card</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <form id='form'>
+            <form id="form">
               <Input
                 color={'white'}
                 boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)"
@@ -224,7 +283,7 @@ const MyCard = () => {
                   setFields({ ...fields, cardholdername: e.target.value });
                 }}
                 m={'5px'}
-                name='type'
+                name="type"
                 borderColor={'white'}
                 placeholder="Account Title"
                 type="text"
@@ -237,7 +296,7 @@ const MyCard = () => {
                   setFields({ ...fields, cardnumber: e.target.value });
                 }}
                 borderColor={'white'}
-                name='card[number]'
+                name="card[number]"
                 placeholder="Account Number"
                 type="text"
               />
@@ -254,7 +313,7 @@ const MyCard = () => {
                   <Select
                     boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)"
                     onChange={handleMonthChange}
-                    name='card[exp_month]'
+                    name="card[exp_month]"
                     width={'48%'}
                   >
                     {months.map(item => {
@@ -268,23 +327,23 @@ const MyCard = () => {
                   <Select
                     boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)"
                     width={'48%'}
-                    name='card[exp_year]'
+                    name="card[exp_year]"
                     onChange={handleYearChange}
                   >
                     {years.map(item => {
                       return <option style={{ color: 'black' }}>{item}</option>;
                     })}
                   </Select>
-                  {/* <Input
+                  <Input
                     boxShadow="0px 0px 10px 2px rgba(0, 0, 255, 0.3)"
                     onChange={e => {
                       setFields({ ...fields, cvc: e.target.value });
                     }}
                     placeholder="cvc"
-                    name='cvc'
+                    name="cvc"
                     width={'48%'}
                     type="text"
-                  /> */}
+                  />
                 </Box>
               </Box>
             </form>
@@ -315,14 +374,18 @@ const MyCard = () => {
             <Text fontSize={'30px'} fontWeight={'bold'} color={'white'}>
               My Cards
             </Text>
-            <Button
-              onClick={onOpen}
-              color={'white'}
-              _hover={'none'}
-              backgroundColor={'blue'}
-            >
-              Add New
-            </Button>
+            {data?.length > 0 ? (
+              ''
+            ) : (
+              <Button
+                onClick={onOpen}
+                color={'white'}
+                _hover={'none'}
+                backgroundColor={'blue'}
+              >
+                Add New
+              </Button>
+            )}
           </Box>
           <Box
             display={'flex'}
@@ -332,13 +395,14 @@ const MyCard = () => {
             flexWrap={'wrap'}
             alignItems={'center'}
           >
-            {data.length > 0 ? (
-              data.length > 0 &&
+            {data?.length > 0 ? (
+              data?.length > 0 &&
               data?.map(item => {
                 return (
                   <Box
                     width={'45%'}
                     padding={'20px'}
+                    key={item?._id}
                     boxShadow="0 4px 10px rgba(0, 0, 255, 0.3)"
                   >
                     <Box>
@@ -367,7 +431,9 @@ const MyCard = () => {
                         p={'10px 30px'}
                         _hover={'none'}
                         color={'white'}
-                        onClick={deleteCard}
+                        onClick={() => {
+                          deleteCard(item?._id);
+                        }}
                       >
                         Delete
                       </Button>
@@ -376,7 +442,14 @@ const MyCard = () => {
                 );
               })
             ) : (
-              <Text>No Data Found</Text>
+              <Text
+                textAlign={'center'}
+                color={'white'}
+                fontWeight={'700'}
+                fontSize={'25px'}
+              >
+                No Data Found
+              </Text>
             )}
           </Box>
         </Sidebar>
