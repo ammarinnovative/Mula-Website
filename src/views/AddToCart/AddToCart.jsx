@@ -44,6 +44,7 @@ const AddToCart = () => {
   const [user, setUser] = useState('');
   const [mycard, setMycard] = useState([]);
   const [cardDataId, setCardDataId] = useState([]);
+  const [change,setChange] = useState(false);
   const [bool, setBool] = useState(false);
   const [selectedYear, setSelectedYear] = useState('');
   const {
@@ -78,7 +79,7 @@ const AddToCart = () => {
 
   const params = useParams();
   const toast = useToast();
-
+  
   const checkOut = () => {
     if (user) {
       onOpen();
@@ -117,7 +118,12 @@ const AddToCart = () => {
 
   useEffect(() => {
     setPaymentType(data[0]?.items?.paymentType);
+    if(data[0]?.items?.paymentType == 'videos' || data[0]?.items?.paymentType == 'membership'){
+      setChange(true);
+    }
   }, [data]);
+
+  console.log("change",data);
 
   const [fields, setFields] = useState({
     cardnumber: '',
@@ -251,6 +257,7 @@ const AddToCart = () => {
       });
     }
   };
+  
 
   const verifyData = async data => {
     const objdata = {
@@ -265,7 +272,6 @@ const AddToCart = () => {
       const res = await POST(`users/${user?._id}/card`, objdata, {
         authorization: `bearer ${user?.JWT_TOKEN}`,
       });
-      console.log(res);
       if (res.status == 200) {
         toast({
           position: 'bottom-left',
@@ -564,11 +570,18 @@ const AddToCart = () => {
                         width={'30%'}
                         backgroundColor={'#01204b'}
                       >
-                        <Image
+                        {
+                          change?<Image
                           width={'100%'}
-                          src={imageUrl + item?.data?.coursePic}
+                          src={imageUrl + item?.data?.thumbnail}
                           alt="image"
-                        />
+                        />: <Image
+                        width={'100%'}
+                        src={imageUrl + item?.data?.coursePic}
+                        alt="image"
+                      />
+                        }
+                       
                       </Box>
                       <Box
                         display={'flex'}
