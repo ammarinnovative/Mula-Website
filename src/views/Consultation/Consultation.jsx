@@ -73,10 +73,18 @@ const Consultation = () => {
   }
 
   return (
+  
     <Box position={'relative'} width={'100%'}>
-      <Tophead />
-      <Navbar />
-      <Box position={'absolute'} width={'100%'} mt={'80px'}>
+       <Box
+      
+      backgroundColor={'#00000f'}
+   padding={'200px 0 70px '}
+      width={'100%'}
+      
+    >
+      <Text textAlign={"center"} mb={"25px"} mt={"-15px"} fontWeight={"700"} fontSize={"37px"} color={"white"}>Visual Consultation</Text>
+      </Box>
+      <Box>
         <CallToActionWithVideo />
         <Box
           backgroundImage={back}

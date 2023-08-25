@@ -29,8 +29,7 @@ const Membership = () => {
       backgroundColor={'#00000f'}
       width={'100%'}
     >
-      <Tophead />
-      <Navbar />
+     
       <Box
         width={'100%'}
         backgroundColor={'#00000f'}
