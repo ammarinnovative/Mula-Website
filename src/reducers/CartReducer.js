@@ -15,7 +15,7 @@ const cartSlice = createSlice({
       return [];
     },
     remove(state, action) {
-      const updatedCart = state?.filter(item => console.log('item', item));
+      const updatedCart = state?.filter(item => item?._id != action.payload);
       localStorage.setItem('product', updatedCart);
       return updatedCart;
     },
