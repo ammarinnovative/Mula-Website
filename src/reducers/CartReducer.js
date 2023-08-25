@@ -8,6 +8,7 @@ const cartSlice = createSlice({
   reducers: {
     add(state, action) {
       state.push(action.payload);
+      console.log(action.payload);
       localStorage.setItem('product', JSON.stringify(state));
     },
     clear(state, action) {
@@ -15,6 +16,7 @@ const cartSlice = createSlice({
       return [];
     },
     remove(state, action) {
+      console.log(state);
       const updatedCart = state.filter(item => item._id !== action.payload);
       localStorage.setItem('product', updatedCart);
       return updatedCart;

@@ -103,18 +103,17 @@ const AddToCart = () => {
   }, [selector]);
 
   const getCardData = async () => {
-    const res = await GET(`users/${user?._id}/card`, {
-      authorization: `bearer ${user?.JWT_TOKEN}`,
-    });
+    const res = await GET(`users/${user?._id}/card`);
     setMycard(res?.data[0]?.cards);
   };
 
   useEffect(() => {
-    if (user) {
+    
       getCardData();
       setData(selector?.cart);
-    }
-  }, [user, selector]);
+    
+  }, [selector]);
+  console.log("data",data)
 
   useEffect(() => {
     setPaymentType(data[0]?.items?.paymentType);
@@ -123,7 +122,6 @@ const AddToCart = () => {
     }
   }, [data]);
 
-  console.log("change",data);
 
   const [fields, setFields] = useState({
     cardnumber: '',
