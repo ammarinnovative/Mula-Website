@@ -28,16 +28,16 @@ const Courses = () => {
       height={'auto'}
       backgroundColor={'#000'}
     >
-      <Tophead />
-      <Navbar />
+      
       <Box
-        position={'absolute'}
+      
         backgroundColor={'#00000f'}
-        paddingTop={'70px'}
+     padding={'200px 0 70px '}
         width={'100%'}
-        mt={'70px'}
+        
       >
         <Text textAlign={"center"} mb={"25px"} mt={"-15px"} fontWeight={"700"} fontSize={"37px"} color={"white"}>Courses</Text>
+        </Box>
         <Invest />
         {data.length > 0 &&
           data.map(item => {
@@ -80,7 +80,7 @@ const Courses = () => {
           <Banner />
           <Footer />
         </Box>
-      </Box>
+      
     </Box>
   );
 };

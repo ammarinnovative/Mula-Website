@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700;800;900&display=swap');
 
+
+body {
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Poppins !important;
+}
+
 .bgText {
   background: url(../images/bg.jpg) no-repeat;
   background-position: center center;
@@ -8,8 +15,29 @@
   background-clip: text;
   color: transparent;
 }
-
+a
+{
+  text-decoration: none !important;
+}
 .chakra-accordion__item.css-17mg6aq {
   overflow: hidden;
   border-top-left-radius: 36px;
+}
+.btn-a {
+  background-color: #12158a;
+  border: 2px solid #12158a;
+  border-radius: 0;
+  color: #fff !important;
+  width: fit-content;
+ text-decoration: none !important;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: inline-block;
+  -webkit-transition-duration: .4s;
+  transition-duration: .4s;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Input, Text, Textarea, useToast } from '@chakra-ui/react';
+import { Box, Button, Container, Input, Stack, Text, Textarea, useToast } from '@chakra-ui/react';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import Banner from '../../components/Banner/Banner';
@@ -55,54 +55,57 @@ const toast = useToast();
 
   }
   return (
-    <Box
+    <Stack
       width={'100%'}
       minH={'100vh'}
       maxH={'auto'}
       position={'relative'}
       backgroundColor={'#00000f'}
     >
-      <Tophead />
-      <Navbar />
-      <Box position={'absolute'} width={'100%'} mt={'100px'}>
-        <Text
-          color={'white'}
-          fontSize={'30px'}
-          fontWeight={'semibold'}
-          textAlign={'center'}
-        >
-          Contact
-        </Text>
-        <Box  mt={'30px'}>
-          <Text
-            m={'10px 0'}
-            fontSize={'25px'}
-            color={'white'}
-            textAlign={'center'}
-          >
-            Get In Touch with us
-          </Text>
-          <Box padding={"30px"} display={'flex'} flexDirection={'column'} gap={'15px'}>
-            <Input onChange={(e)=>{setField({...field,name:e.target.value})}} color={'white'} placeholder="Name" type="text" />
-            <Input
-              border={'1px solid #ddd'}
-              color={'white'}
-              placeholder="Email"
-              type="Email"
-              onChange={(e)=>{setField({...field,email:e.target.value})}}
-            />
-            <Textarea color={'white'} onChange={(e)=>{setField({...field,message:e.target.value})}} placeholder="Message"></Textarea>
-            <Button onClick={sendMessage} backgroundColor={'#041689'} color={'white'} _hover={'none'}>
-              Send
-            </Button>
-          </Box>
-          <Box backgroundColor={"#00000f"} width={"100%"} mt={'40px'}>
-            <Banner />
-            <Footer />
-          </Box>
-        </Box>
+      <Container maxW={'8xl'}>
+      <Box
+      
+      backgroundColor={'#00000f'}
+   padding={'200px 0 70px '}
+      width={'100%'}
+      
+    >
+      <Text textAlign={"center"} mb={"25px"} mt={"-15px"} fontWeight={"700"} fontSize={"37px"} color={"white"}>Contact Us</Text>
       </Box>
-    </Box>
+      <Box >
+       
+       <Box  mt={'30px'}>
+         <Text
+           m={'10px 0'}
+           fontSize={'25px'}
+           color={'white'}
+           textAlign={'center'}
+         >
+           Get In Touch with us
+         </Text>
+         <Box padding={"30px"} display={'flex'} flexDirection={'column'} gap={'15px'}>
+           <Input onChange={(e)=>{setField({...field,name:e.target.value})}} color={'white'} placeholder="Name" type="text" />
+           <Input
+             border={'1px solid #ddd'}
+             color={'white'}
+             placeholder="Email"
+             type="Email"
+             onChange={(e)=>{setField({...field,email:e.target.value})}}
+           />
+           <Textarea color={'white'} onChange={(e)=>{setField({...field,message:e.target.value})}} placeholder="Message"></Textarea>
+           <Button onClick={sendMessage} backgroundColor={'#041689'} color={'white'} _hover={'none'}>
+             Send
+           </Button>
+         </Box>
+         <Box backgroundColor={"#00000f"} width={"100%"} mt={'40px'}>
+       
+         </Box>
+       </Box>
+     </Box>
+      </Container>
+      <Banner />
+           <Footer />
+    </Stack>
   );
 };
 

@@ -1,5 +1,17 @@
 import React from 'react';
-import { Box, Text, Image } from '@chakra-ui/react';
+import { Link as ReactLink } from 'react-router-dom';
+import {
+  Box,
+  Text,
+  Image,
+  Stack,
+  Container,
+  Img,
+  Grid,
+  GridItem,
+  Link,
+  Heading,
+} from '@chakra-ui/react';
 import Navbar from '../../components/Navbar/Navbar';
 import Homehead from '../../assets/images/homeHead.png';
 import Invest from '../../components/Invest/Invest';
@@ -10,40 +22,56 @@ import Banner from '../../components/Banner/Banner';
 import Footer from '../../components/Footer/Footer';
 import Slider from '../../components/Courser/Courser';
 import Tophead from '../../components/Tophead/Tophead';
-import { useSelector } from 'react-redux';
 
-
+import man from '../../assets/images/ban-r.webp';
 
 const Home = () => {
-  
-  const selector = useSelector(state=>state);
+
   return (
     <>
-      <Box
+     
+      <Stack
         position={'relative'}
         backgroundImage={Homehead}
         backgroundPosition={'center'}
         backgroundSize={'cover'}
         backgroundColor={'#00000f'}
-        width={'100%'}
+        display={'flex'}
+        alignItems={'center'}
+        justifyContent={'center'}
         height={'100vh'}
       >
-        <Tophead />
-        <Navbar />
-        <Box width={'100%'} position={'absolute'} mt={'100px'}>
-          <Box position={'absolute'} left={'200px'} top={'200px'}>
-            <Text fontWeight={'bold'} fontSize={'40px'} color={'white'}>
-              Make 50K as
-              <br /> <Text as={'span'}>An Entrepreneur</Text>
-            </Text>
-            <Text fontSize={'35px'} color={'white'} fontWeight={'thin'}>
-              Get Access for Award Winning
-              <br />
-              Online Courses
-            </Text>
-          </Box>
-        </Box>
-      </Box>
+        <Container maxW={'8xl'}>
+          <Grid templateColumns="repeat(12, 1fr)" gap={2} alignItems={'center'}>
+            <GridItem colSpan={{ base: 12, md: 6 }}>
+              <Stack>
+                <Heading fontWeight={'700'} fontSize={'60px'} color={'white'}>
+                  {' '}
+                  Make 50K as An Entrepreneur
+                </Heading>
+                <Text
+                  fontSize={'40px'}
+                  paddingBottom={'20px'}
+                  color={'white'}
+                  fontWeight={'thin'}
+                >
+                  Get Access for Award Winning
+                  <br />
+                  Online Courses
+                </Text>
+                <Link as={ReactLink} className="btn-a" to={'/membership'}>
+                  Get Started
+                </Link>
+              </Stack>
+            </GridItem>
+            <GridItem colSpan={{ base: 12, md: 6 }}>
+              <Stack>
+                <Img w={'60%'} m={'auto'} src={man} />
+              </Stack>
+            </GridItem>
+          </Grid>
+        </Container>
+      </Stack>
       <Box paddingTop={'30px'} backgroundColor={'#00000f'}>
         <Invest />
         <Box

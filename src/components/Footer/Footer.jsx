@@ -1,78 +1,118 @@
-import { Box, Text, Image, Button } from '@chakra-ui/react';
+import {
+  Box,
+  Text,
+  Image,
+  Button,
+  Stack,
+  Container,
+  UnorderedList,
+  ListItem,
+  Link,
+} from '@chakra-ui/react';
 import { HiLocationMarker } from 'react-icons/hi';
 import { FaPhone } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
+import { FaRegDotCircle } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <Box
+    <Stack
       backgroundColor={'#00000f'}
-      minHeight={'30vh'}
-      display={"flex"} 
-      flexDirection={"column"}
-      padding={"10px"}
+      display={'flex'}
+      flexDirection={'column'}
       width={'100%'}
     >
-      <Box
-        display={'flex'}
-        height={'100%'}
-        width={'80%'}
-        margin={'auto'}
-        justifyContent={'space-between'}
-      >
+      <Container maxW={'8xl'}>
         <Box
           display={'flex'}
-          height={'100%'}
-          width={'80%'}
-          marginX={'auto'}
+          padding={'70px 0'}
           justifyContent={'space-between'}
         >
           <Box display={'flex'} flexDirection={'column'} gap={'10px'}>
-            <Text mb={'20px'} color={'white'}>
-              Link
+            <Text mb={'20px'} color={'#fff'} textTransform={'uppercase'}>
+              Links
             </Text>
-            <Box display={'flex'} flexDirection={'column'} gap={'10px'}>
-              <Text>Membership</Text>
-              <Text>About</Text>
-              <Text>Packages</Text>
-            </Box>
+            <UnorderedList ml={0} spacing={'4'} listStyleType={'none'}>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaRegDotCircle  color={'#f18f0c'} />
+                <Link color={'#b2b2b2'} to={''}>Membership</Link>
+                </Box>
+              </ListItem>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaRegDotCircle  color={'#f18f0c'} />
+                <Link color={'#b2b2b2'} to={''}>About</Link>
+                </Box>
+              </ListItem>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaRegDotCircle  color={'#f18f0c'} />
+                <Link color={'#b2b2b2'} to={''}>Packages</Link>
+                </Box>
+              </ListItem>
+            </UnorderedList>
+            
           </Box>
           <Box display={'flex'} flexDirection={'column'} gap={'10px'}>
-            <Text mb={'20px'} color={'white'}>
+            <Text mb={'20px'} color={'white'} textTransform={'uppercase'}>
               Company
             </Text>
-            <Box display={'flex'} flexDirection={'column'} gap={'10px'}>
-              <Text>About us</Text>
-              <Text>Talk to us</Text>
-              <Text>Courses</Text>
-            </Box>
+            <UnorderedList ml={0} spacing={'4'} listStyleType={'none'}>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaRegDotCircle  color={'#f18f0c'} />
+                <Link color={'#b2b2b2'} to={''}>About us</Link>
+                </Box>
+              </ListItem>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaRegDotCircle  color={'#f18f0c'} />
+                <Link color={'#b2b2b2'} to={''}>Talk to us</Link>
+                </Box>
+              </ListItem>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaRegDotCircle  color={'#f18f0c'} />
+                <Link color={'#b2b2b2'} to={''}>Courses</Link>
+                </Box>
+              </ListItem>
+            </UnorderedList>
+            
           </Box>
           <Box>
-            <Text mb={'20px'} color={'white'}>
+            <Text mb={'20px'} color={'white'} textTransform={'uppercase'}>
               Contact us
             </Text>
-            <Box display={'flex'} flexDirection={'column'} gap={'10px'}>
-              <Box display={'flex'} alignItems={'center'} gap={'20px'}>
-                <HiLocationMarker color="blue" />
-                Address:Indian mumbai
-              </Box>
-              <Box display={'flex'} alignItems={'center'} gap={'20px'}>
-                <FaPhone color="blue" />
-                Phone:+3323232445
-              </Box>
-              <Box display={'flex'} alignItems={'center'} gap={'20px'}>
-                <MdEmail color="blue" />
-                Email:mula@gmail.com
-              </Box>
-            </Box>
+            <UnorderedList ml={0} spacing={'4'} listStyleType={'none'}>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <HiLocationMarker  color={'#f18f0c'} />
+                <Text color={'#b2b2b2'} >Address: 77 Indian St. perth, NY</Text>
+                </Box>
+              </ListItem>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaPhone  color={'#f18f0c'} />
+                <Text color={'#b2b2b2'} >Phone: +3233-332-334</Text>
+                </Box>
+              </ListItem>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <MdEmail  color={'#f18f0c'} />
+                <Text color={'#b2b2b2'} >Email: mula@gmail.com</Text>
+                </Box>
+              </ListItem>
+            </UnorderedList>
           </Box>
         </Box>
-      </Box>
-      <Box border={'1px solid gray'}  height={"2px"} margin={"auto"} width={"70%"}></Box>
-      <Box>
-        <Text textAlign={"center"}>@Copyright2023 NewYorkWebCoders. All right Reserved</Text>
-      </Box>
-    </Box>
+        <Box padding={'20px 0'} borderTop={'1px solid #474747'}>
+          <Text textAlign={'center'} color={'#b2b2b2'} fontSize={'15px'}>
+            Copyright 2021 NewYorkWebCoders | All Rights Reserved
+          </Text>
+        </Box>
+      </Container>
+    </Stack>
   );
 };
 
