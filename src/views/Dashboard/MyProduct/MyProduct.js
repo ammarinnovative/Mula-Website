@@ -6,6 +6,7 @@ import ReactPlayer from 'react-player';
 import { useSelector } from 'react-redux';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { GET } from '../../../utilities/ApiProvider';
 
 const MyProduct = () => {
@@ -15,7 +16,7 @@ const MyProduct = () => {
     const [user,setUser] = useState([]);
   const [playingVideo, setPlayingVideo] = useState("https://www.example.com/video1.mp4");
 
-
+  const navigate = useNavigate();
 
   const handlePlay = (videoId) => {
     const findData = data?.topic?.find((val)=> {return val._id == videoId});
@@ -29,6 +30,8 @@ const MyProduct = () => {
   useEffect(()=>{
   if(user){
       setFullData(user?.courselist);
+    }else{
+      navigate('/');
     }
   },[user]);
 

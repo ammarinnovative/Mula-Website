@@ -8,6 +8,7 @@ import { useToast } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { loadUser } from '../../reducers/useReducers';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { logout } from '../../reducers/useReducers';
 import { FaUserAlt } from 'react-icons/fa';
 import { POST } from '../../utilities/ApiProvider';
@@ -28,6 +29,7 @@ import { Link } from 'react-router-dom';
 
 const Tophead = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
   const {
     isOpen: isLoginOpen,
     onOpen: onLoginOpen,
@@ -51,7 +53,8 @@ const Tophead = () => {
   const dispatch = useDispatch();
 
   const clear = () => {
-    dispatch(logout());
+    navigate('/');
+  dispatch(logout());
   };
 
   const LoginUser = async () => {

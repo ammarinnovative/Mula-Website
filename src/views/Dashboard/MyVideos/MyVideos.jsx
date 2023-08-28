@@ -6,6 +6,7 @@ import ReactPlayer from 'react-player';
 import { useSelector } from 'react-redux';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { GET } from '../../../utilities/ApiProvider';
 
 const MyVideo = () => {
@@ -15,7 +16,7 @@ const MyVideo = () => {
   const [playingVideo, setPlayingVideo] = useState(
     'https://www.example.com/video1.mp4'
   );
-
+  const navigate = useNavigate();
   const selector = useSelector(state => state);
 
   const handlePlay = videoId => {
@@ -34,7 +35,12 @@ const MyVideo = () => {
   };
 
   useEffect(() => {
-    getVideos();
+    if(user){
+      getVideos();
+    }else{
+      navigate('/');
+    }
+   
   }, [user]);
 
   useEffect(() => {

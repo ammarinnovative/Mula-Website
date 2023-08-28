@@ -4,6 +4,7 @@ import Navbar from '../../../components/Navbar/Navbar';
 import { imageUrl } from '../../../utilities/Config';
 import ReactPlayer from 'react-player';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -30,10 +31,15 @@ const MembershipVideos = () => {
 
 
   const selector = useSelector(state => state);
+  const navigate = useNavigate();
 
 
   useEffect(() => {
-    setDatas(user?.membershipinfo);
+    if(user){
+      setDatas(user?.membershipinfo);
+    }else{
+      navigate('/');
+    }
   }, [user]);
 
   useEffect(() => {
@@ -42,7 +48,6 @@ const MembershipVideos = () => {
     }
   }, [selector]);
   
-  console.log(user);
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
       <Tophead />

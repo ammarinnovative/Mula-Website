@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player';
 import { useSelector } from 'react-redux';
 import { useToast } from '@chakra-ui/react';
 import Navbar from '../../../components/Navbar/Navbar';
+import { useNavigate } from 'react-router-dom';
 import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -20,6 +21,7 @@ export const MyProfile = () => {
     password: '',
   });
   const toast = useToast();
+  const navigate = useNavigate();
   const [user, setUser] = useState({});
   useEffect(() => {
     if (selector) {
@@ -31,6 +33,8 @@ export const MyProfile = () => {
   useEffect(() => {
     if(user){
       setFields({...fields,email:user?.email, full_name:user?.full_name,phone_number:user?.phone_number});
+    }else{
+      navigate('/')
     }
   }, [user]);
 

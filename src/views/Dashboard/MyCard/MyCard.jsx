@@ -11,6 +11,7 @@ import Tophead from '../../../components/Tophead/Tophead';
 import { useSelector } from 'react-redux';
 import Navbar from '../../../components/Navbar/Navbar';
 import { Toast } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import {
   Modal,
@@ -57,6 +58,7 @@ const MyCard = () => {
     }
     setFields({ ...fields, exp_month: event.target.value });
   };
+  const navigate = useNavigate();
   const handleYearChange = event => {
     const date = event.target.value;
     const lastTwoDigits = date.toString().slice(-2);
@@ -218,6 +220,8 @@ const MyCard = () => {
   useEffect(() => {
     if (user) {
       getData();
+    }else{
+      navigate('/');
     }
   }, [user]);
 

@@ -12,7 +12,6 @@ import {
   Link,
   Heading,
 } from '@chakra-ui/react';
-import Navbar from '../../components/Navbar/Navbar';
 import Homehead from '../../assets/images/homeHead.png';
 import Invest from '../../components/Invest/Invest';
 import Apple from '../../assets/images/Apple.png';
@@ -21,15 +20,12 @@ import mobile from '../../assets/images/mobile.png';
 import Banner from '../../components/Banner/Banner';
 import Footer from '../../components/Footer/Footer';
 import Slider from '../../components/Courser/Courser';
-import Tophead from '../../components/Tophead/Tophead';
 
 import man from '../../assets/images/ban-r.webp';
 
 const Home = () => {
-
   return (
     <>
-     
       <Stack
         position={'relative'}
         backgroundImage={Homehead}
