@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
 import {
   Box,
@@ -22,8 +22,19 @@ import Footer from '../../components/Footer/Footer';
 import Slider from '../../components/Courser/Courser';
 
 import man from '../../assets/images/ban-r.webp';
+import { GET } from '../../utilities/ApiProvider';
 
 const Home = () => {
+  const [data, setData] = useState([]);
+  const getMembership = async () => {
+    const res = await GET('web/membership');
+    setData(res?.data);
+  };
+
+  useEffect(()=>{
+    getMembership();
+  },[]);
+
   return (
     <>
       <Stack
@@ -93,7 +104,7 @@ const Home = () => {
             </Box>
           </Box>
         </Box>
-        <Slider />
+        <Slider data={data} />
         <Banner />
         <Footer />
       </Box>

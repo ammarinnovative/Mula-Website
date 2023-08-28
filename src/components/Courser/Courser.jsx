@@ -6,7 +6,7 @@ import MembershipCard from '../Membershipcard/Membershipcard';
 // Import Swiper styles
 import 'swiper/css';
 
-const Slider = () => {
+const Slider = ({data}) => {
   return (
     <Stack pb={'24'}>
        <Container maxW={'8xl'}>
@@ -21,26 +21,21 @@ const Slider = () => {
         onSwiper={swiper => console.log(swiper)}
       >
         <Box width={'100%'}>
-          <SwiperSlide>
-            <Box>
-              <MembershipCard />
-            </Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box width={'100%'}>
-              <MembershipCard />
-            </Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box width={'100%'}>
-              <MembershipCard />
-            </Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box width={'100%'}>
-              <MembershipCard />
-            </Box>
-          </SwiperSlide>
+          {
+            data?.length>0? 
+            data?.length>0 && data?.map((item)=>{
+              return(
+                <SwiperSlide>
+                <Box>
+                  <MembershipCard item={item} />
+                </Box>
+              </SwiperSlide>
+              )
+            })
+           :<Text>No Data Found</Text>
+          }
+         
+          
           ...
         </Box>
       </Swiper>

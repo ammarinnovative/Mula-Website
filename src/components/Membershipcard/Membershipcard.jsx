@@ -14,7 +14,8 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import { Global, css } from '@emotion/react';
 
-const MembershipCard = () => {
+const MembershipCard = ({item}) => {
+
   const customScrollbarStyles = css`
     /* Width and color of the scrollbar */
     ::-webkit-scrollbar {
@@ -47,7 +48,7 @@ const MembershipCard = () => {
         color={'#12158a'}
         textTransform={'uppercase'}
       >
-        Basic
+        {item?.name}
       </Text>
       <Text color={'white'} textAlign={'center'} textTransform={'uppercase'}>
         Switch plan or cancel any time
@@ -60,61 +61,20 @@ const MembershipCard = () => {
       ></Box>
       <Global styles={customScrollbarStyles} />
       <Box maxH={'40vh'} overflowY={'auto'}>
-        <UnorderedList spacing={4} listStyleType={'none'}>
-          <ListItem>
-            <Box display={'flex'} alignItems={'center'} gap={'10px'}>
-              <AiOutlineArrowRight color="#f18f0c" fontSize={'15px'} />
-              <Text color={'#b2b2b2'}>Dolor sit</Text>
-            </Box>
-          </ListItem>
-          <ListItem>
-            <Box display={'flex'} alignItems={'center'} gap={'10px'}>
-              <AiOutlineArrowRight color="#f18f0c" fontSize={'15px'} />
-              <Text color={'#b2b2b2'}>Dolor sit</Text>
-            </Box>
-          </ListItem>
-          <ListItem>
-            <Box display={'flex'} alignItems={'center'} gap={'10px'}>
-              <AiOutlineArrowRight color="#f18f0c" fontSize={'15px'} />
-              <Text color={'#b2b2b2'}>Dolor sit</Text>
-            </Box>
-          </ListItem>
-          <ListItem>
-            <Box display={'flex'} alignItems={'center'} gap={'10px'}>
-              <AiOutlineArrowRight color="#f18f0c" fontSize={'15px'} />
-              <Text color={'#b2b2b2'}>Dolor sit amet,</Text>
-            </Box>
-          </ListItem>
-          <ListItem>
-            <Box display={'flex'} alignItems={'center'} gap={'10px'}>
-              <AiOutlineArrowRight color="#f18f0c" fontSize={'15px'} />
-              <Text color={'#b2b2b2'}>Dolor sit amet, cons</Text>
-            </Box>
-          </ListItem>
-          <ListItem>
-            <Box display={'flex'} alignItems={'center'} gap={'10px'}>
-              <AiOutlineArrowRight color="#f18f0c" fontSize={'15px'} />
-              <Text color={'#b2b2b2'}>Dolor sit amet, consectetur</Text>
-            </Box>
-          </ListItem>
-          <ListItem>
-            <Box display={'flex'} alignItems={'center'} gap={'10px'}>
-              <AiOutlineArrowRight color="#f18f0c" fontSize={'15px'} />
-              <Text color={'#b2b2b2'}>Dolor sit amet, consectetur adi</Text>
-            </Box>
-          </ListItem>
-          <ListItem>
-            <Box display={'flex'} alignItems={'center'} gap={'10px'}>
-              <AiOutlineArrowRight color="#f18f0c" fontSize={'15px'} />
-              <Text color={'#b2b2b2'}>Dolor sit amet, consectetur adipi</Text>
-            </Box>
-          </ListItem>
-          <ListItem>
-            <Box display={'flex'} alignItems={'center'} gap={'10px'}>
-              <AiOutlineArrowRight color="#f18f0c" fontSize={'15px'} />
-              <Text color={'#b2b2b2'}>Dolor sit amet, consectetur adipisc</Text>
-            </Box>
-          </ListItem>
+        <UnorderedList spacing={4} alignSelf={"normal"} listStyleType={'none'}>
+          {
+           item.membershipDetails.length>0 ?  item?.membershipDetails?.map((items)=>{
+              return(
+                <ListItem>
+                <Box display={'flex'} alignItems={'center'} gap={'10px'}>
+                  <AiOutlineArrowRight color="#f18f0c" fontSize={'15px'} />
+                  <Text color={'#b2b2b2'}>{items.text}</Text>
+                </Box>
+              </ListItem>
+              )
+            })
+            :<Text color={"#b2b2b2"}>No Data</Text>
+          }
         </UnorderedList>
       </Box>
       <Box
@@ -133,7 +93,7 @@ const MembershipCard = () => {
         <Stack>
           <Heading fontSize={'35px'} color={'white'} fontWeight={'700'}>
             {' '}
-            $50
+            ${item?.price}
           </Heading>
 
           <Text

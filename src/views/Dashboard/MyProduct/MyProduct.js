@@ -62,7 +62,6 @@ const MyProduct = () => {
   },[selector]);
 
   
-  console.log("user",user);
 
 
 
@@ -71,7 +70,7 @@ const MyProduct = () => {
     <Box backgroundColor={'#00000f'} position={'relative'}>
       <Tophead />
       <Navbar />
-      <Box position={'absolute'} width={'100%'} mt={'70px'}>
+      <Box position={'absolute'} width={'100%'}>
         <Sidebar>
           <Box
             width={'90%'}

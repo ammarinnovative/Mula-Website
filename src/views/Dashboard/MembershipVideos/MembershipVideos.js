@@ -34,25 +34,26 @@ const MembershipVideos = () => {
   const navigate = useNavigate();
 
 
-  useEffect(() => {
-    if(user){
-      setDatas(user?.membershipinfo);
-    }else{
-      navigate('/');
-    }
-  }, [user]);
+ 
 
   useEffect(() => {
     if (selector) {
       setUser(selector?.user?.value);
     }
   }, [selector]);
+
+
+  useEffect(() => {
+    if(user){
+      setDatas(user?.membershipinfo);
+    }
+  }, [user]); 
   
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
       <Tophead />
       <Navbar />
-      <Box position={'absolute'} width={'100%'} mt={'70px'}>
+      <Box position={'absolute'} width={'100%'}>
         <Sidebar>
           <Box
             width={'90%'}

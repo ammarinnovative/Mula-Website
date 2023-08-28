@@ -80,12 +80,6 @@ const MyCard = () => {
 
   const selector = useSelector(state => state);
 
-  useEffect(() => {
-    if (selector) {
-      setUser(selector?.user?.value);
-    }
-  }, [selector]);
-
   const stripeApiKey =
     'sk_test_51K1vF0EbJpfXXnkzehoR5KTVCjwSAXy42umTT12mKNNGnfbEOCymor9toS3aOxBTigNPKe7iATnmjqiLFDkbc9Lc00QvTjZKOL';
   const apiUrl = 'https://api.stripe.com/v1/payment_methods';
@@ -217,15 +211,6 @@ const MyCard = () => {
     setData(res?.data[0]?.cards);
   };
 
-  useEffect(() => {
-    if (user) {
-      getData();
-    }else{
-      navigate('/');
-    }
-  }, [user]);
-
-
   const deleteCard = async id => {
     try {
       const res = await PUT(
@@ -264,6 +249,20 @@ const MyCard = () => {
       });
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      getData();
+    } else {
+      alert('rrr');
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (selector) {
+      setUser(selector?.user?.value);
+    }
+  }, [selector]);
 
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>

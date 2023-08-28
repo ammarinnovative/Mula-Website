@@ -39,7 +39,7 @@ import { ReactText } from 'react'
 const LinkItems = [
   { name: 'MyProfile', icon: BiUserCheck,link:"/myProfile" },
   { name: 'MyCourses', icon: FaDiscourse,link:"/mycourses" },
-  { name: 'MembershipVideos', icon: AiFillPlayCircle,link:"/membershipvideos" },
+  { name: 'Membership', icon: AiFillPlayCircle,link:"/membershipvideos" },
   { name: 'MyVideos', icon: MdVideoLibrary,link:"/myVideo" },
   { name: 'MyCards', icon: AiFillCreditCard,link:"/mycards" },
 ]
