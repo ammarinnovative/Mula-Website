@@ -23,16 +23,21 @@ export const MyProfile = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
     if (selector) {
-      setUser(selector?.user?.value?.data);
+      setUser(selector?.user?.value);
     }
   }, [selector]);
+
 
   useEffect(() => {
     if(user){
       setFields({...fields,email:user?.email, full_name:user?.full_name,phone_number:user?.phone_number});
     }
   }, [user]);
-console.log(fields);
+
+  console.log(user);
+
+
+
 
 
   
@@ -59,7 +64,6 @@ if(fields.password.length ==0){
 if(fields.profilePicture){
   delete data.profilePicture
 }
-console.log(data);
   const formdata = new FormData();
   for(const key in fields){
     if(key !== 'email'){

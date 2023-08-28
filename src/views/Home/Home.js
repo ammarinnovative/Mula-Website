@@ -10,9 +10,13 @@ import Banner from '../../components/Banner/Banner';
 import Footer from '../../components/Footer/Footer';
 import Slider from '../../components/Courser/Courser';
 import Tophead from '../../components/Tophead/Tophead';
+import { useSelector } from 'react-redux';
+
+
 
 const Home = () => {
   
+  const selector = useSelector(state=>state);
   return (
     <>
       <Box

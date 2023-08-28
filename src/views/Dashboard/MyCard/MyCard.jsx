@@ -80,7 +80,7 @@ const MyCard = () => {
 
   useEffect(() => {
     if (selector) {
-      setUser(selector?.user?.value?.data);
+      setUser(selector?.user?.value);
     }
   }, [selector]);
 
@@ -221,7 +221,6 @@ const MyCard = () => {
     }
   }, [user]);
 
-  console.log(selector.cart[0]);
 
   const deleteCard = async id => {
     try {
@@ -232,7 +231,6 @@ const MyCard = () => {
           authorization: `bearer ${user?.JWT_TOKEN}`,
         }
       );
-      console.log('res', res);
 
       if (res.status == 200) {
         toast({

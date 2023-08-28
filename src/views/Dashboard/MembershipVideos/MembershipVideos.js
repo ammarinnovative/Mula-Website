@@ -27,9 +27,10 @@ const MembershipVideos = () => {
     );
   };
 
+
+
   const selector = useSelector(state => state);
 
-  // console.log(datas);
 
   useEffect(() => {
     setDatas(user?.membershipinfo);
@@ -37,10 +38,11 @@ const MembershipVideos = () => {
 
   useEffect(() => {
     if (selector) {
-      setUser(selector?.user?.value?.data);
+      setUser(selector?.user?.value);
     }
   }, [selector]);
-
+  
+  console.log(user);
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
       <Tophead />

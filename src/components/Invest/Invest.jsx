@@ -16,7 +16,6 @@ const Invest = () => {
     getData();
   }, []);
 
-  console.log(data);
   return (
     <Box padding={'20px'}>
       <Text

@@ -28,7 +28,7 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react';
 import course from '../../assets/images/course.png';
-import { remove } from '../../reducers/CartReducer';
+import { filter } from '../../reducers/CartReducer';
 import { clear } from '../../reducers/CartReducer';
 import { useParams } from 'react-router-dom';
 import { add } from '../../reducers/CartReducer';
@@ -98,22 +98,24 @@ const AddToCart = () => {
   // setPaymentData({...paymentData,items:[{...paymentData.items,price:totalPrice}]});
   useEffect(() => {
     if (selector) {
-      setUser(selector?.user?.value?.data);
+      setUser(selector?.user?.value);
+      setData(selector?.cart);
     }
   }, [selector]);
-
+  
   const getCardData = async () => {
-    const res = await GET(`users/${user?._id}/card`);
+    const res = await GET(`users/${user?._id}/card`,{
+      authorization: `bearer ${user?.JWT_TOKEN}`
+    });
     setMycard(res?.data[0]?.cards);
   };
 
+
   useEffect(() => {
-    
+    if(user){
       getCardData();
-      setData(selector?.cart);
-    
-  }, [selector]);
-  console.log("data",data)
+    }
+  }, [user]);
 
   useEffect(() => {
     setPaymentType(data[0]?.items?.paymentType);
@@ -204,6 +206,7 @@ const AddToCart = () => {
     }
   };
 
+
   const Payment = async () => {
     if (
       cardDetails.card == null ||
@@ -232,7 +235,8 @@ const AddToCart = () => {
           description: 'Course Purchased successfully',
           duration: 5000,
         });
-        dispatch(add(res?.data?.data?.user));
+        console.log("first",res.data.data.user);
+        dispatch(loadUser(res?.data?.data?.user));
         dispatch(clear());
         onClose();
         navigate('/myprofile');
@@ -363,6 +367,11 @@ const AddToCart = () => {
       });
     }
   };
+
+  const filterItem = (id)=>{
+    const filterData = data?.filter((item)=>{return item.data._id != id});
+    dispatch(filter(filterData));
+  }
 
   return (
     <>
@@ -617,7 +626,7 @@ const AddToCart = () => {
                         _hover={'none'}
                         px={'50px'}
                         onClick={() => {
-                          dispatch(remove(item._id));
+                          filterItem(item?.data?._id);
                         }}
                         backgroundColor={'blue'}
                       >

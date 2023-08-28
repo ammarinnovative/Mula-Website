@@ -68,7 +68,7 @@ const Tophead = () => {
     const res = await POST('users/login', data);
     try {
       if (res.status == 200) {
-        dispatch(loadUser(res?.data));
+        dispatch(loadUser(res?.data?.data));
         toast({
           position: 'bottom-left',
           isClosable: true,
@@ -103,7 +103,7 @@ const Tophead = () => {
 
   useEffect(() => {
     if (selector) {
-      setUser(selector?.user?.value?.data);
+      setUser(selector?.user?.value);
     }
   }, [selector]);
 
@@ -161,6 +161,8 @@ const Tophead = () => {
     }
     setBool(false);
   };
+ 
+
 
   return (
     <Box backgroundColor={'#00000f'} padding={'5px 0'}>
@@ -268,7 +270,7 @@ const Tophead = () => {
         <Box display={'flex'} gap={'10px'}>
           <Text
             color={'white'}
-            display={user ? 'none' : ''}
+            display={user?.JWT_TOKEN ? 'none' : ''}
             cursor={'pointer'}
             onClick={onOpen}
             fontWeight={'bold'}
@@ -277,7 +279,7 @@ const Tophead = () => {
           </Text>
           <Text
             cursor={'pointer'}
-            display={user ? 'none' : ''}
+            display={user?.JWT_TOKEN ? 'none' : ''}
             onClick={onLoginOpen}
             color={'white'}
             fontWeight={'bold'}
@@ -285,7 +287,7 @@ const Tophead = () => {
             Login
           </Text>
           <Box display={'flex'} gap={'23px'} alignItems={'center'}>
-            <Box display={user ? '' : 'none'}>
+            <Box display={user?.JWT_TOKEN ? '' : 'none'}>
               <Link to="/myprofile">
                 <Box display={'flex'} gap={'10px'} alignItems={'center'}>
                   <FaUserAlt color="white" fontSize={'20px'} />
@@ -300,7 +302,7 @@ const Tophead = () => {
               onClick={() => {
                 clear();
               }}
-              display={user ? '' : 'none'}
+              display={user?.JWT_TOKEN ? '' : 'none'}
             >
               <Box display={'flex'} gap={'10px'} alignItems={'center'}>
                 <Text fontWeight={'bold'} fontSize={'18px'} color={'white'}>

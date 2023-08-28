@@ -38,8 +38,10 @@ const MyProduct = () => {
   }, [fullData]);
 
 
-
-
+  
+  
+  
+  
   const getDataValue = (e)=>{
     let dataName = e.target.value;
 
@@ -49,13 +51,15 @@ const MyProduct = () => {
 
 
 
-
+  
   useEffect(()=>{
     if(selector){
-      setUser(selector?.user?.value?.data);
+      setUser(selector?.user?.value);
     }
   },[selector]);
 
+  
+  console.log("user",user);
 
 
 

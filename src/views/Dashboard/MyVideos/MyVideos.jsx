@@ -39,7 +39,7 @@ const MyVideo = () => {
 
   useEffect(() => {
     if (selector) {
-      setUser(selector?.user?.value?.data);
+      setUser(selector?.user?.value);
     }
   }, [selector]);
 
