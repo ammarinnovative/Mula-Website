@@ -83,7 +83,7 @@ export default function MembershipAccordion({ data,bool,paymentType }) {
                     {item?.videoDetail.length > 0 ? (
                       item.videoDetail &&
                       item?.videoDetail?.map(datas => {
-                        return <Text fontSize="md">{datas?.title ?? ''}</Text>;
+                        return <Text fontSize={{base:"14px",md:"18px"}}>{datas?.title ?? ''}</Text>;
                       })
                     ) : (
                       <Text>No Data Found</Text>
@@ -92,9 +92,8 @@ export default function MembershipAccordion({ data,bool,paymentType }) {
                     <ChevronDownIcon fontSize="24px" />
                   </AccordionButton>
                   <AccordionPanel pb={4}>
-                    <Text>
-                      {/* {item?.courseDetail?.description??""} */}
-                      Description
+                    <Text m={"14px 0"} fontSize={{base:"14px",md:"17px"}}>
+                      {item?.courseDetail?.description??""}
                     </Text>
                     <Box display={"flex"} alignItems={"center"}>
                     <Text fontSize={"25px"} fontWeight={"semibold"}>Price:</Text>
@@ -102,7 +101,7 @@ export default function MembershipAccordion({ data,bool,paymentType }) {
                     </Box>
                     {bool || paymentType =='course' ||idData.find((data)=>data ==item._id) ?<Button color={"white"} disabled  _hover={"none"} padding={"10px"} onClick={()=>{dispatch(add({items: { paymentType: 'videos',price:5,membership:params.id },data:item}))}}  backgroundColor={"blue"}>Add to Cart</Button>:
 
-                    <Button color={"white"}  _hover={"none"} padding={"10px"} onClick={()=>{dispatch(add({items: { paymentType: 'videos',video:'video',price:5,membership:params.id },data:item}))}}  backgroundColor={"blue"}>Add to Cart</Button>
+                    <Button color={"white"} fontSize={{base:"14px",md:"18px"}}  _hover={"none"} padding={"10px"} onClick={()=>{dispatch(add({items: { paymentType: 'videos',video:'video',price:5,membership:params.id },data:item}))}}  backgroundColor={"blue"}>Add to Cart</Button>
                     }
                     </AccordionPanel>
                 </AccordionItem>

@@ -10,7 +10,7 @@ import course2 from '../../assets/images/course2.png';
 import CoursesAccordion from '../../components/CoursesAccordion/CoursesAccordion';
 import Tophead from '../Tophead/Tophead';
 import { useParams } from 'react-router-dom';
-import MembershipAccordion from "../MembershipAcc/MembershipAcc";
+import MembershipAccordion from '../MembershipAcc/MembershipAcc';
 import { useState } from 'react';
 import { AiFillWarning } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
@@ -30,7 +30,7 @@ const MembershipById = () => {
   });
   const getData = async () => {
     const res = await GET(`web/membership/${params.id}`);
-    setCourseDetails({ ...courrseDetails, data: res?.data[0]});
+    setCourseDetails({ ...courrseDetails, data: res?.data[0] });
     setData(res?.data[0].playlist);
   };
   const selector = useSelector(state => state);
@@ -54,7 +54,6 @@ const MembershipById = () => {
     });
   }, [selector]);
 
-
   useEffect(() => {
     getData();
   }, []);
@@ -73,25 +72,36 @@ const MembershipById = () => {
           <Box
             display={'flex'}
             gap={'30px'}
-            width={'70%'}
+            justifyContent={{ base: 'center', lg: 'none' }}
+            width={'100%'}
+            flexDirection={{ base: 'column', lg: 'row' }}
             mt={'60px'}
             mx={'auto'}
           >
             <Box
-              width={'40%'}
+              width={{ base: '70%', md: '50%', lg: '30%' }}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
+              margin={{ base: 'auto', lg: 'none' }}
               backgroundColor={'#01204b'}
               padding={'10px'}
             >
               <Image
+                width={'100%'}
                 src={imageUrl + courrseDetails?.data?.thumbnail}
                 alt="img"
               />
             </Box>
-            <Box width={'40%'}>
-              <Text fontSize={'25px'} fontWeight={'bold'} color={'white'}>
+            <Box
+              width={{ base: '70%', md: '50%', lg: '30%' }}
+              margin={{ base: 'auto', lg: 'none' }}
+            >
+              <Text
+                fontSize={{ base: '19px', md: '22px', lg: '25px' }}
+                fontWeight={'bold'}
+                color={'white'}
+              >
                 {courrseDetails?.data?.name}
               </Text>
               <Box
@@ -102,25 +112,7 @@ const MembershipById = () => {
                 backgroundColor={'white'}
               ></Box>
               <Text>{courrseDetails?.data?.description}</Text>
-              <Text
-                fontSize={'20px'}
-                fontWeight={'bold'}
-                m={'10px 0'}
-                color={'white'}
-              >
-                Key features
-              </Text>
-              <Box display={'flex'} gap={'10px'}>
-                <Text
-                  color={'white'}
-                  borderRadius={'6px'}
-                  backgroundColor={'#01204b'}
-                  fontWeight={'semibold'}
-                  padding={'5px 13px'}
-                >
-                  2 Courses
-                </Text>
-              </Box>
+              <Box display={'flex'} gap={'10px'}></Box>
               <Text color={'white'} mt={'30px'} fontWeight={'bold'}>
                 Price
               </Text>
@@ -156,9 +148,13 @@ const MembershipById = () => {
           </Box>
         </Box>
       </Box>
-      <Box padding={"50px 10px"} backgroundColor={'#00000f'}>
+      <Box padding={{base:"150px 10px",lg:"50px 10px"}} backgroundColor={'#00000f'}>
         {data.length > 0 ? (
-          <MembershipAccordion paymentType={paymentType}   bool={bool} data={data} />
+          <MembershipAccordion
+            paymentType={paymentType}
+            bool={bool}
+            data={data}
+          />
         ) : (
           <Text
             color={'white'}
@@ -174,7 +170,6 @@ const MembershipById = () => {
         )}
       </Box>
 
-      <Box></Box>
       <Banner />
       <Footer />
     </>

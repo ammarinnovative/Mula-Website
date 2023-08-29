@@ -48,13 +48,12 @@ export default function CoursesAccordion({ data }) {
                   p={4}
                   _hover={{ bg: '#0004fd' }}
                 >
-                  <Text fontSize="md">{item?.video?.title}</Text>
+                  <Text fontSize={{base:"14px",md:"18px"}}>{item?.video?.title}</Text>
                   <ChevronDownIcon fontSize="24px" />
                 </AccordionButton>
                 <AccordionPanel pb={4}>
-                  <Text>
+                  <Text fontSize={{base:"14px",md:"17px"}}>
                     {item.courseDetail.description}
-                   
                   </Text>
                 </AccordionPanel>
               </AccordionItem>

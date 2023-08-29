@@ -71,16 +71,17 @@ const SingleComponent = () => {
         height={'100vh'}
       >
         <Navbar />
-        <Box position={'absolute'} width={'100%'} mt={'100px'}>
+        <Box padding={"10px"} position={'absolute'} width={'100%'} mt={'100px'}>
           <Box
             display={'flex'}
             gap={'30px'}
-            width={'70%'}
+            width={{base:"100%",lg:"50%"}}
             mt={'60px'}
+            flexDirection={{base:"column",lg:"row"}}
             mx={'auto'}
           >
             <Box
-              width={'40%'}
+              width={'100%'}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -88,11 +89,12 @@ const SingleComponent = () => {
               padding={'10px'}
             >
               <Image
+                width={"100%"}
                 src={imageUrl + courrseDetails?.data?.coursePic}
                 alt="img"
               />
             </Box>
-            <Box width={'40%'}>
+            <Box width={{base:"100%",lg:"40%"}}>
               <Text fontSize={'25px'} fontWeight={'bold'} color={'white'}>
                 {courrseDetails?.data?.name}
               </Text>
@@ -103,32 +105,16 @@ const SingleComponent = () => {
                 borderRadius={'5px'}
                 backgroundColor={'white'}
               ></Box>
-              <Text>{courrseDetails?.data?.description}</Text>
-              <Text
-                fontSize={'20px'}
-                fontWeight={'bold'}
-                m={'10px 0'}
-                color={'white'}
-              >
-                Key features
-              </Text>
-              <Box display={'flex'} gap={'10px'}>
-                <Text
-                  color={'white'}
-                  borderRadius={'6px'}
-                  backgroundColor={'#01204b'}
-                  fontWeight={'semibold'}
-                  padding={'5px 13px'}
-                >
-                  2 Courses
-                </Text>
-              </Box>
+              <Text color={"white"}>{courrseDetails?.data?.description}</Text>
+              
+              
               <Text color={'white'} mt={'30px'} fontWeight={'bold'}>
                 Price
               </Text>
               <Box
                 display={'flex'}
                 mt={'10px'}
+                gap={"10px"}
                 justifyContent={'space-between'}
                 alignItems={'center'}
               >
@@ -158,7 +144,7 @@ const SingleComponent = () => {
           </Box>
         </Box>
       </Box>
-      <Box backgroundColor={'#00000f'}>
+      <Box padding={{base:"100px 10px",lg:"10px 10px"}} backgroundColor={'#00000f'}>
         {data.length > 0 ? (
           <CoursesAccordion paymentType={paymentType} data={data} />
         ) : (
@@ -174,96 +160,6 @@ const SingleComponent = () => {
           </Text>
         )}
       </Box>
-      <Box backgroundColor={'#00000f'}>
-        <Text
-          textAlign={'center'}
-          color={'white'}
-          fontWeight={'bold'}
-          fontSize={'30px'}
-        >
-          Related Courses
-        </Text>
-        <Text textAlign={'center'} fontSize={'18px'} color={'white'}>
-          Lorem ipsum dolor sit amet.
-        </Text>
-        <Box padding={'10px'} paddingBottom={'70px'}>
-          <Box
-            width={'80%'}
-            margin={'auto'}
-            gap={'10px'}
-            mt={'60px'}
-            display={'flex'}
-            justifyContent={'space-between'}
-            alignItems={'center'}
-          >
-            <Box width={'300px'}>
-              <Box width={'300px'} backgroundColor={'#01204b'} padding={'20px'}>
-                <Image src={course1} alt="image" />
-              </Box>
-              <Text
-                fontWeight={'semibold'}
-                textAlign={'center'}
-                color={'white'}
-              >
-                D.I.Y Credit Repair Course <br />
-                (How To Repair Your Own Credit)
-              </Text>
-              <Text fontWeight={'bold'} textAlign={'center'} color={'blue'}>
-                80.00
-              </Text>
-            </Box>
-            <Box width={'300px'}>
-              <Box width={'300px'} backgroundColor={'#01204b'} padding={'20px'}>
-                <Image src={course1} alt="image" />
-              </Box>
-              <Text
-                fontWeight={'semibold'}
-                textAlign={'center'}
-                color={'white'}
-              >
-                D.I.Y Credit Repair Course <br />
-                (How To Repair Your Own Credit)
-              </Text>
-              <Text fontWeight={'bold'} textAlign={'center'} color={'blue'}>
-                80.00
-              </Text>
-            </Box>
-            <Box width={'300px'}>
-              <Box width={'300px'} backgroundColor={'#01204b'} padding={'20px'}>
-                <Image src={course1} alt="image" />
-              </Box>
-              <Text
-                fontWeight={'semibold'}
-                textAlign={'center'}
-                color={'white'}
-              >
-                D.I.Y Credit Repair Course <br />
-                (How To Repair Your Own Credit)
-              </Text>
-              <Text fontWeight={'bold'} textAlign={'center'} color={'blue'}>
-                80.00
-              </Text>
-            </Box>
-            <Box width={'300px'}>
-              <Box width={'300px'} backgroundColor={'#01204b'} padding={'20px'}>
-                <Image src={course1} alt="image" />
-              </Box>
-              <Text
-                fontWeight={'semibold'}
-                textAlign={'center'}
-                color={'white'}
-              >
-                D.I.Y Credit Repair Course <br />
-                (How To Repair Your Own Credit)
-              </Text>
-              <Text fontWeight={'bold'} textAlign={'center'} color={'blue'}>
-                80.00
-              </Text>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
-      <Box></Box>
       <Banner />
       <Footer />
     </>
