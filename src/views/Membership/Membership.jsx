@@ -37,17 +37,17 @@ const Membership = () => {
       >
         <Text
           textAlign={'center'}
-          fontSize={'45px'}
+          fontSize={{base:"25px",md:"34px",lg:"45px"}}
           fontWeight={'800'}
           marginTop={'42px'}
-          mb={'50px'}
+          mb={{base:"25px",md:"33px",lg:"50px"}}
           color={'white'}
         >
           Courses
         </Text>
         <Text
           textAlign={'center'}
-          fontSize={'40px'}
+          fontSize={{base:"25px",md:"34px",lg:"40px"}}
           mt={'30px 0'}
           color={'white'}
           fontWeight={'650'}

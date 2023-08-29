@@ -7,9 +7,9 @@ import {
   Stack,
   Text,
   UnorderedList,
-  Link,
 } from '@chakra-ui/react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import { Global, css } from '@emotion/react';
@@ -35,6 +35,7 @@ const MembershipCard = ({item}) => {
     }
   `;
   return (
+    <Link to={`MembershipById/${item?._id}`}>
     <Box
       border={'1px solid #12158a'}
       padding={'10px'}
@@ -113,6 +114,7 @@ const MembershipCard = ({item}) => {
         </Link>
       </Box>
     </Box>
+    </Link>
   );
 };
 
