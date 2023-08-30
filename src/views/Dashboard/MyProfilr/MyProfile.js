@@ -110,10 +110,10 @@ export const MyProfile = () => {
       <Navbar />
       <Box position={'absolute'} width={'100%'}>
         <Sidebar>
-          <Box>
+          <Box >
             <Text
               fontWeight={'bold'}
-              mb={{ base: '25px', md: '30px' }}
+              mb={{ base: '5px', md: '30px' }}
               color={'white'}
               textAlign={{ base: 'center', lg: 'left' }}
               fontSize={'28px'}
@@ -157,7 +157,7 @@ export const MyProfile = () => {
               <Box
                 color={'blue'}
                 display={'flex'}
-                width={'30%'}
+                width={{base:"0",lg:"30%"}}
                 justifyContent={"space-between"}
                 alignItems={'center'}
               >
