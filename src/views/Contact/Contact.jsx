@@ -97,7 +97,7 @@ const Contact = () => {
         <Box
           display={'flex'}
           flexWrap={'wrap'}
-          gap={'20px'}
+          gap={12}
           flexDirection={{ base: 'column', lg: 'row' }}
           justifyContent={{ base: 'left', lg: 'center' }}
           alignItems={'center'}

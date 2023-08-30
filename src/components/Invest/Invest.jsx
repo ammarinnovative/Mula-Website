@@ -17,7 +17,7 @@ const Invest = () => {
   }, []);
 
   return (
-    <Box padding={'20px'}>
+    <Box backgroundColor={'#00000f'} padding={'20px'} >
       <Text
         textAlign={'center'}
         width={'100%'}
@@ -57,7 +57,7 @@ const Invest = () => {
                   position={'absolute'}
                   fontWeight={'800'}
                   fontSize={'17px'}
-                  color={'black'}
+                  color={'#fff'}
                 >
                   {item?.name}
                 </Text>
@@ -67,7 +67,7 @@ const Invest = () => {
                   fontWeight={'bold'}
                   left={'17px'}
                   position={'absolute'}
-                  color={'black'}
+                  color={'#fff'}
                 >
                   {item?.description}
                 </Text>

@@ -43,7 +43,7 @@ const MembershipCard = ({item}) => {
       width={{ base: '90%' }}
     >
       <Text
-        fontSize={'32px'}
+        fontSize={'25px'}
         textAlign={'center'}
         fontWeight={'bold'}
         color={'#12158a'}
@@ -61,7 +61,7 @@ const MembershipCard = ({item}) => {
         height={'1px'}
       ></Box>
       <Global styles={customScrollbarStyles} />
-      <Box maxH={'40vh'} overflowY={'auto'}>
+      <Box height={'30vh'} overflowY={'auto'}>
         <UnorderedList spacing={4} alignSelf={"normal"} listStyleType={'none'}>
           {
            item.membershipDetails.length>0 ?  item?.membershipDetails?.map((items)=>{
@@ -93,7 +93,7 @@ const MembershipCard = ({item}) => {
       >
         <Stack>
           <Heading fontSize={'35px'} color={'white'} fontWeight={'700'}>
-            {' '}
+           
             ${item?.price}
           </Heading>
 
