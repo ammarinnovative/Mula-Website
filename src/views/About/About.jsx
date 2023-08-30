@@ -54,11 +54,10 @@ const About = () => {
   ];
   return (
     <>
-      <Box backgroundColor={'#00000f'} padding={'200px 0 70px '} width={'100%'}>
+      <Box backgroundColor={'#00000f'} padding={{base:'200px 0 20px ','2xl':'200px 0  '}} width={'100%'}>
         <Text
           textAlign={'center'}
-          mb={'25px'}
-          mt={'-15px'}
+         
           fontWeight={'700'}
           fontSize={'37px'}
           color={'white'}
@@ -82,7 +81,7 @@ const About = () => {
         >
           <Box
             display={'flex'}
-            mt={'60px'}
+           
             width={'100%'}
             flexDirection={'column'}
           >

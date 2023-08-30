@@ -51,9 +51,8 @@ const MembershipVideos = () => {
   
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
-      <Tophead />
-      <Navbar />
-      <Box position={'absolute'} width={'100%'}>
+      
+      <Box >
         <Sidebar>
           <Box
             width={'90%'}
@@ -62,6 +61,7 @@ const MembershipVideos = () => {
             display={'flex'}
             justifyContent={'space-between'}
             alignItems={'center'}
+            pt={'200px'}
           >
             <Text fontSize={'30px'} fontWeight={'semibold'} color={'white'}>
               Membership Videos

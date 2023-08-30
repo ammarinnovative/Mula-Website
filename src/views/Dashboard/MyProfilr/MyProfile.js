@@ -1,4 +1,4 @@
-import { Box, Button, Input, Text, WrapItem } from '@chakra-ui/react';
+import { Box, Button, Container, Input, Stack, Text, WrapItem } from '@chakra-ui/react';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import Tophead from '../../../components/Tophead/Tophead';
 import ReactPlayer from 'react-player';
@@ -10,6 +10,8 @@ import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { DELETE, PUT } from '../../../utilities/ApiProvider';
+import SimpleSidebar from '../../../components/Sidebar/Sidebar';
+import Simplesidebar from '../../../components/Sidebar/SimpleSidebar';
 
 export const MyProfile = () => {
   const selector = useSelector(state => state);
@@ -112,29 +114,33 @@ if(fields.profilePicture){
 
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
-      <Tophead />
-      <Navbar />
-      <Box position={'absolute'} width={'100%'}>
-        <Sidebar>
-          <Box>
-            <Text
+     
+      <Box >
+      <SimpleSidebar/>
+      
+          <Stack w={'full'}>
+          <Container maxW={'8xl'}>
+          <Box padding={'120px 0'}>
+           <Text
               fontWeight={'bold'}
               mb={'30px'}
               color={'white'}
               fontSize={'28px'}
+              textTransform={'uppercase'}
             >
               My Profile
             </Text>
             <Box
-              padding={'10px 30px'}
-              boxShadow="0 4px 10px rgba(0, 0, 255, 0.3)"
+         
+            
               display={'flex'}
               justifyContent={'space-between'}
             >
+              
               <label htmlFor="profile">
                 <Box
                   display={'flex'}
-                  mt={'40px'}
+                 
                   gap={'14px'}
                   alignItems={'center'}
                   cursor={'pointer'}
@@ -142,46 +148,22 @@ if(fields.profilePicture){
                   <WrapItem>
                     <Avatar
                       size="xl"
-                      name="Segun Adebayo"
+                      name={fields.full_name}
                       src="https://bit.ly/sage-adebayo"
                     />
                   </WrapItem>
 
                   <Text
                     fontSize={'25px'}
+                    textTransform={'capitalize'}
                     fontWeight={'semibold'}
                     color={'white'}
                   >
-                    Jonethen
+                   {fields.full_name}
                   </Text>
                 </Box>
               </label>
-              <Box
-                color={'blue'}
-                display={'flex'}
-                width={'30%'}
-                alignItems={'center'}
-                justifyContent={'space-around'}
-              >
-                <Box>
-                  <Text color={'white'} fontWeight={'bold'} fontSize={'30px'}>
-                    32
-                  </Text>
-                  <Text>Courses</Text>
-                </Box>
-                <Box>
-                  <Text color={'white'} fontWeight={'bold'} fontSize={'30px'}>
-                    132
-                  </Text>
-                  <Text>Videos</Text>
-                </Box>
-                <Box>
-                  <Text color={'white'} fontWeight={'bold'} fontSize={'30px'}>
-                    Basic
-                  </Text>
-                  <Text>Subscription</Text>
-                </Box>
-              </Box>
+            
             </Box>
             <Box
               display={'flex'}
@@ -190,7 +172,7 @@ if(fields.profilePicture){
               mt={'30px'}
             >
               <form id='data'>
-                <Box width={'100%'} flexWrap={"wrap"} gap={'10px'} display={'flex'}>
+                <Box width={'100%'} flexWrap={"wrap"} gap={'30px'} display={'flex'}>
                   <Input
                     _hover={'none'}
                     borderColor={'black'}
@@ -199,7 +181,7 @@ if(fields.profilePicture){
                     outline={'none'}
                     color={'white'}
                     width={'48%'}
-                    boxShadow="0 4px 10px rgba(0, 0, 255, 0.3)"
+                    outlineColor={'#fff'}
                     type="text"
                     placeholder="Name"
                   />
@@ -211,13 +193,11 @@ if(fields.profilePicture){
                     onChange={(e)=>{setFields({...fields,email:e.target.value})}}
                     value={fields?.email}
                     width={'48%'}
-                    boxShadow="0 4px 10px rgba(0, 0, 255, 0.3)"
+                    outlineColor={'#fff'}
                     type="email"
                     placeholder="Email"
                   />
-                </Box>
-                <Box width={'100%'} gap={'10px'} display={'flex'}>
-                  <Input
+                      <Input
                     _hover={'none'}
                     borderColor={'black'}
                     outline={'none'}
@@ -225,7 +205,7 @@ if(fields.profilePicture){
                     value={fields.password}
                     onChange={(e)=>{setFields({...fields,password:e.target.value})}}
                     width={'48%'}
-                    boxShadow="0 4px 10px rgba(0, 0, 255, 0.3)"
+                    outlineColor={'#fff'}
                     type="text"
                     placeholder="Password"
                   />
@@ -236,13 +216,15 @@ if(fields.profilePicture){
                     width={'48%'}
                     value={fields?.phone_number}
                     onChange={(e)=>{setFields({...fields,phone_number:e.target.value})}}
-                    boxShadow="0 4px 10px rgba(0, 0, 255, 0.3)"
+                    outlineColor={'#fff'}
                     type="number"
                     placeholder="Mobile number"
                   />
                 </Box>
+               
               </form>
               <Button
+              w={'20%'}
                 color={'white'}
                 fontSize={'20px'}
                 _hover={'none'}
@@ -252,8 +234,11 @@ if(fields.profilePicture){
                 Save
               </Button>
             </Box>
-          </Box>
-        </Sidebar>
+           </Box>
+          </Container>
+          
+          </Stack>
+        
       </Box>
     </Box>
   );

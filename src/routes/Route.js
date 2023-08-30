@@ -19,6 +19,7 @@ import MyVideo from '../views/Dashboard/MyVideos/MyVideos';
 import MyCard from '../views/Dashboard/MyCard/MyCard';
 import Tophead from '../components/Tophead/Tophead';
 import { Stack } from '@chakra-ui/react';
+import Nnav from '../components/Navbar/Nnav';
 export const UserContext = createContext();
 
 export default function AppRoute() {
@@ -26,8 +27,7 @@ export default function AppRoute() {
     <div>
       <Router>
       <Stack position={'absolute'} zIndex={'1'} w={'full'}>
-        <Tophead />
-        <Navbar />
+      
       </Stack>
         <RouteSwitch>
           <Route exact path="/about" element={<About />}></Route>

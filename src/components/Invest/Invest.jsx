@@ -22,7 +22,7 @@ const Invest = () => {
         textAlign={'center'}
         width={'100%'}
         color={'white'}
-        fontSize={'35px'}
+        fontSize={{base:'20px','2xl':'30px'}}
         fontWeight={'700'}
       >
         Investments We Offer
@@ -31,7 +31,7 @@ const Invest = () => {
         LEARNING VIA APP NEVER GETS EASIER
       </Text>
       <Box
-        display={'flex'}
+        display={{base:'block','2xl':'flex'}}
         justifyContent={'center'}
         mt={'40px'}
         gap={'10px'}
@@ -47,8 +47,9 @@ const Invest = () => {
                 position={'relative'}
                 maxH={'auto'}
                 minH={'350px'}
+                mb={{base:'10px','2xl':'0'}}
                 backgroundSize={'cover'}
-                width={'17%'}
+                width={{base:'100%','2xl':'17%'}}
                 backgroundImage={imageUrl + item?.coursePic}
               >
                 <Text

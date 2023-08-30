@@ -23,6 +23,7 @@ import Slider from '../../components/Courser/Courser';
 
 import man from '../../assets/images/ban-r.webp';
 import { GET } from '../../utilities/ApiProvider';
+import Nnav from '../../components/Navbar/Nnav';
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -37,6 +38,7 @@ const Home = () => {
 
   return (
     <>
+    <Nnav/>
       <Stack
         position={'relative'}
         backgroundImage={Homehead}
@@ -46,18 +48,18 @@ const Home = () => {
         display={'flex'}
         alignItems={'center'}
         justifyContent={'center'}
-        height={'100vh'}
+        height={{base:'50vh',"2xl":'100vh'}}
       >
         <Container maxW={'8xl'}>
           <Grid templateColumns="repeat(12, 1fr)" gap={2} alignItems={'center'}>
             <GridItem colSpan={{ base: 12, md: 6 }}>
               <Stack>
-                <Heading fontWeight={'700'} fontSize={'60px'} color={'white'}>
-                  {' '}
+                <Heading fontWeight={'700'} fontSize={{base:'40px',"2xl":'60px'}} color={'white'}>
+                 
                   Make 50K as An Entrepreneur
                 </Heading>
                 <Text
-                  fontSize={'40px'}
+                 fontSize={{base:'20px',"2xl":'40px'}}
                   paddingBottom={'20px'}
                   color={'white'}
                   fontWeight={'thin'}
@@ -72,8 +74,8 @@ const Home = () => {
               </Stack>
             </GridItem>
             <GridItem colSpan={{ base: 12, md: 6 }}>
-              <Stack>
-                <Img w={'60%'} m={'auto'} src={man} />
+              <Stack >
+                <Img display={{base:"none","2xl":"block"}} w={'60%'} m={'auto'} src={man} />
               </Stack>
             </GridItem>
           </Grid>
@@ -82,14 +84,15 @@ const Home = () => {
       <Box paddingTop={'30px'} backgroundColor={'#00000f'}>
         <Invest />
         <Box
-          display={'flex'}
-          mt={'60px'}
+        padding={{base:'70px 15px','2xl':'40px 0'}}
+          display={{base:'block','2xl':'flex'}}
+          
           justifyContent={'center'}
           alignItems={'center'}
         >
           <Image src={mobile} alt="image" />
-          <Box width={'30%'}>
-            <Text fontSize={'28px'} color={'white'} fontWeight={'bold'}>
+          <Box width={{base:'100%','2xl':'30%'}}>
+            <Text fontSize={{base:"20px","2xl":"28px"}} color={'white'} fontWeight={'bold'}>
               Download App Now
             </Text>
             <Text color={'white'} m={'6px 0'} fontSize={'16px'}>
@@ -99,8 +102,8 @@ const Home = () => {
               "Lipsum" a portmanteau of lorem
             </Text>
             <Box display={'flex'} gap={'15px'} mt={'30px'}>
-              <Image src={Play} alt="image" />
-              <Image src={Apple} alt="image" />
+              <Image w={'25%'} height={'25%'} src={Play} alt="image" />
+              <Image w={'25%'} height={'25%'} src={Apple} alt="image" />
             </Box>
           </Box>
         </Box>

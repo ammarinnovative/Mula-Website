@@ -50,11 +50,11 @@ const MyVideo = () => {
 
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
-      <Tophead />
-      <Navbar />
-      <Box position={'absolute'} width={'100%'}>
+      
+      <Box >
         <Sidebar>
           <Box
+          pt={'200px'}
             width={'90%'}
             mt={'40px'}
             margin={'auto'}
