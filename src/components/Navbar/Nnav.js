@@ -61,31 +61,7 @@ export default function Nnav() {
   return (
     <Stack w={'full'} id='Header' bg={'black'}>
          <Container maxW={'8xl'}>
-         {/* <Flex justifyContent={'space-between'} className='top-nav' bg={'black'} w='full' py={{ base: 2, md: 2, }} px={{ base: 4, md: 30 }} display={{ base: 'none', lg: 'flex' }}>
-      <HStack spacing={6}>
-        <Tag size={'lg'} variant='subtle' bg={'transparent'} color={'white'}>
-          <TagLeftIcon boxSize='18px' as={HiOutlineMail} color={'#f79e22'} />
-          <TagLabel><Link sx={infocss} as={ReactLink} to={'/'}>info@interloop.com</Link></TagLabel>
-        </Tag>
-        <Tag size={'lg'} variant='subtle' bg={'transparent'} color={'white'}>
-          <TagLeftIcon boxSize='18px' as={HiOutlinePhone} color={'#f79e22'} />
-          <TagLabel><Link sx={infocss} as={ReactLink} to={'/'}>92 21-123456789</Link></TagLabel>
-        </Tag>
-
-      </HStack>
-      <HStack
-        spacing={'4'}
-        divider={<StackDivider alignSelf={'auto'} borderColor={'#999'} h={'35%'} />}>
-        {
-          TopHeadLinks.map((v, i) => {
-            return (
-              <Link color={'#999999'} fontSize={'13px'} as={ReactLink} key={i} to={TopHeadLinkUrl[i]}>{v}</Link>
-            )
-          })
-        }
-      </HStack>
-
-    </Flex> */}
+        
     <Tophead />
 
     <Stack

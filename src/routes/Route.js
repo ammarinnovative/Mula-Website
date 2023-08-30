@@ -26,7 +26,6 @@ export default function AppRoute() {
     <div>
       <Router>
       <Stack position={'absolute'} zIndex={'1'} w={'full'}>
-       
         <Navbar />
       </Stack>
         <RouteSwitch>
