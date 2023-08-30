@@ -190,7 +190,7 @@ if(fields.profilePicture){
               mt={'30px'}
             >
               <form id='data'>
-                <Box width={'100%'} gap={'10px'} display={'flex'}>
+                <Box width={'100%'} flexWrap={"wrap"} gap={'10px'} display={'flex'}>
                   <Input
                     _hover={'none'}
                     borderColor={'black'}
@@ -198,7 +198,7 @@ if(fields.profilePicture){
                     onChange={(e)=>{setFields({...fields,full_name:e.target.value})}}
                     outline={'none'}
                     color={'white'}
-                    width={'50%'}
+                    width={'48%'}
                     boxShadow="0 4px 10px rgba(0, 0, 255, 0.3)"
                     type="text"
                     placeholder="Name"
@@ -210,7 +210,7 @@ if(fields.profilePicture){
                     color={'white'}
                     onChange={(e)=>{setFields({...fields,email:e.target.value})}}
                     value={fields?.email}
-                    width={'50%'}
+                    width={'48%'}
                     boxShadow="0 4px 10px rgba(0, 0, 255, 0.3)"
                     type="email"
                     placeholder="Email"
@@ -224,7 +224,7 @@ if(fields.profilePicture){
                     color={'white'}
                     value={fields.password}
                     onChange={(e)=>{setFields({...fields,password:e.target.value})}}
-                    width={'50%'}
+                    width={'48%'}
                     boxShadow="0 4px 10px rgba(0, 0, 255, 0.3)"
                     type="text"
                     placeholder="Password"
@@ -233,7 +233,7 @@ if(fields.profilePicture){
                     _hover={'none'}
                     borderColor={'black'}
                     color={'white'}
-                    width={'50%'}
+                    width={'48%'}
                     value={fields?.phone_number}
                     onChange={(e)=>{setFields({...fields,phone_number:e.target.value})}}
                     boxShadow="0 4px 10px rgba(0, 0, 255, 0.3)"

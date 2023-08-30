@@ -102,11 +102,11 @@ const Consultation = () => {
           gap={'30px'}
         >
           <Box textAlign={{base:"center",lg:"none"}} width={{ base: '100%', lg: '35%' }}>
-            <Text mb={{base:"30px",lg:"none"}} textAlign={{base:"center",lg:"none"}} fontSize={'27px'} color={'white'}>
+            <Text mb={{base:"30px",lg:"none"}} textAlign={{base:"center",lg:"left"}} fontSize={'27px'} color={'white'}>
               Confusing get a Facetime <br />
               <Text as={'span'} borderBottom={"4px solid blue"}>Meeting</Text> With Mark Mula
             </Text>
-            <Text>
+            <Text textAlign={{base:"center",lg:"left"}}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
               magni aliquid quasi libero hic atque, voluptas quibusdam
               voluptatibus sit officiis enim laudantium rem nemo neque corrupti
