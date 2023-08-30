@@ -22,6 +22,19 @@ const Membership = () => {
     getMembership();
   }, []);
   return (
+  <>
+   <Box backgroundColor={'#00000f'} padding={'200px 0 70px '} width={'100%'}>
+        <Text
+          textAlign={'center'}
+          mb={'25px'}
+          mt={'-15px'}
+          fontWeight={'700'}
+          fontSize={'37px'}
+          color={'white'}
+        >
+         Membership
+        </Text>
+      </Box>
     <Box
       position={'relative'}
       height={'100vh'}
@@ -32,19 +45,8 @@ const Membership = () => {
       <Box
         width={'100%'}
         backgroundColor={'#00000f'}
-        mt={'100px'}
-        position={'absolute'}
       >
-        <Text
-          textAlign={'center'}
-          fontSize={{base:"25px",md:"34px",lg:"45px"}}
-          fontWeight={'800'}
-          marginTop={'42px'}
-          mb={{base:"25px",md:"33px",lg:"50px"}}
-          color={'white'}
-        >
-          Courses
-        </Text>
+    
         <Text
           textAlign={'center'}
           fontSize={{base:"25px",md:"34px",lg:"40px"}}
@@ -77,6 +79,7 @@ const Membership = () => {
         </Box>
       </Box>
     </Box>
+  </>
   );
 };
 

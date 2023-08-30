@@ -76,18 +76,20 @@ const Consultation = () => {
   };
 
   return (
+    <>
+     <Box backgroundColor={'#00000f'} padding={{base:"150px 0 0px",md:"200px 0 10px",lg:'200px 0 5 px '}} width={'100%'}>
+     <Text
+       textAlign={'center'}
+       mb={{base:"0px",md:"15px",lg:"20px"}}
+       fontWeight={'700'}
+       fontSize={{base:"23px",md:"27px",lg:"33px"}}
+       color={'white'}
+     >
+       Visual Consultation
+     </Text>
+   </Box>
     <Box position={'relative'} width={'100%'}>
-      <Box backgroundColor={'#00000f'} padding={{base:"150px 0 0px",md:"200px 0 10px",lg:'200px 0 5 px '}} width={'100%'}>
-        <Text
-          textAlign={'center'}
-          mb={{base:"0px",md:"15px",lg:"20px"}}
-          fontWeight={'700'}
-          fontSize={{base:"23px",md:"27px",lg:"33px"}}
-          color={'white'}
-        >
-          Visual Consultation
-        </Text>
-      </Box>
+     
       <Box>
         <CallToActionWithVideo />
         <Box
@@ -190,6 +192,8 @@ const Consultation = () => {
         </Box>
       </Box>
     </Box>
+    </>
+    
   );
 };
 
