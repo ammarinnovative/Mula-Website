@@ -15,13 +15,6 @@ import {
   BoxProps,
   FlexProps,
 } from '@chakra-ui/react'
-import {BiUserCheck} from "react-icons/bi"
-import {FaDiscourse} from "react-icons/fa"
-import { useState } from 'react'
-import {AiFillPlayCircle} from "react-icons/ai"
-import {MdVideoLibrary} from "react-icons/md"
-import MyVideo from '../../views/Dashboard/MyVideos/MyVideos'
-import {AiFillCreditCard} from "react-icons/ai"
 import {
   FiHome,
   FiTrendingUp,
@@ -31,23 +24,21 @@ import {
   FiMenu,
 } from 'react-icons/fi'
 import { IconType } from 'react-icons'
-import {Link, Link as ReactLink, useLocation, useNavigate } from "react-router-dom";
 import { ReactText } from 'react'
 
 
-
 const LinkItems = [
-  { name: 'MyProfile', icon: BiUserCheck,link:"/myProfile" },
-  { name: 'MyCourses', icon: FaDiscourse,link:"/mycourses" },
-  { name: 'Membership', icon: AiFillPlayCircle,link:"/membershipvideos" },
-  { name: 'MyVideos', icon: MdVideoLibrary,link:"/myVideo" },
-  { name: 'MyCards', icon: AiFillCreditCard,link:"/mycards" },
+  { name: 'My Profile', icon: FiHome },
+  { name: 'Trending', icon: FiTrendingUp },
+  { name: 'Explore', icon: FiCompass },
+  { name: 'Favourites', icon: FiStar },
+  { name: 'Settings', icon: FiSettings },
 ]
 
-export default function SimpleSidebar({ children }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export default function Simplesidebar() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   return (
-    <Box minH="100vh" backgroundColor={"#00000f"}>
+    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
       <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
       <Drawer
         isOpen={isOpen}
@@ -63,7 +54,7 @@ export default function SimpleSidebar({ children }) {
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
+        {/* Content */}
       </Box>
     </Box>
   )
@@ -74,40 +65,32 @@ export default function SimpleSidebar({ children }) {
 const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
-      bg={"#00000f"}
+    position={'relative'}
+    zIndex={2}
+      bg={useColorModeValue('white', 'gray.900')}
       borderRight="1px"
-      color={"white"}
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
       w={{ base: 'full', md: 60 }}
-      zIndex={1}
       pos="fixed"
       h="full"
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        
+        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+          Logo
+        </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((links) => (
-        <Link to={links.link}>
-            <NavItem
-              url={links?.url}
-              width={"100%"}
-              marginLeft={"0"}
-              borderRadius={"0"}
-              key={links.name}
-              color={"gray.12"}
-              icon={links.icon}
-            >
-              {links.name}
-            </NavItem>
-            </Link>
-        ))}
+      {LinkItems.map((link) => (
+        <NavItem key={link.name} icon={link.icon}>
+          {link.name}
+        </NavItem>
+      ))}
     </Box>
   )
 }
 
 
-const NavItem = ({ icon, children, ...rest })=> {
+const NavItem = ({ icon, children, ...rest }) => {
   return (
     <Box
       as="a"
@@ -117,20 +100,19 @@ const NavItem = ({ icon, children, ...rest })=> {
       <Flex
         align="center"
         p="4"
+        mx="4"
         borderRadius="lg"
-        m={"10px 0"}
         role="group"
-        fontSize={"20px"}
         cursor="pointer"
         _hover={{
-          bg: '#00003b',
+          bg: 'cyan.400',
           color: 'white',
         }}
         {...rest}>
         {icon && (
           <Icon
             mr="4"
-            fontSize="28"
+            fontSize="16"
             _groupHover={{
               color: 'white',
             }}

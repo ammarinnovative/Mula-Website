@@ -179,50 +179,50 @@ const Contact = () => {
             </Box>
             <Box backgroundColor={'#00000f'} width={'100%'} mt={'40px'}></Box>
           </Box>
-          <Box flex={'2'} width={'100%'}>
-            <Text fontSize={'30px'} color={'white'} fontWeight={'800'}>
+          <Box mb={{base:'12'}} flex={'2'} width={'100%'}>
+            <Text fontSize={{base:'20px','2xl':'25px'}} color={'white'} fontWeight={'800'}>
               Information
             </Text>
-            <Text color={'white'} fontWeight={'500'} fontSize={'24px'}>
+            <Text color={'white'} fontWeight={'500'}  fontSize={{base:'16px','2xl':'20px'}} >
               Contact Us
             </Text>
             <Box
               display={'flex'}
               mt={'20px'}
               flexDirection={'column'}
-              gap={'30px'}
+              gap={'15px'}
             >
               <Box gap={'20px'} alignItems={'center'} display={'flex'}>
                 <FaLocationArrow color="#12158a" />
-                <Text color={'#474747'} fontSize={'18px'}>
+                <Text color={'#474747'} fontSize={'16px'}>
                   Address: 77 Indian St. perth, NY
                 </Text>
               </Box>
               <Box gap={'20px'} alignItems={'center'} display={'flex'}>
                 <AiTwotonePhone color="#12158a" />
-                <Text color={'#474747'} fontSize={'18px'}>
+                <Text color={'#474747'} fontSize={'16px'}>
                   Phone: +3233-332-334
                 </Text>
               </Box>
               <Box gap={'20px'} alignItems={'center'} display={'flex'}>
                 <AiOutlineMail color="#12158a" />
-                <Text color={'#474747'} fontSize={'18px'}>
+                <Text color={'#474747'} fontSize={'16px'}>
                   Email: mula@gmail.com
                 </Text>
               </Box>
               <Box>
-                <Text color={'white'} fontWeight={'700'} fontSize={'26px'}>
+                <Text color={'white'} fontWeight={'700'} fontSize={{base:'20px','2xl':'25px'}}>
                   Social Media
                 </Text>
                 <Box display={'flex'} mt={'10px'} gap={'20px'}>
                   <Box>
-                    <FaFacebook color="white" fontSize={'30px'} />
+                    <FaFacebook color="white" fontSize={'20px'} />
                   </Box>
                   <Box>
-                    <AiOutlineInstagram color="white" fontSize={'30px'} />
+                    <AiOutlineInstagram color="white" fontSize={'20px'} />
                   </Box>
                   <Box>
-                    <AiOutlineTwitter color="white" fontSize={'30px'} />
+                    <AiOutlineTwitter color="white" fontSize={'20px'} />
                   </Box>
                 </Box>
               </Box>

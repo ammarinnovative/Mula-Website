@@ -16,7 +16,7 @@ import { FaFacebookF,FaYoutube ,FaInstagram} from 'react-icons/fa';
 const Banner = () => {
   return (
     <Stack
-      padding={'50px 0'}
+      padding={{base:'30px 0','2xl':'50px 0'}}
       display={'flex'}
       justifyContent={'space-evenly'}
       backgroundColor={'hsl(235.38deg 100% 10.2%)'}
@@ -25,11 +25,11 @@ const Banner = () => {
       <Container maxW={'8xl'}>
         <Grid templateColumns="repeat(12, 1fr)" gap={2} alignItems={'center'}>
           <GridItem colSpan={{ base: 12, md: 6 }}>
-            <Text fontSize={'30px'} fontWeight={'bold'} color={'white'}>
-              Get hands on{' '}
-              <Text as={'span'} borderBottom={'1px solid #fff'}>
+            <Text fontSize={{base:'25px','2xl':'30px'}} fontWeight={'bold'} color={'white'}>
+              Get hands on
+              <Text padding={{base:'0 5px'}} as={'span'} borderBottom={'1px solid #fff'}>
                 Great Courses
-              </Text>{' '}
+              </Text>
               you like
             </Text>
           </GridItem>

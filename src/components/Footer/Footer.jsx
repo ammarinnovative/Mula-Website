@@ -24,37 +24,38 @@ const Footer = () => {
     >
       <Container maxW={'8xl'}>
         <Box
-          display={'flex'}
+          display={{base:'block','2xl':'flex'}}
           padding={'70px 0'}
           justifyContent={'space-between'}
+       
         >
-          <Box display={'flex'} flexDirection={'column'} gap={'10px'}>
-            <Text mb={'20px'} color={'#fff'} textTransform={'uppercase'}>
+          <Box display={'flex'} mb={{base:'6'}} flexDirection={'column'} gap={'10px'}>
+            <Text mb={{base:'5px','2xl':'20px'}} color={'#fff'} textTransform={'uppercase'}>
               Links
             </Text>
             <UnorderedList ml={0} spacing={'4'} listStyleType={'none'}>
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={''}>Membership</Link>
+                <Link color={'#b2b2b2'} to={'/membership'}>Membership</Link>
                 </Box>
               </ListItem>
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={''}>About</Link>
+                <Link color={'#b2b2b2'} to={'/about'}>About</Link>
                 </Box>
               </ListItem>
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={''}>Packages</Link>
+                <Link color={'#b2b2b2'} to={'/courses'}>Courses</Link>
                 </Box>
               </ListItem>
             </UnorderedList>
             
           </Box>
-          <Box display={'flex'} flexDirection={'column'} gap={'10px'}>
+          <Box display={'flex'} mb={{base:'6'}} flexDirection={'column'} gap={'10px'}>
             <Text mb={'20px'} color={'white'} textTransform={'uppercase'}>
               Company
             </Text>
@@ -62,26 +63,21 @@ const Footer = () => {
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={''}>About us</Link>
+                <Link color={'#b2b2b2'} to={'/consultation'}>Visual Consultation</Link>
                 </Box>
               </ListItem>
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={''}>Talk to us</Link>
+                <Link color={'#b2b2b2'} to={'/contact'}>Talk to us</Link>
                 </Box>
               </ListItem>
-              <ListItem>
-                <Box display={'flex'} gap={2} alignItems={'center'}> 
-                <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={''}>Courses</Link>
-                </Box>
-              </ListItem>
+              
             </UnorderedList>
             
           </Box>
-          <Box>
-            <Text mb={'20px'} color={'white'} textTransform={'uppercase'}>
+          <Box >
+            <Text mb={'20px'}  color={'white'} textTransform={'uppercase'}>
               Contact us
             </Text>
             <UnorderedList ml={0} spacing={'4'} listStyleType={'none'}>
@@ -107,7 +103,7 @@ const Footer = () => {
           </Box>
         </Box>
         <Box padding={'20px 0'} borderTop={'1px solid #474747'}>
-          <Text textAlign={'center'} color={'#b2b2b2'} fontSize={'15px'}>
+          <Text textAlign={'center'} color={'#b2b2b2'} fontSize={{base:'12px','2xl':'16px'}}>
             Copyright 2021 NewYorkWebCoders | All Rights Reserved
           </Text>
         </Box>
