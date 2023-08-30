@@ -38,7 +38,7 @@ const Home = () => {
 
   return (
     <>
-    <Nnav/>
+   
       <Stack
         position={'relative'}
         backgroundImage={Homehead}
