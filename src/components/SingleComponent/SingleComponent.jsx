@@ -63,20 +63,29 @@ const SingleComponent = () => {
 
   return (
     <>
-      <Tophead />
+        <Box backgroundColor={'#00000f'} padding={'200px 0 70px '} width={'100%'}>
+    <Text
+      textAlign={'center'}
+      mb={'25px'}
+      mt={'-15px'}
+      fontWeight={'700'}
+      fontSize={'37px'}
+      color={'white'}
+    >
+      Courses Detail
+    </Text>
+  </Box>
       <Box
-        position={'relative'}
+      
         backgroundColor={'#00000f'}
-        width={'100%'}
-        height={'100vh'}
+       
       >
-        <Navbar />
-        <Box padding={"10px"} position={'absolute'} width={'100%'} mt={'100px'}>
-          <Box
+      
+      <Box
             display={'flex'}
             gap={'30px'}
             width={{base:"100%",lg:"50%"}}
-            mt={'60px'}
+    pb={12}
             flexDirection={{base:"column",lg:"row"}}
             mx={'auto'}
           >
@@ -89,13 +98,13 @@ const SingleComponent = () => {
               padding={'10px'}
             >
               <Image
-                width={"100%"}
+               
                 src={imageUrl + courrseDetails?.data?.coursePic}
                 alt="img"
               />
             </Box>
             <Box width={{base:"100%",lg:"40%"}}>
-              <Text fontSize={'25px'} fontWeight={'bold'} color={'white'}>
+              <Text fontSize={'23px'} fontWeight={'bold'} color={'white'}>
                 {courrseDetails?.data?.name}
               </Text>
               <Box
@@ -142,7 +151,6 @@ const SingleComponent = () => {
               </Box>
             </Box>
           </Box>
-        </Box>
       </Box>
       <Box padding={{base:"100px 10px",lg:"10px 10px"}} backgroundColor={'#00000f'}>
         {data.length > 0 ? (

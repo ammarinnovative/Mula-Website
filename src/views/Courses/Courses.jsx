@@ -1,6 +1,5 @@
-
 import React, { useEffect, useState } from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Stack, Text } from '@chakra-ui/react';
 import Navbar from '../../components/Navbar/Navbar';
 import Invest from '../../components/Invest/Invest';
 import Course from '../../components/Course/Course';
@@ -22,31 +21,41 @@ const Courses = () => {
     getData();
   }, []);
   return (
+    <>
+    <Box backgroundColor={'#00000f'} padding={'200px 0 70px '} width={'100%'}>
+    <Text
+      textAlign={'center'}
+      mb={'25px'}
+      mt={'-15px'}
+      fontWeight={'700'}
+      fontSize={'37px'}
+      color={'white'}
+    >
+      Courses
+    </Text>
+  </Box>
     <Box
       width={'100%'}
       position={'relative'}
       height={'auto'}
-      backgroundColor={'#000'}
+      backgroundColor={'#00000f'}
+      padding={'70px 0'} 
     >
-      
-      <Box
-      
-        backgroundColor={'#00000f'}
-     padding={'200px 0 70px '}
-        width={'100%'}
-        
-      >
-        <Text textAlign={"center"} mb={"25px"} mt={"-15px"} fontWeight={"700"} fontSize={"37px"} color={"white"}>Courses</Text>
-        </Box>
-        <Invest />
-        {data.length > 0 &&
-          data.map(item => {
-            return (
-              <Box width={'90%'} margin={'auto'}>
+     
+      <Invest />
+
+      {data.length > 0 &&
+        data.map(item => {
+          return (
+            <Stack >
+              <Box pt={8} width={'90%'} margin={'auto'}>
                 <Text
                   color={'white'}
                   fontSize={'25px'}
-                  margin={'40px 0 20px 40px'}
+                 pb={12}
+                 fontWeight={600}
+                 textTransform={'uppercase'}
+                  textAlign={'center'}
                 >
                   {item?.course_category_name}
                 </Text>
@@ -58,30 +67,29 @@ const Courses = () => {
                   width={'100%'}
                 >
                   {item.courses.length > 0 ? (
-                    item.courses.map((data)=>{
-                      return(
+                    item.courses.map(data => {
+                      return (
                         <Link to={`/singlecomponent/${data._id}`}>
-                      <Course data={data} />
-                    </Link>
-                      )
+                          <Course data={data} />
+                        </Link>
+                      );
                     })
-                    
                   ) : (
-                    <Text fontSize={"25px"} fontWeight={"700"} color={"white"}>No Course Found</Text>
+                    <Text fontSize={'25px'} fontWeight={'700'} color={'white'}>
+                      No Course Found
+                    </Text>
                   )}
-
-                  
                 </Box>
               </Box>
-            );
-          })}
+            </Stack>
+          );
+        })}
 
-        <Box pt={'40px'} mt={'30px'}>
-          <Banner />
-          <Footer />
-        </Box>
-      
+     
     </Box>
+    <Banner />
+      <Footer />
+    </>
   );
 };
 

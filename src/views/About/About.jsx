@@ -53,247 +53,253 @@ const About = () => {
     },
   ];
   return (
-    <Box
-      width={'100%'}
-      height={'auto'}
-      position={'relative'}
-      padding={'10px'}
-      backgroundColor={'#00000f'}
-    >
-      <Box right={'0'} top={'100px'} position={'absolute'}>
-        <Image src={Circular} width={'400px'} alt="img" />
+    <>
+      <Box backgroundColor={'#00000f'} padding={'200px 0 70px '} width={'100%'}>
+        <Text
+          textAlign={'center'}
+          mb={'25px'}
+          mt={'-15px'}
+          fontWeight={'700'}
+          fontSize={'37px'}
+          color={'white'}
+        >
+          About
+        </Text>
       </Box>
       <Box
+        width={'100%'}
         height={'auto'}
-        display={'flex'}
-        justifyContent={'center'}
-        paddingBottom={'40px'}
-        alignItems={'center'}
+        position={'relative'}
+        padding={'10px'}
+        backgroundColor={'#00000f'}
       >
         <Box
+          height={'auto'}
           display={'flex'}
-          mt={'60px'}
-          width={'100%'}
-          flexDirection={'column'}
+          justifyContent={'center'}
+          paddingBottom={'40px'}
+          alignItems={'center'}
         >
-          <Text
-            color={'white'}
-            fontWeight={'800'}
-            textAlign={'center'}
-            fontSize={'35px'}
-            m={'80px 0'}
-          >
-            About
-          </Text>
           <Box
             display={'flex'}
-            gap={'30px'}
+            mt={'60px'}
             width={'100%'}
-            justifyContent={'center'}
-            alignItems={'center'}
-            flexWrap={'wrap'}
+            flexDirection={'column'}
           >
-            <Box mt={'50px'} width={{ base: '100%', md: '48%', lg: '30%' }}>
-              <Box
-                fontWeight={'800'}
-                textAlign={{ base: 'center', md: 'left', lg: 'left' }}
-                color={'white'}
-                fontSize={{ base: '24px', md: '26px', lg: '30px' }}
-              >
-                The Best Financial Courses <br />{' '}
-                <Text as={'span'} borderBottom={'3px solid #041689'}>
-                  Crafted
-                </Text>{' '}
-                By Professional
-              </Box>
-              <Text
-                color={'#a9a9a9'}
-                fontSize={{ base: '15px', md: '16px', lg: '17px' }}
-                textAlign={{ base: 'center', md: 'left' }}
-                mt={'30px'}
-              >
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
-                incidunt ex sint, velit voluptatum impedit commodi praesentium
-                quaerat ipsum facere! Repellat culpa dicta assumenda est nobis
-                iusto. Repudiandae ipsa expedita
-              </Text>
-            </Box>
-
-            {data.map(item => {
-              return (
+            <Box
+              display={'flex'}
+              gap={'30px'}
+              width={'100%'}
+              justifyContent={'center'}
+              alignItems={'center'}
+              flexWrap={'wrap'}
+            >
+              <Box mt={'50px'} width={{ base: '100%', md: '48%', lg: '30%' }}>
                 <Box
-                  width={{ base: '80%', md: '40%', lg: '22%' }}
-                  backgroundColor={'black'}
-                  boxShadow="8px 8px 29px -10px rgba(62, 10, 255, 0.63)"
-                  _webkitBoxShadow="8px 8px 29px -10px rgba(62, 10, 255, 0.63)"
-                  _mozBoxShadow="8px 8px 29px -10px rgba(62, 10, 255, 0.63)"
-                  height={'auto'}
-                  alignSelf={'normal'}
-                  zIndex={'10'}
+                  fontWeight={'800'}
+                  textAlign={{ base: 'center', md: 'left', lg: 'left' }}
+                  color={'white'}
+                  fontSize={{ base: '24px', md: '26px', lg: '30px' }}
                 >
-                  <Image width={'100%'} src={item.Image} alt="image" />
-                  <Box
-                    padding={'20px'}
-                    backgroundColor={'black'}
-                    height={'-4px'}
-                    alignSelf={'normal'}
-                  >
-                    <Text
-                      fontSize={'17px'}
-                      m={'5px 0'}
-                      margin={'10px 0'}
-                      fontWeight={'bold'}
-                      color={'white'}
-                    >
-                      {item.text}
-                    </Text>
-                    <Text color={'#ababab'} fontSize={'15px'} width={'100%'}>
-                      {item.details}
-                    </Text>
-                  </Box>
+                  The Best Financial Courses <br />{' '}
+                  <Text as={'span'} borderBottom={'3px solid #041689'}>
+                    Crafted
+                  </Text>{' '}
+                  By Professional
                 </Box>
-              );
-            })}
+                <Text
+                  color={'#a9a9a9'}
+                  fontSize={{ base: '15px', md: '16px', lg: '17px' }}
+                  textAlign={{ base: 'center', md: 'left' }}
+                  mt={'30px'}
+                >
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Itaque incidunt ex sint, velit voluptatum impedit commodi
+                  praesentium quaerat ipsum facere! Repellat culpa dicta
+                  assumenda est nobis iusto. Repudiandae ipsa expedita
+                </Text>
+              </Box>
+
+              {data.map(item => {
+                return (
+                  <Box
+                    width={{ base: '80%', md: '40%', lg: '22%' }}
+                    backgroundColor={'black'}
+                    boxShadow="8px 8px 29px -10px rgba(62, 10, 255, 0.63)"
+                    _webkitBoxShadow="8px 8px 29px -10px rgba(62, 10, 255, 0.63)"
+                    _mozBoxShadow="8px 8px 29px -10px rgba(62, 10, 255, 0.63)"
+                    height={'auto'}
+                    alignSelf={'normal'}
+                    zIndex={'10'}
+                  >
+                    <Image width={'100%'} src={item.Image} alt="image" />
+                    <Box
+                      padding={'20px'}
+                      backgroundColor={'black'}
+                      height={'-4px'}
+                      alignSelf={'normal'}
+                    >
+                      <Text
+                        fontSize={'17px'}
+                        m={'5px 0'}
+                        margin={'10px 0'}
+                        fontWeight={'bold'}
+                        color={'white'}
+                      >
+                        {item.text}
+                      </Text>
+                      <Text color={'#ababab'} fontSize={'15px'} width={'100%'}>
+                        {item.details}
+                      </Text>
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
           </Box>
         </Box>
-      </Box>
-      <Box
-        height={'auto'}
-        padding={{ base: '10px', md: '20px', lg: '30px' }}
-        backgroundImage={shadow}
-        display={'flex'}
-        justifyContent={'space-between'}
-        gap={'30px'}
-        alignItems={'center'}
-        backgroundSize={'cover'}
-        backgroundPosition={'center'}
-        margin={'auto'}
-        width={'100%'}
-      >
         <Box
+          height={'auto'}
+          padding={{ base: '10px', md: '20px', lg: '30px' }}
+          backgroundImage={shadow}
           display={'flex'}
-          width={{ base: '100%', md: '70%' }}
-          gap={'30px'}
-          margin={'auto'}
-          alignItems={'center'}
-          flexDirection={{ base: 'column', lg: 'row' }}
           justifyContent={'space-between'}
+          gap={'30px'}
+          alignItems={'center'}
+          backgroundSize={'cover'}
+          backgroundPosition={'center'}
+          margin={'auto'}
+          width={'100%'}
         >
           <Box
-            textAlign={{ base: 'center', md: 'center', lg: 'left' }}
-            width={{ base: '100%', md: '100%', lg: '30rem' }}
+            display={'flex'}
+            width={{ base: '100%', md: '70%' }}
+            gap={'30px'}
+            margin={'auto'}
+            alignItems={'center'}
+            flexDirection={{ base: 'column', lg: 'row' }}
+            justifyContent={'space-between'}
           >
+            <Box
+              textAlign={{ base: 'center', md: 'center', lg: 'left' }}
+              width={{ base: '100%', md: '100%', lg: '30rem' }}
+            >
+              <Text
+                color={'white'}
+                textAlign={{ base: 'center', lg: 'left' }}
+                fontWeight={'700'}
+                mb={'10px'}
+                fontSize={{ base: '23px', md: '26px', lg: '30px' }}
+              >
+                We Offer <br />{' '}
+                <Text as={'span'} borderBottom={'4px solid #12158a'}>
+                  Finance
+                </Text>{' '}
+                Forums
+              </Text>
+              <Text
+                mb={4}
+                fontSize={{ base: '14px', md: '15px' }}
+                textAlign={{ base: 'center', lg: 'left' }}
+                mt={'30px'}
+                color={'white'}
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+                dolorum magnam, qui dignissimos soluta explicabo distinctio.
+                Soluta ipsa earum iusto! Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Cum, ut!.
+              </Text>
+              <Link className="btn-a">Download App</Link>
+            </Box>
+            <Box mt={'20px'}>
+              <Image
+                overflow={'hidden'}
+                width={{ base: '80%', md: '100%' }}
+                src={Layer16}
+                margin={'auto'}
+                alt="image"
+              />
+            </Box>
+          </Box>
+        </Box>
+
+        <Box
+          width={'100%'}
+          display={'flex'}
+          justifyContent={'center'}
+          gap={{ base: '0', md: '60px' }}
+          flexDirection={{ base: 'column', md: 'row' }}
+          alignItems={'center'}
+          padding={{ base: '50px 0', lg: '0' }}
+          minHeight={'17rem'}
+          backgroundImage={back}
+        >
+          <Box width={{ base: '25rem', lg: '30rem' }}>
+            <Image mt={'-50px'} src={kit} alt="image" />
+          </Box>
+          <Box width={'20rem'} textAlign={{ base: 'center', lg: 'left' }}>
             <Text
-              color={'white'}
+              fontSize={'24px'}
               textAlign={{ base: 'center', lg: 'left' }}
               fontWeight={'700'}
-              mb={'10px'}
-              fontSize={{ base: '23px', md: '26px', lg: '30px' }}
-            >
-              We Offer <br />{' '}
-              <Text as={'span'} borderBottom={'4px solid #12158a'}>
-                Finance
-              </Text>{' '}
-              Forums
-            </Text>
-            <Text
-              mb={4}
-              fontSize={{ base: '14px', md: '15px' }}
-              textAlign={{ base: 'center', lg: 'left' }}
-              mt={'30px'}
               color={'white'}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-              dolorum magnam, qui dignissimos soluta explicabo distinctio.
-              Soluta ipsa earum iusto! Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Cum, ut!.
+              Get Amazing <br />{' '}
+              <Text borderBottom={'2px solid #0000f'}>20% off</Text> on
+              Membership
             </Text>
-            <Link className="btn-a">Download App</Link>
+            <Button
+              mt={{ base: '0', md: '30px' }}
+              padding={'10px 14px'}
+              _hover={'none'}
+              color={'white'}
+              backgroundColor={'#00000f'}
+            >
+              GET STARTED
+            </Button>
           </Box>
-          <Box mt={'20px'}>
-            <Image
-              overflow={'hidden'}
-              width={{ base: '80%', md: '100%' }}
-              src={Layer16}
-              margin={'auto'}
-              alt="image"
-            />
+        </Box>
+
+        <Box
+          width={'100%'}
+          padding={'7rem 0'}
+          flexWrap={'wrap'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'center'}
+        >
+          <Box>
+            <Text
+              fontSize={'24px'}
+              width={{ base: '100%', lg: '20rem' }}
+              fontWeight={'bold'}
+              color={'white'}
+              mb={'10px'}
+              textAlign={{ base: 'center', md: 'left', lg: 'none' }}
+            >
+              One-on-One virtual{' '}
+              <Text as={'span'} width={'10%'} borderBottom={'3px solid blue'}>
+                Consultation
+              </Text>
+            </Text>
+
+            <Text color={'#bfbfbf'} width={'30rem'}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+              officiis nostrum voluptates consequatur earum dicta, beatae, nam
+              quas ipsa libero aut distinctio, veritatis necessitatibus
+              voluptatibus laudantium quasi! Doloribus, obcaecati hic.
+            </Text>
+          </Box>
+          <Box width={'30rem'}>
+            <Image src={Layer20} alt="image" />
           </Box>
         </Box>
-      </Box>
 
-      <Box
-        width={'100%'}
-        display={'flex'}
-        justifyContent={'center'}
-        gap={{ base: '0', md: '60px' }}
-        flexDirection={{ base: 'column', md: 'row' }}
-        alignItems={'center'}
-        padding={{ base: '50px 0', lg: '0' }}
-        minHeight={'17rem'}
-        backgroundImage={back}
-      >
-        <Box width={{ base: '25rem', lg: '30rem' }}>
-          <Image mt={'-50px'} src={kit} alt="image" />
-        </Box>
-        <Box width={'20rem'} textAlign={{ base: 'center', lg: 'left' }}>
-          <Text
-            fontSize={'24px'}
-            textAlign={{ base: 'center', lg: 'left' }}
-            fontWeight={'700'}
-            color={'white'}
-          >
-            Get Amazing <br />{' '}
-            <Text borderBottom={'2px solid #0000f'}>20% off</Text> on Membership
-          </Text>
-          <Button
-            mt={{ base: '0', md: '30px' }}
-            padding={'10px 14px'}
-            _hover={'none'}
-            color={'white'}
-            backgroundColor={'#00000f'}
-          >
-            GET STARTED
-          </Button>
-        </Box>
+        <SimpleAccordion />
+        <Banner />
+        <Footer />
       </Box>
-
-      <Box
-        width={'100%'}
-        padding={'7rem 0'}
-        flexWrap={'wrap'}
-        display={'flex'}
-        justifyContent={'center'}
-        alignItems={'center'}
-      >
-        <Box>
-          <Text
-            fontSize={'24px'}
-            width={{base:"100%",lg:"20rem"}}
-            fontWeight={'bold'}
-            color={'white'}
-            mb={"10px"}
-            textAlign={{base:"center",md:"left",lg:"none"}}
-          >
-            One-on-One virtual <Text as={'span'} width={"10%"} borderBottom={"3px solid blue"}>Consultation</Text>
-          </Text>
-          
-          <Text color={'#bfbfbf'} width={'30rem'}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-            officiis nostrum voluptates consequatur earum dicta, beatae, nam
-            quas ipsa libero aut distinctio, veritatis necessitatibus
-            voluptatibus laudantium quasi! Doloribus, obcaecati hic.
-          </Text>
-        </Box>
-        <Box width={'30rem'}>
-          <Image  src={Layer20} alt="image" />
-        </Box>
-      </Box>
-
-      <SimpleAccordion />
-      <Banner />
-      <Footer />
-    </Box>
+    </>
   );
 };
 
