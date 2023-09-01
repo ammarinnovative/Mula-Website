@@ -85,7 +85,7 @@ const Consultation = () => {
        fontSize={{base:"23px",md:"27px",lg:"33px"}}
        color={'white'}
      >
-       Visual Consultation
+       Virtual Consultation
      </Text>
    </Box>
     <Box position={'relative'} width={'100%'}>

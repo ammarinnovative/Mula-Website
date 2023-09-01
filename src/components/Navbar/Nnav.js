@@ -329,7 +329,7 @@ const DesktopNav = () => {
         href: '/courses',
       },
       {
-        label: 'Visual Consultation',
+        label: 'Virtual Consultation',
         href: '/consultation',
       },
       {
