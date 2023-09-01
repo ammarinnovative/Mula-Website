@@ -375,15 +375,25 @@ const AddToCart = () => {
 
   return (
     <>
-      <Tophead />
-      <Navbar />
+         <Box backgroundColor={'#00000f'} padding={'200px 0 70px '} width={'100%'}>
+        <Text
+          textAlign={'center'}
+          mb={'25px'}
+          mt={'-15px'}
+          fontWeight={'700'}
+          fontSize={'37px'}
+          color={'white'}
+        >
+         Cart
+        </Text>
+      </Box>
       <Box
         position={'relative'}
-        padding={'40px'}
+    
         paddingTop={'40px'}
         backgroundColor={'#00000f'}
         minH={'86vh'}
-        marginTop={'70px'}
+       
       >
         <Text
           textAlign={'center'}
@@ -651,7 +661,7 @@ const AddToCart = () => {
           </Text>
         )}
 
-        <Box width={'80%'} padding={'30px'} margin={'auto'}>
+        <Box >
           <Box
             display={'flex'}
             justifyContent={'center'}

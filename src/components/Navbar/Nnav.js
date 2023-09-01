@@ -107,7 +107,7 @@ export default function Nnav() {
 
       <Stack>
         
-      <Link to={'/cart'}>
+      <Link as={ReactLink} to={'/cart'}>
             <Box
               display={'flex'}
               cursor={'pointer'}
