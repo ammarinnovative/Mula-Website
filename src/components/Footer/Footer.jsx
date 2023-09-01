@@ -24,13 +24,13 @@ const Footer = () => {
     >
       <Container maxW={'8xl'}>
         <Box
-          display={{base:'block','2xl':'flex'}}
+          display={{base:'block','xl':'flex'}}
           padding={'70px 0'}
           justifyContent={'space-between'}
        
         >
           <Box display={'flex'} mb={{base:'6'}} flexDirection={'column'} gap={'10px'}>
-            <Text mb={{base:'5px','2xl':'20px'}} color={'#fff'} textTransform={'uppercase'}>
+            <Text mb={{base:'5px','xl':'20px'}} color={'#fff'} textTransform={'uppercase'}>
               Links
             </Text>
             <UnorderedList ml={0} spacing={'4'} listStyleType={'none'}>
@@ -103,7 +103,7 @@ const Footer = () => {
           </Box>
         </Box>
         <Box padding={'20px 0'} borderTop={'1px solid #474747'}>
-          <Text textAlign={'center'} color={'#b2b2b2'} fontSize={{base:'12px','2xl':'16px'}}>
+          <Text textAlign={'center'} color={'#b2b2b2'} fontSize={{base:'12px','xl':'16px'}}>
             Copyright 2021 NewYorkWebCoders | All Rights Reserved
           </Text>
         </Box>

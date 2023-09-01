@@ -48,18 +48,18 @@ const Home = () => {
         display={'flex'}
         alignItems={'center'}
         justifyContent={'center'}
-        height={{base:'50vh',"2xl":'100vh'}}
+        height={{base:'50vh',"xl":'100vh'}}
       >
         <Container maxW={'8xl'}>
           <Grid templateColumns="repeat(12, 1fr)" gap={2} alignItems={'center'}>
             <GridItem colSpan={{ base: 12, md: 6 }}>
               <Stack>
-                <Heading fontWeight={'700'} fontSize={{base:'40px',"2xl":'60px'}} color={'white'}>
+                <Heading fontWeight={'700'} fontSize={{base:'40px',"xl":'60px'}} color={'white'}>
                  
                   Make 50K as An Entrepreneur
                 </Heading>
                 <Text
-                 fontSize={{base:'20px',"2xl":'40px'}}
+                 fontSize={{base:'20px',"xl":'40px'}}
                   paddingBottom={'20px'}
                   color={'white'}
                   fontWeight={'thin'}
@@ -75,7 +75,7 @@ const Home = () => {
             </GridItem>
             <GridItem colSpan={{ base: 12, md: 6 }}>
               <Stack >
-                <Img display={{base:"none","2xl":"block"}} w={'60%'} m={'auto'} src={man} />
+                <Img display={{base:"none","xl":"block"}} w={'60%'} m={'auto'} src={man} />
               </Stack>
             </GridItem>
           </Grid>
@@ -84,15 +84,15 @@ const Home = () => {
       <Box paddingTop={'30px'} backgroundColor={'#00000f'}>
         <Invest />
         <Box
-        padding={{base:'70px 15px','2xl':'40px 0'}}
-          display={{base:'block','2xl':'flex'}}
+        padding={{base:'70px 15px','xl':'40px 0'}}
+          display={{base:'block','xl':'flex'}}
           
           justifyContent={'center'}
           alignItems={'center'}
         >
           <Image src={mobile} alt="image" />
-          <Box width={{base:'100%','2xl':'30%'}}>
-            <Text fontSize={{base:"20px","2xl":"28px"}} color={'white'} fontWeight={'bold'}>
+          <Box width={{base:'100%','xl':'30%'}}>
+            <Text fontSize={{base:"20px","xl":"28px"}} color={'white'} fontWeight={'bold'}>
               Download App Now
             </Text>
             <Text color={'white'} m={'6px 0'} fontSize={'16px'}>
