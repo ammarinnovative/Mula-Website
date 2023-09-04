@@ -115,7 +115,7 @@ if(fields.profilePicture){
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
      
-      <Box display={{base: 'block','xl':'flex'}}>
+      <Box  display={'flex'}>
       <SimpleSidebar/>
       
           <Stack px={8} pt={20} w={'full'}>
