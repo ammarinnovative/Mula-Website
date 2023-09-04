@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SimpleSidebar from '../../../components/Sidebar/Sidebar';
 import { GET } from '../../../utilities/ApiProvider';
 
 const MyVideo = () => {
@@ -52,8 +53,8 @@ const MyVideo = () => {
     <Box backgroundColor={'#00000f'} position={'relative'}>
       
       <Box >
-        <Sidebar>
-          <Box
+      <SimpleSidebar/>
+      <Box
           pt={'200px'}
             width={'90%'}
             mt={'40px'}
@@ -66,8 +67,8 @@ const MyVideo = () => {
               My Videos
             </Text>
           </Box>
-          <Box display={'flex'} mt={'40px'} padding={'30px'} gap={'40px'}>
-            <Box width={'60%'}>
+          <Box display={{base:'block','xl':'flex'}} mt={'40px'} padding={'30px'} gap={'40px'}>
+            <Box  mb={{base:'20'}} width={{base:'100%','xl':'60%'}}>
               <ReactPlayer
                 url={playingVideo}
                 controls
@@ -76,7 +77,7 @@ const MyVideo = () => {
                 height="auto"
               />
             </Box>
-            <Box width={'30%'} marginLeft={'40px'}>
+            <Box width={{base:'100%','xl':'30%'}} marginLeft={'40px'}>
               <Text
                 fontSize={'25px'}
                 fontWeight={'bold'}
@@ -113,7 +114,6 @@ const MyVideo = () => {
               :
             </Box>
           </Box>
-        </Sidebar>
       </Box>
     </Box>
   );

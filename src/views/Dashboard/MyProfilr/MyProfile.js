@@ -115,11 +115,11 @@ if(fields.profilePicture){
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
      
-      <Box >
+      <Box display={{base: 'block','xl':'flex'}}>
       <SimpleSidebar/>
       
-          <Stack w={'full'}>
-          <Container maxW={'8xl'}>
+          <Stack px={8} pt={20} w={'full'}>
+          
           <Box padding={'120px 0'}>
            <Text
               fontWeight={'bold'}
@@ -147,7 +147,7 @@ if(fields.profilePicture){
                 >
                   <WrapItem>
                     <Avatar
-                      size="xl"
+                      size={{base:'lg','xl':'xl'}}
                       name={fields.full_name}
                       src="https://bit.ly/sage-adebayo"
                     />
@@ -180,7 +180,7 @@ if(fields.profilePicture){
                     onChange={(e)=>{setFields({...fields,full_name:e.target.value})}}
                     outline={'none'}
                     color={'white'}
-                    width={'48%'}
+                    width={{base:'100%','xl':'48%'}}
                     outlineColor={'#fff'}
                     type="text"
                     placeholder="Name"
@@ -192,7 +192,7 @@ if(fields.profilePicture){
                     color={'white'}
                     onChange={(e)=>{setFields({...fields,email:e.target.value})}}
                     value={fields?.email}
-                    width={'48%'}
+                    width={{base:'100%','xl':'48%'}}
                     outlineColor={'#fff'}
                     type="email"
                     placeholder="Email"
@@ -204,7 +204,7 @@ if(fields.profilePicture){
                     color={'white'}
                     value={fields.password}
                     onChange={(e)=>{setFields({...fields,password:e.target.value})}}
-                    width={'48%'}
+                    width={{base:'100%','xl':'48%'}}
                     outlineColor={'#fff'}
                     type="text"
                     placeholder="Password"
@@ -213,7 +213,7 @@ if(fields.profilePicture){
                     _hover={'none'}
                     borderColor={'black'}
                     color={'white'}
-                    width={'48%'}
+                    width={{base:'100%','xl':'48%'}}
                     value={fields?.phone_number}
                     onChange={(e)=>{setFields({...fields,phone_number:e.target.value})}}
                     outlineColor={'#fff'}
@@ -235,7 +235,7 @@ if(fields.profilePicture){
               </Button>
             </Box>
            </Box>
-          </Container>
+          
           
           </Stack>
         
