@@ -26,11 +26,11 @@ const Banner = () => {
         <Grid templateColumns="repeat(12, 1fr)" gap={2} alignItems={'center'}>
           <GridItem colSpan={{ base: 12, md: 6 }}>
             <Text fontSize={{base:'25px','xl':'30px'}} fontWeight={'bold'} color={'white'}>
-              Get hands on
+            Get Updates on 
               <Text padding={{base:'0 5px'}} as={'span'} borderBottom={'1px solid #fff'}>
-                Great Courses
+              Upcoming Courses
               </Text>
-              you like
+              & More
             </Text>
           </GridItem>
           <GridItem colSpan={{ base: 12, md: 6 }}>
