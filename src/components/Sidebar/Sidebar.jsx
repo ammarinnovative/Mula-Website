@@ -47,7 +47,7 @@ const LinkItems = [
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" backgroundColor={"#00000f"}>
+    <Box minH={{base:'0' , 'xl': "100vh"}} backgroundColor={"#00000f"}>
       <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
       <Drawer
         isOpen={isOpen}
@@ -61,7 +61,7 @@ export default function SimpleSidebar({ children }) {
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
+      <MobileNav position={{base:'absolute'}} w={'100%'} top={{base:'120px'}} display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
@@ -150,8 +150,9 @@ const MobileNav = ({ onOpen, ...rest }) => {
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 24 }}
       height="20"
+      
       alignItems="center"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue('#000', 'gray.900')}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
       justifyContent="flex-start"
@@ -163,8 +164,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
         icon={<FiMenu />}
       />
 
-      <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+      <Text  fontSize={'13px'} ml="3" color={'#757272'} fontFamily="monospace" fontWeight="bold">
+        Side Menu
       </Text>
     </Flex>
   )
