@@ -111,11 +111,7 @@ const Contact = () => {
               color={'white'}
               mb={'30px'}
             >
-              Get in touch with us <br />{' '}
-              <Text as={'span'} borderBottom={'3px solid #1f2bcc'}>
-                for any
-              </Text>{' '}
-              kind of Query
+             Have Queries Or<br/>Need Assistance?
             </Text>
             <Text
               mt={'20px 0'}
@@ -123,9 +119,7 @@ const Contact = () => {
               fontSize={{base:"14px",md:"17px"}}
               color={'#a6a6a6'}
             >
-              Sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt. Labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud ercitation.
+              For any questions or concerns, please fill out the provided form.<br/>We're here to assist you on your journey.
             </Text>
             <Box
               mt={'20px'}

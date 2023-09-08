@@ -61,13 +61,12 @@ export default function CallToActionWithVideo() {
               </Text>
             </Heading>
             <Text textAlign={{ base: 'center', md: 'left' }} color={'gray.500'}>
-              Snippy is a rich coding snippets app that lets you create your own
-              code snippets, categorize them, and even sync them in the cloud so
-              you can use them anywhere. All that is free!
+            Elevate your financial journey with a one-on-one virtual consultation with Myles Caldwell. Whether 
+            addressing immediate queries, uncovering hidden mistakes, unlocking untapped potential, or revealing secret strategies 
+            within your financial goals, every aspect of your entrepreneurial aspirations will be discussed.
             </Text>
             <Text color={'gray.500'}>
-              Snippy is a rich coding snippets app that lets you create your own
-              code snippets, categorize them, and even sync.
+            Gain clarity, answers to every question, and a meticulously crafted plan designed for success.
             </Text>
           </Stack>
           <Flex
