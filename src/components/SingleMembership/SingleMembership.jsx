@@ -11,6 +11,7 @@ const SingleMembership = data => {
     /* Width and color of the scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
+      border-radius: 4px;
       background-color: #f5f5f5;
     }
 
