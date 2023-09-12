@@ -9,6 +9,7 @@ import Sidebar from '../../../components/Sidebar/Sidebar';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { GET } from '../../../utilities/ApiProvider';
+import SimpleSidebar from '../../../components/Sidebar/Sidebar';
 
 const MembershipVideos = () => {
   const [datas, setDatas] = useState({ topic: [] });
@@ -51,24 +52,23 @@ const MembershipVideos = () => {
   
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
-      <Tophead />
-      <Navbar />
-      <Box position={'absolute'} width={'100%'}>
-        <Sidebar>
-          <Box
+       <SimpleSidebar/>
+      <Box >
+      <Box
             width={'90%'}
             mt={'40px'}
             margin={'auto'}
             display={'flex'}
             justifyContent={'space-between'}
             alignItems={'center'}
+            pt={'200px'}
           >
-            <Text fontSize={'30px'} fontWeight={'semibold'} color={'white'}>
+            <Text fontSize={{base:'20px','xl':'30px'}} fontWeight={'semibold'} color={'white'}>
               Membership Videos
             </Text>
           </Box>
-          <Box display={'flex'} mt={'40px'} padding={'30px'} gap={'40px'}>
-            <Box width={'60%'}>
+          <Box display={{base:'block','xl':'flex'}} mt={'40px'} padding={'30px'} gap={'40px'}>
+            <Box mb={{base:'20'}} width={{base:'100%','xl':'60%'}}>
               <ReactPlayer
                 // url={videos.find((video) => video.id === playingVideo).url}
                 url={playingVideo}
@@ -78,7 +78,7 @@ const MembershipVideos = () => {
                 height="auto"
               />
             </Box>
-            <Box width={'30%'} marginLeft={'40px'}>
+            <Box width={{base:'100%','xl':'30%'}} marginLeft={{base:'0','xl':"40px"}}>
               <Text
                 fontSize={'25px'}
                 fontWeight={'bold'}
@@ -97,7 +97,7 @@ const MembershipVideos = () => {
                       onClick={() => {
                         handlePlay(item._id);
                       }}
-                      fontSize={'18px'}
+                      fontSize={{base:'14px','xl':"18px"}}
                       borderColor={'white'}
                       borderBottom={'1px'}
                       color={'white'}
@@ -108,7 +108,6 @@ const MembershipVideos = () => {
                 })}
             </Box>
           </Box>
-        </Sidebar>
       </Box>
     </Box>
   );

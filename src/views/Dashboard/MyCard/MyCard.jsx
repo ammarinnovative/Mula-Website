@@ -253,9 +253,7 @@ const MyCard = () => {
   useEffect(() => {
     if (user) {
       getData();
-    } else {
-      alert('rrr');
-    }
+    } 
   }, [user]);
 
   useEffect(() => {
@@ -360,9 +358,8 @@ const MyCard = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
-      <Tophead />
-      <Navbar />
-      <Box position={'absolute'} width={'100%'} mt={'70px'}>
+   
+      <Box >
         <Sidebar>
           <Box
             width={'90%'}
@@ -371,6 +368,8 @@ const MyCard = () => {
             display={'flex'}
             justifyContent={'space-between'}
             alignItems={'center'}
+            pt={'200px'}
+            
           >
             <Text fontSize={'30px'} fontWeight={'bold'} color={'white'}>
               My Cards
@@ -391,7 +390,7 @@ const MyCard = () => {
           <Box
             display={'flex'}
             m={'50px 0'}
-            justifyContent={'center'}
+            pl={12}
             gap={'40px'}
             flexWrap={'wrap'}
             alignItems={'center'}

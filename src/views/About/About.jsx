@@ -22,16 +22,16 @@ const About = () => {
   console.log('selector', selector);
   const data = [
     {
-      text: 'Interactive Learning',
+      text: 'Weekly Video Lessons',
       Image: Layer7,
       details:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus sed et ipsum explicabo vero quae exercitationem mollitia provident quaerat debitis ad quod quis, vitae fuga rerum. Dolores, vero voluptates! Illo.',
+        'Gain exclusive access to our step-by-step video lessons. Learn the secrets of success in business, finance, crypto, and more to become a successful entrepreneur.',
     },
     {
-      text: 'Exclusive support Learning',
+      text: 'Personalized Guidance',
       Image: Layer6,
       details:
-        'Lorem ipsum dolor sit amet consectetur.sit amet consectetur. sit amet consectetur.   ',
+        'Benefit from exclusive one-on-one support from Myles Caldwell, tailored to your goals. We are dedicated to your success and provide personalized insights and strategies to elevate your journey.',
     },
   ];
 
@@ -54,11 +54,13 @@ const About = () => {
   ];
   return (
     <>
-      <Box backgroundColor={'#00000f'} padding={'200px 0 70px '} width={'100%'}>
+      <Box
+        backgroundColor={'#00000f'}
+        padding={{ base: '200px 0 20px ', '2xl': '200px 0  ' }}
+        width={'100%'}
+      >
         <Text
           textAlign={'center'}
-          mb={'25px'}
-          mt={'-15px'}
           fontWeight={'700'}
           fontSize={'37px'}
           color={'white'}
@@ -80,12 +82,7 @@ const About = () => {
           paddingBottom={'40px'}
           alignItems={'center'}
         >
-          <Box
-            display={'flex'}
-            mt={'60px'}
-            width={'100%'}
-            flexDirection={'column'}
-          >
+          <Box display={'flex'} width={'100%'} flexDirection={'column'}>
             <Box
               display={'flex'}
               gap={'30px'}
@@ -101,11 +98,11 @@ const About = () => {
                   color={'white'}
                   fontSize={{ base: '24px', md: '26px', lg: '30px' }}
                 >
-                  The Best Financial Courses <br />{' '}
-                  <Text as={'span'} borderBottom={'3px solid #041689'}>
-                    Crafted
-                  </Text>{' '}
-                  By Professional
+                  Comprehensive Learning for 
+                  <Text padding={'0 10px'} as={'span'} borderBottom={'3px solid #041689'}>
+                  Entrepreneurial 
+                  </Text>
+                  Excellence
                 </Box>
                 <Text
                   color={'#a9a9a9'}
@@ -113,10 +110,10 @@ const About = () => {
                   textAlign={{ base: 'center', md: 'left' }}
                   mt={'30px'}
                 >
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Itaque incidunt ex sint, velit voluptatum impedit commodi
-                  praesentium quaerat ipsum facere! Repellat culpa dicta
-                  assumenda est nobis iusto. Repudiandae ipsa expedita
+                  Our courses unveil the nuances of business, finance, cryptocurrencies,
+                   marketing, money-management skills and more. Equip yourself with essential 
+                    for entrepreneurial triumph and lasting financial security.
+
                 </Text>
               </Box>
 
@@ -191,11 +188,11 @@ const About = () => {
                 mb={'10px'}
                 fontSize={{ base: '23px', md: '26px', lg: '30px' }}
               >
-                We Offer <br />{' '}
-                <Text as={'span'} borderBottom={'4px solid #12158a'}>
-                  Finance
-                </Text>{' '}
-                Forums
+                Join  
+                <Text padding={'0 8px'} as={'span'} borderBottom={'4px solid #12158a'}>
+                 Our
+                </Text>
+                Thriving Community
               </Text>
               <Text
                 mb={4}
@@ -204,10 +201,7 @@ const About = () => {
                 mt={'30px'}
                 color={'white'}
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-                dolorum magnam, qui dignissimos soluta explicabo distinctio.
-                Soluta ipsa earum iusto! Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Cum, ut!.
+                Become part of our community for daily stock market callouts and updates. Make informed decisions, optimize profits, and stay ahead through strategic buying and selling strategies.
               </Text>
               <Link className="btn-a">Download App</Link>
             </Box>
@@ -244,9 +238,8 @@ const About = () => {
               fontWeight={'700'}
               color={'white'}
             >
-              Get Amazing <br />{' '}
-              <Text borderBottom={'2px solid #0000f'}>20% off</Text> on
-              Membership
+              Ready to Succeed? Get the Knowledge You Need!
+
             </Text>
             <Button
               mt={{ base: '0', md: '30px' }}
@@ -277,17 +270,12 @@ const About = () => {
               mb={'10px'}
               textAlign={{ base: 'center', md: 'left', lg: 'none' }}
             >
-              One-on-One virtual{' '}
-              <Text as={'span'} width={'10%'} borderBottom={'3px solid blue'}>
-                Consultation
-              </Text>
+             One-On-One Virtual Consultation
+
             </Text>
 
             <Text color={'#bfbfbf'} width={'30rem'}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-              officiis nostrum voluptates consequatur earum dicta, beatae, nam
-              quas ipsa libero aut distinctio, veritatis necessitatibus
-              voluptatibus laudantium quasi! Doloribus, obcaecati hic.
+            For comprehensive financial guidance across domains, take advantage of one-on-one virtual consultation. From immediate queries to in-depth discussions, we discuss everything about your entrepreneurial goals, challenges, and strategies. Take your ventures to new heights with expert mentorship and tailored advice.
             </Text>
           </Box>
           <Box width={'30rem'}>

@@ -23,6 +23,7 @@ import Slider from '../../components/Courser/Courser';
 
 import man from '../../assets/images/ban-r.webp';
 import { GET } from '../../utilities/ApiProvider';
+import Nnav from '../../components/Navbar/Nnav';
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -31,9 +32,9 @@ const Home = () => {
     setData(res?.data);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     getMembership();
-  },[]);
+  }, []);
 
   return (
     <>
@@ -46,25 +47,26 @@ const Home = () => {
         display={'flex'}
         alignItems={'center'}
         justifyContent={'center'}
-        height={'100vh'}
+        height={{ base: '50vh', xl: '100vh' }}
       >
         <Container maxW={'8xl'}>
           <Grid templateColumns="repeat(12, 1fr)" gap={2} alignItems={'center'}>
             <GridItem colSpan={{ base: 12, md: 6 }}>
               <Stack>
-                <Heading fontWeight={'700'} fontSize={'60px'} color={'white'}>
-                  {' '}
-                  Make 50K as An Entrepreneur
+                <Heading
+                  fontWeight={'700'}
+                  fontSize={{ base: '40px', xl: '60px' }}
+                  color={'white'}
+                >
+                  Gain Access to <br/>Expert Knowledge
                 </Heading>
                 <Text
-                  fontSize={'40px'}
+                  fontSize={{ base: '18px', xl: '30px' }}
                   paddingBottom={'20px'}
                   color={'white'}
                   fontWeight={'thin'}
                 >
-                  Get Access for Award Winning
-                  <br />
-                  Online Courses
+                 Achieve Unprecedented,<br/>Success In the Business World
                 </Text>
                 <Link as={ReactLink} className="btn-a" to={'/membership'}>
                   Get Started
@@ -73,7 +75,12 @@ const Home = () => {
             </GridItem>
             <GridItem colSpan={{ base: 12, md: 6 }}>
               <Stack>
-                <Img w={'60%'} m={'auto'} src={man} />
+                <Img
+                  display={{ base: 'none', xl: 'block' }}
+                  w={'60%'}
+                  m={'auto'}
+                  src={man}
+                />
               </Stack>
             </GridItem>
           </Grid>
@@ -82,25 +89,27 @@ const Home = () => {
       <Box paddingTop={'30px'} backgroundColor={'#00000f'}>
         <Invest />
         <Box
-          display={'flex'}
-          mt={'60px'}
+          padding={{ base: '70px 15px', xl: '40px 0' }}
+          display={{ base: 'block', xl: 'flex' }}
           justifyContent={'center'}
           alignItems={'center'}
         >
           <Image src={mobile} alt="image" />
-          <Box width={'30%'}>
-            <Text fontSize={'28px'} color={'white'} fontWeight={'bold'}>
+          <Box width={{ base: '100%', xl: '30%' }}>
+            <Text
+              fontSize={{ base: '20px', xl: '28px' }}
+              color={'white'}
+              fontWeight={'bold'}
+            >
               Download App Now
             </Text>
             <Text color={'white'} m={'6px 0'} fontSize={'16px'}>
-              What is Lorem Ipsum in English? Originally from Latin, Lorem ipsum
-              has no intelligible meaning. It is simply a display of letters to
-              be viewed as a sample with given graphical elements in a file.
-              "Lipsum" a portmanteau of lorem
+            Stop just dreaming and start achieving. Unsure where to begin? Worried about stumbling? Mula Membership is 
+            here for you. Our courses provide the knowledge you need to confidently start your journey towards success.
             </Text>
             <Box display={'flex'} gap={'15px'} mt={'30px'}>
-              <Image src={Play} alt="image" />
-              <Image src={Apple} alt="image" />
+              <Image w={'25%'} height={'25%'} src={Play} alt="image" />
+              <Image w={'25%'} height={'25%'} src={Apple} alt="image" />
             </Box>
           </Box>
         </Box>

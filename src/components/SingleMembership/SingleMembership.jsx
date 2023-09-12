@@ -27,7 +27,7 @@ const SingleMembership = data => {
   `;
   
   return (
-    <Link to={`/MembershipById/${data?.data?._id}`}>
+    <Link  as={ReactLink} to={`/MembershipById/${data?.data?._id}`}>
       <Box
         border={'2px solid hsl(237.78deg 79.41% 13.33%)'}
         padding={'17px'}

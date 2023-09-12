@@ -17,21 +17,21 @@ const Invest = () => {
   }, []);
 
   return (
-    <Box backgroundColor={'#00000f'} padding={'20px'} >
+    <Box backgroundColor={'#00000f'} padding={'20px'}>
       <Text
         textAlign={'center'}
         width={'100%'}
         color={'white'}
-        fontSize={'35px'}
+        fontSize={{ base: '20px', xl: '30px' }}
         fontWeight={'700'}
       >
-        Investments We Offer
+       Courses We Offer
       </Text>
       <Text color={'gray'} fontSize={'14px'} textAlign={'center'}>
-        LEARNING VIA APP NEVER GETS EASIER
+      Discover Untold Business Secrets Today
       </Text>
       <Box
-        display={'flex'}
+        display={{ base: 'block', xl: 'flex' }}
         justifyContent={'center'}
         mt={'40px'}
         gap={'10px'}
@@ -47,8 +47,9 @@ const Invest = () => {
                 position={'relative'}
                 maxH={'auto'}
                 minH={'350px'}
+                mb={{ base: '10px', xl: '0' }}
                 backgroundSize={'cover'}
-                width={'17%'}
+                width={{ base: '100%', xl: '17%' }}
                 backgroundImage={imageUrl + item?.coursePic}
               >
                 <Text

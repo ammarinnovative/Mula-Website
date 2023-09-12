@@ -40,7 +40,7 @@ const MembershipCard = ({item}) => {
       border={'1px solid #12158a'}
       padding={'10px'}
       borderRadius={'8px'}
-      width={{ base: '90%' }}
+    mb={{base:'5'}}
     >
       <Text
         fontSize={'25px'}

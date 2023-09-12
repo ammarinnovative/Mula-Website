@@ -24,23 +24,23 @@ import { useState } from 'react';
 export default function SimpleAccordion() {
   const data = [
     {
-      text: '01. Great Online Instructor',
-      desc: 'Chakra UI is a simple and modular component library that gives evelopers the building blocks they need to create webapplications.',
+      text: 'Exclusive Financial Insights',
+      desc: 'Gain access to expert financial advice, empowering you with insights for informed decision-making and achieving lasting success.',
       id: 1,
     },
     {
-      text: '02. Get our Certified Awards',
-      desc: 'Chakra UI is a simple and modular component library that gives evelopers the building blocks they need to create webapplications.',
+      text: 'In-Depth Course Analysis',
+      desc: 'Experience comprehensive course breakdowns that simplify complex subjects, enabling you to grasp them effortlessly and apply your newfound knowledge effectively.',
       id: 2,
     },
     {
-      text: '03. Exclusive Course Materials',
-      desc: 'Chakra UI is a simple and modular component library that gives evelopers the building blocks they need to create webapplications.',
+      text: 'Personalized Strategies',
+      desc: 'Leverage the personalized strategies and tips that you require to become a well-rounded and successful entrepreneur.',
       id: 3,
     },
     {
-      text: '04. In - depth Course Analysis',
-      desc: 'Chakra UI is a simple and modular component library that gives evelopers the building blocks they need to create webapplications.',
+      text: 'Progress Tracking',
+      desc: 'Monitor your learning journey and progress and ensure you stay on the path to achieving your business and financial goals.',
       id: 4,
     },
   ];
@@ -65,7 +65,7 @@ export default function SimpleAccordion() {
           </GridItem>
           <GridItem colSpan={{ base: 12, md: 6 }}>
             <Box>
-              <Heading color={'#fff'} mb={'12'} fontWeight={'500'}>Learn with the<br/>our winning courses</Heading>
+              <Heading color={'#fff'} mb={'12'} fontWeight={'500'}>Why Join Mula Membership</Heading>
               {data.length > 0 &&
                 data?.map((item, val) => {
                   return (

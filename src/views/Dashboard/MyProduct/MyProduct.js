@@ -1,4 +1,4 @@
-import { Box, Select, Text } from '@chakra-ui/react';
+import { Box, Select, Stack, Text } from '@chakra-ui/react';
 import Tophead from '../../../components/Tophead/Tophead';
 import Navbar from '../../../components/Navbar/Navbar';
 import { imageUrl } from '../../../utilities/Config';
@@ -8,102 +8,100 @@ import Sidebar from '../../../components/Sidebar/Sidebar';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GET } from '../../../utilities/ApiProvider';
+import SimpleSidebar from '../../../components/Sidebar/Sidebar';
 
 const MyProduct = () => {
-    const [data,setData] = useState({topic:[]});
-    const [unique,setUnique] = useState([]);
-    const [fullData,setFullData] = useState([]);
-    const [user,setUser] = useState([]);
-  const [playingVideo, setPlayingVideo] = useState("https://www.example.com/video1.mp4");
+  const [data, setData] = useState({ topic: [] });
+  const [unique, setUnique] = useState([]);
+  const [fullData, setFullData] = useState([]);
+  const [user, setUser] = useState([]);
+  const [playingVideo, setPlayingVideo] = useState(
+    'https://www.example.com/video1.mp4'
+  );
 
   const navigate = useNavigate();
 
-  const handlePlay = (videoId) => {
-    const findData = data?.topic?.find((val)=> {return val._id == videoId});
-    setPlayingVideo("https://mula.thewebtestlink.xyz/"+findData?.detail?.video);
-    };
+  const handlePlay = videoId => {
+    const findData = data?.topic?.find(val => {
+      return val._id == videoId;
+    });
+    setPlayingVideo(
+      'https://mula.thewebtestlink.xyz/' + findData?.detail?.video
+    );
+  };
 
+  const selector = useSelector(state => state);
 
-  const selector = useSelector(state=>state);
-
-
-  useEffect(()=>{
-  if(user){
+  useEffect(() => {
+    if (user) {
       setFullData(user?.courselist);
-    }else{
+    } else {
       navigate('/');
     }
-  },[user]);
+  }, [user]);
 
   useEffect(() => {
     const uniqueData = [...new Set(fullData?.map(obj => obj.name))];
     setUnique(uniqueData);
   }, [fullData]);
 
-
-  
-  
-  
-  
-  const getDataValue = (e)=>{
+  const getDataValue = e => {
     let dataName = e.target.value;
 
-    let find = fullData.find((item)=>item.name == dataName);
+    let find = fullData.find(item => item.name == dataName);
     setData(find);
-  }
+  };
 
-
-
-  
-  useEffect(()=>{
-    if(selector){
+  useEffect(() => {
+    if (selector) {
       setUser(selector?.user?.value);
     }
-  },[selector]);
-
-  
-
-
-
+  }, [selector]);
 
   return (
     <Box backgroundColor={'#00000f'} position={'relative'}>
-      <Tophead />
-      <Navbar />
-      <Box position={'absolute'} width={'100%'}>
-        <Sidebar>
-          <Box
-            width={'90%'}
-            mt={'40px'}
-            margin={'auto'}
-            display={'flex'}
-            justifyContent={'space-between'}
-            alignItems={'center'}
-          >
-            <Text fontSize={'30px'} fontWeight={'semibold'} color={'white'}>
+      <Box display={{ base: 'block', xl: 'flex' }}>
+        <SimpleSidebar />
+        <Stack px={8} pt={20} w={'full'}>
+          <Box>
+            <Text
+              fontSize={{ base: '25px', xl: '30px' }}
+              fontWeight={'semibold'}
+              color={'white'}
+            >
               {data?.name}
             </Text>
             <Select
-            onChange={getDataValue}
+              onChange={getDataValue}
               color={'white'}
               bg="black"
-              width={'20%'}
-              placeholder='Select'
+              placeholder="Select"
             >
-              {
-                unique.length>0 && unique.map((item)=>{
-                  return(
-                    <option   style={{ color: 'white',fontWeight:"bold",backgroundColor:"black" }}>{item}</option>
-                  )
-                })
-              }
-              
+              {unique.length > 0 &&
+                unique.map(item => {
+                  return (
+                    <option
+                      style={{
+                        color: 'white',
+                        fontWeight: 'bold',
+                        backgroundColor: 'black',
+                      }}
+                    >
+                      {item}
+                    </option>
+                  );
+                })}
             </Select>
           </Box>
-          <Box display={'flex'} mt={"40px"} padding={"30px"} gap={'40px'}>
-            <Box width={'60%'} >
+          <Box
+            display={{ base: 'block', xl: 'flex' }}
+            mt={'40px'}
+            padding={'30px'}
+            gap={'40px'}
+          >
+            <Box mb={{ base: '20' }} width={{ base: '100%', xl: '60%' }}>
               <ReactPlayer
-                  // url={videos.find((video) => video.id === playingVideo).url}
+                // url={videos.find((video) => video.id === playingVideo).url}
                 url={playingVideo}
                 controls
                 playing
@@ -111,21 +109,47 @@ const MyProduct = () => {
                 height="auto"
               />
             </Box>
-            <Box width={'30%'} marginLeft={"40px"}>
-              <Text fontSize={"25px"} fontWeight={"bold"} letterSpacing={"4px"} color={"white"}>Videos:</Text>
-                {
-                  data?.topic.length>0? data?.topic.length>0 && data?.topic?.map((item)=>{
-                        return(
-                            
-                            <Text cursor={"pointer"} key={item._id} m={"50px 0"} onClick={()=>{handlePlay(item._id)}} fontSize={"18px"} borderColor={"white"} borderBottom={"1px"} color={'white'}>{item?.detail?.title}</Text>
-                            
-                        )
-                    }):<Text color={"white"} mt={"20px"} fontSize={"25px"}>No Video Found</Text>
-                }
-              
+            <Box
+              mb={{ base: '20' }}
+              width={{ base: '100%', xl: '30%' }}
+              marginLeft={{ base: '0', xl: '40px' }}
+            >
+              <Text
+                fontSize={'25px'}
+                fontWeight={'bold'}
+                letterSpacing={'4px'}
+                color={'white'}
+              >
+                Videos:
+              </Text>
+              {data?.topic.length > 0 ? (
+                data?.topic.length > 0 &&
+                data?.topic?.map(item => {
+                  return (
+                    <Text
+                      cursor={'pointer'}
+                      key={item._id}
+                      m={'50px 0'}
+                      onClick={() => {
+                        handlePlay(item._id);
+                      }}
+                      fontSize={{ base: '14px', xl: '18px' }}
+                      borderColor={'white'}
+                      borderBottom={'1px'}
+                      color={'white'}
+                    >
+                      {item?.detail?.title}
+                    </Text>
+                  );
+                })
+              ) : (
+                <Text color={'white'} mt={'20px'} fontSize={'25px'}>
+                  No Video Found
+                </Text>
+              )}
             </Box>
           </Box>
-        </Sidebar>
+        </Stack>
       </Box>
     </Box>
   );

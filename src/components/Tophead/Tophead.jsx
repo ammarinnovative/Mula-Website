@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Container, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Container, Link, Text, useDisclosure } from '@chakra-ui/react';
 import { FaFacebook } from 'react-icons/fa';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { AiOutlineTwitter } from 'react-icons/ai';
@@ -10,8 +10,9 @@ import { loadUser } from '../../reducers/useReducers';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../reducers/useReducers';
-import { FaUserAlt } from 'react-icons/fa';
+import { FaRegUser } from 'react-icons/fa';
 import { POST } from '../../utilities/ApiProvider';
+import { Link as ReactLink } from 'react-router-dom';
 import {
   Modal,
   ModalOverlay,
@@ -25,7 +26,7 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
 
 const Tophead = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -271,10 +272,11 @@ const Tophead = () => {
         justifyContent={'space-between'}
         borderBottom={'1px solid #656565'}
       >
-        <Box display={'flex'} gap={'10px'}>
-          <FaFacebook color="white" fontSize={'20px'} />
-          <AiOutlineInstagram color="white" fontSize={'20px'} />
-          <AiOutlineTwitter color="white" fontSize={'20px'} />
+        <Box display={'flex'} gap={'6'}>
+        
+          <Link as={ReactLink} to={''}><FaFacebook color="white" fontSize={'20px'} /></Link>
+          <Link as={ReactLink} to={''}><AiOutlineInstagram color="white" fontSize={'20px'} /></Link>
+          <Link as={ReactLink} to={''}> <AiOutlineTwitter color="white" fontSize={'20px'} /></Link>
         </Box>
         <Box display={'flex'} gap={'10px'}>
           <Text
@@ -282,7 +284,7 @@ const Tophead = () => {
             display={user?.JWT_TOKEN ? 'none' : ''}
             cursor={'pointer'}
             onClick={onOpen}
-            fontWeight={'500'}
+            fontWeight={'400'}
           >
             Register
           </Text>
@@ -291,16 +293,16 @@ const Tophead = () => {
             display={user?.JWT_TOKEN ? 'none' : ''}
             onClick={onLoginOpen}
             color={'white'}
-            fontWeight={'500'}
+            fontWeight={'400'}
           >
             Login
           </Text>
           <Box display={'flex'} gap={'23px'} alignItems={'center'}>
             <Box display={user?.JWT_TOKEN ? '' : 'none'}>
-              <Link to="/myprofile">
+              <Link as={ReactLink} to="/myprofile">
                 <Box display={'flex'} gap={'10px'} alignItems={'center'}>
-                  <FaUserAlt color="white" fontSize={'20px'} />
-                  <Text fontSize={'20px'} fontWeight={'bold'} color={'white'}>
+                  <FaRegUser color="white" fontSize={'17px'} />
+                  <Text textTransform={'capitalize'} fontSize={'16px'} fontWeight={'400'} color={'white'}>
                     {user?.full_name}
                   </Text>
                 </Box>
@@ -314,10 +316,10 @@ const Tophead = () => {
               display={user?.JWT_TOKEN ? '' : 'none'}
             >
               <Box display={'flex'} gap={'10px'} alignItems={'center'}>
-                <Text fontWeight={'bold'} fontSize={'18px'} color={'white'}>
+                <Text textTransform={'capitalize'} fontWeight={'400'} fontSize={'16px'} color={'white'}>
                   Logout
                 </Text>
-                <IoIosLogOut color="white" fontSize={'22px'} />
+                <IoIosLogOut color="white" fontSize={'20px'} />
               </Box>
             </Box>
           </Box>

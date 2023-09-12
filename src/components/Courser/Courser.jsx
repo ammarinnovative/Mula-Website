@@ -11,34 +11,23 @@ const Slider = ({data}) => {
     <Stack pb={'24'}>
        <Container maxW={'8xl'}>
         <Stack pb={16} textAlign={'center'}>
-          <Heading color={'#fff'}>Select Your Plan</Heading>
+          <Heading color={'#fff'} fontSize={{base:"20px","xl":"28px"}}>Select Your Plan</Heading>
           <Text color={'#b2b2b2'}>Switch Plans Or Cancel Anytime</Text>
         </Stack>
-       <Swiper
-        spaceBetween={50}
-        slidesPerView={3}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={swiper => console.log(swiper)}
-      >
-        <Box width={'100%'}>
+        <Box width={'100%'} gap={8} justifyContent={'center'}  display={{base:'block','xl':'flex'}}>
           {
             data?.length>0? 
             data?.length>0 && data?.map((item)=>{
               return(
-                <SwiperSlide>
-                <Box>
-                  <MembershipCard item={item} />
-                </Box>
-              </SwiperSlide>
+                <MembershipCard item={item} />
               )
             })
            :<Text>No Data Found</Text>
           }
          
           
-          ...
+        
         </Box>
-      </Swiper>
        </Container>
     </Stack>
    
