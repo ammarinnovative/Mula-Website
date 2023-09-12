@@ -44,8 +44,8 @@ const Courses = () => {
      
       <Invest />
 
-      {data.length > 0 &&
-        data.map(item => {
+      {data?.length > 0 &&
+        data?.map(item => {
           return (
             <Stack >
               <Box pt={8} width={'90%'} margin={'auto'}>

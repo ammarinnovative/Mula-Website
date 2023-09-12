@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Box, Button, Text,Link } from '@chakra-ui/react';
+import { Box, Button, Text, Link } from '@chakra-ui/react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Global, css } from '@emotion/react';
@@ -24,13 +25,15 @@ const SingleMembership = data => {
       background: ;
     }
   `;
+  
   return (
     <Link to={`/MembershipById/${data?.data?._id}`}>
       <Box
         border={'2px solid hsl(237.78deg 79.41% 13.33%)'}
         padding={'17px'}
         borderRadius={'12px'}
-        width={{ base: '100%' }}
+        width={{base:"full",md:"350px",lg:"450px"}}
+        // width={{ base: '100%' }}
       >
         <Text
           fontSize={'25px'}
@@ -66,7 +69,9 @@ const SingleMembership = data => {
                 alignItems={'center'}
                 gap={'10px'}
               >
-                <AiOutlineArrowRight color="white" fontSize={'20px'} />
+                <Box width="20px" height="20px"> {/* Fixed-size container */}
+                  <AiOutlineArrowRight color="white" size={20} /> {/* Set a fixed size for the icon */}
+                </Box>
                 <Text color={'gray'} lineHeight={'35px'}>
                   {item?.text}
                 </Text>
@@ -94,8 +99,8 @@ const SingleMembership = data => {
             </Text>
           </Text>
           <Link as={ReactLink} className="btn-a" to={'/membership'}>
-          Order Now
-        </Link>
+            Order Now
+          </Link>
         </Box>
       </Box>
     </Link>

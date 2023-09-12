@@ -39,8 +39,8 @@ const Invest = () => {
         flexWrap={'wrap'}
         alignSelf={'normal'}
       >
-        {data.length > 0 ? (
-          data.map(item => {
+        {data?.length > 0 ? (
+          data?.map(item => {
             return (
               <Box
                 backgroundPosition={'center'}
