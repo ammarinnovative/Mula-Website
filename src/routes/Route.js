@@ -20,6 +20,9 @@ import MyCard from '../views/Dashboard/MyCard/MyCard';
 import Tophead from '../components/Tophead/Tophead';
 import { Stack } from '@chakra-ui/react';
 import Nnav from '../components/Navbar/Nnav';
+import Privacypolicy from '../views/Policy/Privacypolicy';
+import TermsConditions from '../views/Policy/TermsConditions';
+import RefundPolicy from '../views/Policy/RefundPolicy';
 export const UserContext = createContext();
 
 export default function AppRoute() {
@@ -44,6 +47,9 @@ export default function AppRoute() {
           <Route  path='/myVideo' element={<MyVideo />} />
           <Route  path='/membershipvideos' element={<MembershipVideo />} />
           <Route  path='/MembershipById/:id' element={<MembershipById/>} />
+          <Route  path='/Privacy-Policy' element={<Privacypolicy />} />
+          <Route  path='/Terms&Conditions' element={<TermsConditions />} />
+          <Route  path='/Refund-Policy' element={<RefundPolicy />} />
         </RouteSwitch>
       </Router>
     </div>
