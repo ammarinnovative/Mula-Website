@@ -9,6 +9,7 @@ import {
   ListItem,
   Link,
 } from '@chakra-ui/react';
+import { Link as ReactLink } from 'react-router-dom';
 import { HiLocationMarker } from 'react-icons/hi';
 import { FaPhone } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
@@ -37,19 +38,31 @@ const Footer = () => {
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={'/membership'}>Membership</Link>
+                <Link color={'#b2b2b2'} as={ReactLink} to={'/membership'}>Membership</Link>
                 </Box>
               </ListItem>
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={'/about'}>About</Link>
+                <Link color={'#b2b2b2'} as={ReactLink} to={'/about'}>About</Link>
                 </Box>
               </ListItem>
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={'/courses'}>Courses</Link>
+                <Link color={'#b2b2b2'} as={ReactLink} to={'/courses'}>Courses</Link>
+                </Box>
+              </ListItem>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaRegDotCircle  color={'#f18f0c'} />
+                <Link color={'#b2b2b2'} as={ReactLink} to={'/consultation'}>Visual Consultation</Link>
+                </Box>
+              </ListItem>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaRegDotCircle  color={'#f18f0c'} />
+                <Link color={'#b2b2b2'} as={ReactLink} to={'/contact'}>Talk to us</Link>
                 </Box>
               </ListItem>
             </UnorderedList>
@@ -63,16 +76,21 @@ const Footer = () => {
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={'/consultation'}>Visual Consultation</Link>
+                <Link color={'#b2b2b2'} as={ReactLink} to={'/Privacy-Policy'}>Privacy Policy</Link>
                 </Box>
               </ListItem>
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
-                <Link color={'#b2b2b2'} to={'/contact'}>Talk to us</Link>
+                <Link color={'#b2b2b2'} as={ReactLink} to={'/Terms&Conditions'}>Terms and Conditions</Link>
                 </Box>
               </ListItem>
-              
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaRegDotCircle  color={'#f18f0c'} />
+                <Link color={'#b2b2b2'} as={ReactLink} to={'/Refund-Policy'}>Refund Policy</Link>
+                </Box>
+              </ListItem>
             </UnorderedList>
             
           </Box>
@@ -102,11 +120,14 @@ const Footer = () => {
             </UnorderedList>
           </Box>
         </Box>
-        <Box padding={'20px 0'} borderTop={'1px solid #474747'}>
+        <Stack padding={'20px 0'} borderTop={'1px solid #474747'}>
+          <Box>
           <Text textAlign={'center'} color={'#b2b2b2'} fontSize={{base:'12px','xl':'16px'}}>
             Copyright 2021 NewYorkWebCoders | All Rights Reserved
           </Text>
-        </Box>
+          </Box>
+         
+        </Stack>
       </Container>
     </Stack>
   );
