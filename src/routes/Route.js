@@ -22,6 +22,7 @@ import { Stack } from '@chakra-ui/react';
 import Nnav from '../components/Navbar/Nnav';
 import Privacypolicy from '../views/Policy/Privacypolicy';
 import TermsConditions from '../views/Policy/TermsConditions';
+import Support from "../views/Policy/SupportPage";
 import RefundPolicy from '../views/Policy/RefundPolicy';
 export const UserContext = createContext();
 
@@ -50,6 +51,7 @@ export default function AppRoute() {
           <Route  path='/Privacy-Policy' element={<Privacypolicy />} />
           <Route  path='/Terms&Conditions' element={<TermsConditions />} />
           <Route  path='/Refund-Policy' element={<RefundPolicy />} />
+          <Route  path='/Support' element={<Support />} />
         </RouteSwitch>
       </Router>
     </div>

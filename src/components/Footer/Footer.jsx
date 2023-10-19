@@ -88,6 +88,12 @@ const Footer = () => {
               <ListItem>
                 <Box display={'flex'} gap={2} alignItems={'center'}> 
                 <FaRegDotCircle  color={'#f18f0c'} />
+                <Link color={'#b2b2b2'} as={ReactLink} to={'/Support'}>Support Policy</Link>
+                </Box>
+              </ListItem>
+              <ListItem>
+                <Box display={'flex'} gap={2} alignItems={'center'}> 
+                <FaRegDotCircle  color={'#f18f0c'} />
                 <Link color={'#b2b2b2'} as={ReactLink} to={'/Refund-Policy'}>Refund Policy</Link>
                 </Box>
               </ListItem>
